@@ -1,0 +1,49 @@
+@mixin rounded-border( $amount: 50% ) {
+    -webkit-border-radius: $amount;
+    -moz-border-radius: $amount;
+    -o-border-radius: $amount;
+    -ms-border-radius: $amount;
+    border-radius: $amount;
+}
+
+
+
+@mixin translatingY( $amount: -50% ) {
+    -webkit-transform: translateY($amount);
+    -moz-transform: translateY($amount);
+    -o-transform: translateY($amount);
+    -ms-transform: translateY($amount);
+    transform: translateY($amount);
+}
+
+@mixin center-by-translating() {
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+@mixin transition-time( $time: 0.5s, $prop: all ) {
+    -webkit-transition: $prop $time;
+    -moz-transition: $prop $time;
+    -o-transition: $prop $time;
+    -ms-transition: $prop $time;
+    transition: $prop $time;
+}
+
+
+@mixin widther( $length ) {
+    @media screen and (min-width: $length)  {
+        @content;
+    }
+}
+
+@mixin media-query( $length ) {
+    @media (max-width: $length) {
+        @content;
+    }
+}
+
+
+

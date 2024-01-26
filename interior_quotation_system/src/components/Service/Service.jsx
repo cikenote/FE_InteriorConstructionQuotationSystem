@@ -1,6 +1,6 @@
 import Services from "../../api/services.js";
 import "../../styles/components/service.scss"
-import "../../styles/pages/home.scss"
+import "../../styles/pages/homePage.scss"
 const Service = () => {
 
 

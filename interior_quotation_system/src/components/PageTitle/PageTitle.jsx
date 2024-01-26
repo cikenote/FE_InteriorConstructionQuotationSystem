@@ -1,4 +1,4 @@
-
+import "../../styles/components/pagetitle.scss"
 const PageTitle = (props) => {
   return (
     <section className="wpo-page-title">

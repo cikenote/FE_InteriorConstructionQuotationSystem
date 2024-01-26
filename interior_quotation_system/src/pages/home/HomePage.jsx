@@ -4,7 +4,7 @@ import Footer from "../../components/Footer/Footer";
 import Hero from "../../components/Hero/Hero";
 import Pricing from "../../components/Pricing/Pricing";
 import Service from "../../components/Service/Service";
-import "../../styles/pages/home.scss"
+import "../../styles/pages/homePage.scss"
 import Navbar from "../../components/Navbar/Navbar";
 
 const HomePage = () => {

@@ -10,7 +10,8 @@ function App() {
         // <HomePage />
         // <ProjectPage/>
         // <ProjectSingle/>
-        <Page_404 />
+        //<Page_404 />
+         <ContactPage />
     );
 }
 export default App;

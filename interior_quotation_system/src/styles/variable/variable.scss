@@ -1,3 +1,35 @@
+/*---------------------------
+	Fonts
+----------------------------*/
+@font-face {
+	font-family: 'Muli';
+	font-style: normal;
+	font-weight: 500;
+	src: local('Muli Regular'), url('../../../fonts/text-font/Muli-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Muli';
+	font-style: normal;
+	font-weight: 600;
+	src: local('Muli SemiBold'), url('../../../fonts/text-font/Muli-SemiBold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Muli';
+	font-style: normal;
+	font-weight: 700;
+	src: local('Muli Bold'), url('../../../fonts/text-font/Muli-Bold.woff') format('woff');
+}
+ 
+
+
+// fonts
+$base-font-size: 15;
+$base-font: 'Muli';
+$heading-font: 'Jost', sans-serif;
+
+
 // color
 $dark-gray: #0D0845;
 $body-color: #595959;
@@ -32,5 +64,3 @@ $theme-color-6:#99337f;
 $theme-color-7:#18A7B5;
 $theme-color-8:#668c25;
 $theme-color-9:#ff8051;
-
-

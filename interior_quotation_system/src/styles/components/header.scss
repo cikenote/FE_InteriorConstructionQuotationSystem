@@ -3,16 +3,7 @@
 
 
 
-
-
-/* 2.2 navigation */
-
-
 .site-header {
-	/* navigation open and close btn hide for width screen */
-	/* style for navigation less than 992px */
-	/*navbar collaps less then 992px*/
-	/*** cart-search-contact ***/
 	background-color: #fff;
 
 	@media (min-width: 991px) {
@@ -89,6 +80,24 @@
 .site-header #navbar>ul li a:focus {
 	text-decoration: none;
 	color: $theme-primary-color;
+}
+
+.fixed-navbar {
+	position: relative;
+	z-index: 5555;
+}
+
+.fixed-navbar.active .site-header {
+	position: fixed;
+	z-index: 555;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background: $white;
+	border: none;
+	box-shadow: 0px 1px 5px rgba(0, 0, 0, .1);
+	-moz-box-shadow: 0px 1px 5px rgba(0, 0, 0, .1);
+	-webkit-box-shadow: 0px 1px 5px rgba(0, 0, 0, .1);
 }
 
 @media screen and (min-width: 992px) {

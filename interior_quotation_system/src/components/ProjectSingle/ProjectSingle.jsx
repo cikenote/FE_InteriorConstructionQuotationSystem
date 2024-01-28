@@ -56,7 +56,10 @@ const ProjectSingle = () => {
                                         </div>
                                     </div>
                                     <div className="wpo-project-single-main-img">
-                                        <img src="Ảnh nè" alt="" />
+                                        <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+                                        <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+                                        <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+
                                     </div>
                                     <div className="wpo-project-single-item list-widget">
                                         <div className="row">
@@ -102,12 +105,12 @@ const ProjectSingle = () => {
                                         <div className="row mt-4">
                                             <div className="col-md-6 col-sm-6 col-12">
                                                 <div className="wpo-p-details-img">
-                                                    <img src="Ảnh nè" alt="" />
+                                                    <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
                                                 </div>
                                             </div>
                                             <div className="col-md-6 col-sm-6 col-12">
                                                 <div className="wpo-p-details-img">
-                                                    <img src="Ảnh nè" alt="" />
+                                                    <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
                                                 </div>
                                             </div>
                                         </div>

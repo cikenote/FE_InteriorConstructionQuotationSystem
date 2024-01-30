@@ -70,13 +70,9 @@ const Header = () => {
                       </a>
                     </li>
                     <li className="menu-item-has-children">
-                      <a onClick={ClickHandler} href="/">
+                      <a onClick={ClickHandler} href="/shop">
                         Pages
                       </a>
-                      {/* 
-                      <div className="dropdown">
-                        <div className="dropdown-item">Shop</div>
-                      </div> */}
                     </li>
                   </ul>
                 </div>

@@ -12,6 +12,7 @@ import ItemDetail from "./pages/shop/ItemDetail";
 import QuotationPage from "./pages/quotation/QuotationPage";
 import LoginPage from "./pages/login/LoginPage";
 import RegisterPage from "./pages/register/RegisterPage";
+import ForgotPassword from "./pages/forgot-password/ForgotPassword";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
             <Route path="/shop/item/:id" element={<ItemDetail />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
     );
 }

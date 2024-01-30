@@ -11,6 +11,8 @@ import ShopItem from "./pages/shop/index";
 import ItemDetail from "./pages/shop/ItemDetail";
 import QuotationPage from "./pages/quotation/QuotationPage";
 import LoginPage from "./pages/login/LoginPage";
+import RegisterPage from "./pages/register/RegisterPage";
+
 function App() {
     return (
         <Routes>
@@ -24,6 +26,7 @@ function App() {
             <Route path="/shop" element={<ShopItem />} />
             <Route path="/shop/item/:id" element={<ItemDetail />} />
             <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
         </Routes>
     );
 }

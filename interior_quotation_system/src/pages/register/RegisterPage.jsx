@@ -1,20 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import "../../styles/pages/loginPage.scss";
 import Grid from "@mui/material/Grid";
+import SimpleReactValidator from "simple-react-validator";
+import { toast } from "react-toastify";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import SimpleReactValidator from "simple-react-validator";
 
-const LoginPage = () => {
+const RegisterPage = () => {
     const changeHandler = (e) => {
         setValue({ ...value, [e.target.name]: e.target.value });
         validator.showMessages();
-    };
-
-    const rememberHandler = () => {
-        setValue({ ...value, remember: !value.remember });
     };
 
     const [validator] = React.useState(
@@ -28,18 +23,13 @@ const LoginPage = () => {
         if (validator.allValid()) {
             setValue({
                 email: "",
+                full_name: "",
                 password: "",
-                remember: false,
+                confirm_password: "",
             });
             validator.hideMessages();
-
-            const userRegex = /^user+.*/gm;
-            const email = value.email;
-
-            if (email.match(userRegex)) {
-                toast.success("You successfully Login on Arkio !");
-                router.push("/");
-            }
+            toast.success("Registration Complete successfully!");
+            router.push("/login");
         } else {
             validator.showMessages();
             toast.error("Empty field is not allowed!");
@@ -48,10 +38,25 @@ const LoginPage = () => {
     return (
         <Grid className="loginWrapper">
             <Grid className="loginForm">
-                <h2>Sign In</h2>
-                <p>Sign in to your account</p>
+                <h2>Signup</h2>
+                <p>Signup your account</p>
                 <form onSubmit={submitForm}>
                     <Grid container spacing={3}>
+                        <Grid item xs={12}>
+                            <TextField
+                                className="inputOutline"
+                                fullWidth
+                                placeholder="Full Name"
+                                variant="outlined"
+                                name="full_name"
+                                label="Name"
+                                // InputLabelProps={{
+                                //     shrink: true,
+                                // }}
+                                onBlur={(e) => changeHandler(e)}
+                                onChange={(e) => changeHandler(e)}
+                            />
+                        </Grid>
                         <Grid item xs={12}>
                             <TextField
                                 className="inputOutline"
@@ -74,7 +79,6 @@ const LoginPage = () => {
                                 placeholder="Password"
                                 variant="outlined"
                                 name="password"
-                                type="password"
                                 label="Password"
                                 // InputLabelProps={{
                                 //     shrink: true,
@@ -84,22 +88,25 @@ const LoginPage = () => {
                             />
                         </Grid>
                         <Grid item xs={12}>
-                            <Grid className="formAction">
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox onChange={rememberHandler} />
-                                    }
-                                    label="Remember Me"
-                                />
-                                <a href="/forgot-password">Forgot Password?</a>
-                            </Grid>
+                            <TextField
+                                className="inputOutline"
+                                fullWidth
+                                placeholder="Confirm Password"
+                                variant="outlined"
+                                name="confirm_password"
+                                label="Confirm Password"
+                                onBlur={(e) => changeHandler(e)}
+                                onChange={(e) => changeHandler(e)}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
                             <Grid className="formFooter">
                                 <Button
                                     fullWidth
                                     className="cBtnTheme"
                                     type="submit"
                                 >
-                                    Login
+                                    Sign Up
                                 </Button>
                             </Grid>
                             <Grid className="loginWithSocial">
@@ -109,8 +116,8 @@ const LoginPage = () => {
                                 </Button>
                             </Grid>
                             <p className="noteHelp">
-                                Don't have an account?{" "}
-                                <a href="/register">Create free account</a>
+                                Already have an account?{" "}
+                                <a href="/login">Return to Sign In</a>
                             </p>
                         </Grid>
                     </Grid>
@@ -120,4 +127,4 @@ const LoginPage = () => {
     );
 };
 
-export default LoginPage;
+export default RegisterPage;

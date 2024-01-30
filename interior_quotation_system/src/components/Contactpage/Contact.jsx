@@ -20,7 +20,7 @@ const Contactpage = () => {
                                         </div>
                                         <div className="office-info-text">
                                             <h2>Address</h2>
-                                            <p>ô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh</p>
+                                            <p>ô E2a-7, Đường D1, Đ. D1, Long Thạnh Mỹ, Thành Phố Thủ Đức</p>
                                         </div>
                                     </div>
                                 </div> 
@@ -34,7 +34,7 @@ const Contactpage = () => {
                                         <div className="office-info-text">
                                             <h2>Email Us</h2>
                                             <p>arkio@gmail.com</p>
-                                            <p>helloyou@gmail.com</p>
+                                            <p>admin@gmail.com</p>
                                         </div>
                                     </div>
                                 </div> 

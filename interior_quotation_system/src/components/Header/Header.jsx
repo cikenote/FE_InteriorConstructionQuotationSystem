@@ -1,23 +1,21 @@
 import { useState } from "react";
 import "../../styles/components/header.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import CloseIcon from '@mui/icons-material/Close';
-import SearchIcon from '@mui/icons-material/Search';
+import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import CloseIcon from "@mui/icons-material/Close";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
-
   const [menuActive, setMenuState] = useState(false);
   const [cartActive, setcartState] = useState(false);
 
   const ClickHandler = () => {
     window.scrollTo(10, 0);
-  }
+  };
 
   const SubmitHandler = (e) => {
-    e.preventDefault()
-  }
-
+    e.preventDefault();
+  };
 
   return (
     <header id="header">
@@ -32,27 +30,52 @@ const Header = () => {
               </div>
               <div className="col-lg-3 col-md-6 col-6">
                 <div className="navbar-header">
-                  <a onClick={ClickHandler} className="navbar-brand" href="/home">
+                  <a
+                    onClick={ClickHandler}
+                    className="navbar-brand"
+                    href="/home"
+                  >
                     <img src="Logo" alt="logo" />
                   </a>
                 </div>
               </div>
               <div className="col-lg-6 col-md-1 col-1">
-                <div id="navbar" className="collapse navbar-collapse navigation-holder">
-                  <button className="menu-close"><CloseIcon className="ti-close"></CloseIcon></button>
+                <div
+                  id="navbar"
+                  className="collapse navbar-collapse navigation-holder"
+                >
+                  <button className="menu-close">
+                    <CloseIcon className="ti-close"></CloseIcon>
+                  </button>
                   <ul className="nav navbar-nav mb-2 mb-lg-0">
                     <li className="menu-item-has-children">
-                      <a onClick={ClickHandler} href="/">Home</a>
+                      <a onClick={ClickHandler} href="/">
+                        Home
+                      </a>
                     </li>
 
                     <li className="menu-item-has-children">
-                      <a onClick={ClickHandler} href="/project">Project</a>
-
+                      <a onClick={ClickHandler} href="/project">
+                        Project
+                      </a>
                     </li>
                     <li className="menu-item-has-children">
-                      <a onClick={ClickHandler} href="/blog">Blog</a>
+                      <a onClick={ClickHandler} href="/blog">
+                        Blog
+                      </a>
+                    </li>
+                    <li>
+                      <a onClick={ClickHandler} href="/contact">
+                        Contact
+                      </a>
+                    </li>
+                    <li className="menu-item-has-children">
+                      <a onClick={ClickHandler} href="/shop">
+                        Product
+                      </a>
                     </li>
                     <li><a onClick={ClickHandler} href="/contact">Contact</a></li>
+                    <li><a onClick={ClickHandler} href="/quotation">Quotation</a></li>
                   </ul>
                 </div>
               </div>
@@ -60,27 +83,55 @@ const Header = () => {
                 <div className="header-right">
                   <div className="header-search-form-wrapper">
                     <div className="cart-search-contact">
-                      <button onClick={() => setMenuState(!menuActive)} className="search-toggle-btn"><SearchIcon
-                        className={`fi ti-search ${menuActive ? "ti-close" : "fi"}`}></SearchIcon></button>
-                      <div className={`header-search-form ${menuActive ? "header-search-content-toggle" : ""}`}>
+                      <button
+                        onClick={() => setMenuState(!menuActive)}
+                        className="search-toggle-btn"
+                      >
+                        <SearchIcon
+                          className={`fi ti-search ${
+                            menuActive ? "ti-close" : "fi"
+                          }`}
+                        ></SearchIcon>
+                      </button>
+                      <div
+                        className={`header-search-form ${
+                          menuActive ? "header-search-content-toggle" : ""
+                        }`}
+                      >
                         <form onSubmit={SubmitHandler}>
                           <div>
-                            <input type="text" className="form-control"
-                              placeholder="Search here..." />
-                            <button type="submit"><SearchIcon
-                              className="fi-ti-search"></SearchIcon></button>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Search here..."
+                            />
+                            <button type="submit">
+                              <SearchIcon className="fi-ti-search"></SearchIcon>
+                            </button>
                           </div>
                         </form>
                       </div>
                     </div>
                   </div>
                   <div className="mini-cart">
-                    <button className="cart-toggle-btn" onClick={() => setcartState(!cartActive)}>
+                    <button
+                      className="cart-toggle-btn"
+                      onClick={() => setcartState(!cartActive)}
+                    >
                       <ShoppingCartOutlinedIcon></ShoppingCartOutlinedIcon>
                       <span className="cart-count">Số lượng</span>
                     </button>
-                    <div className={`mini-cart-content ${cartActive ? "mini-cart-content-toggle" : ""}`}>
-                      <button className="mini-cart-close" onClick={() => setcartState(!cartActive)}><CloseIcon className="close-icon"/></button>
+                    <div
+                      className={`mini-cart-content ${
+                        cartActive ? "mini-cart-content-toggle" : ""
+                      }`}
+                    >
+                      <button
+                        className="mini-cart-close"
+                        onClick={() => setcartState(!cartActive)}
+                      >
+                        <CloseIcon className="close-icon" />
+                      </button>
                       <div className="mini-cart-items">
                         <div className="mini-cart-item clearfix">
                           <div className="mini-cart-item-image">
@@ -94,9 +145,7 @@ const Header = () => {
                               Số lượng x đơn giá
                             </span>
                             <span className="mini-cart-item-quantity">
-                              <button
-                                className="btn btn-sm btn-danger"
-                              >
+                              <button className="btn btn-sm btn-danger">
                                 <CloseIcon className="ti-close"></CloseIcon>
                               </button>
                             </span>
@@ -104,10 +153,16 @@ const Header = () => {
                         </div>
                       </div>
                       <div className="mini-cart-action clearfix">
-                        <span className="mini-checkout-price">Subtotal: <span> Tổng cộng</span></span>
+                        <span className="mini-checkout-price">
+                          Subtotal: <span> Tổng cộng</span>
+                        </span>
                         <div className="mini-btn">
-                          <a href="/checkout" className="view-cart-btn s1">Checkout</a>
-                          <a href="/cart" className="view-cart-btn">View Cart</a>
+                          <a href="/checkout" className="view-cart-btn s1">
+                            Checkout
+                          </a>
+                          <a href="/cart" className="view-cart-btn">
+                            View Cart
+                          </a>
                         </div>
                       </div>
                     </div>
@@ -119,7 +174,7 @@ const Header = () => {
         </nav>
       </div>
     </header>
-  )
+  );
 };
 
 export default Header;

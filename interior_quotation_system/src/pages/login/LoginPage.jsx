@@ -9,12 +9,6 @@ import SimpleReactValidator from "simple-react-validator";
 import GoogleIcon from "@mui/icons-material/Google";
 
 const LoginPage = () => {
-    const [value, setValue] = useState({
-        email: "user@gmail.com",
-        password: "123456",
-        remember: false,
-    });
-
     const changeHandler = (e) => {
         setValue({ ...value, [e.target.name]: e.target.value });
         validator.showMessages();
@@ -64,52 +58,37 @@ const LoginPage = () => {
                                 className="inputOutline"
                                 fullWidth
                                 placeholder="E-mail"
-                                value={value.email}
                                 variant="outlined"
                                 name="email"
                                 label="E-mail"
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
+                                // InputLabelProps={{
+                                //     shrink: true,
+                                // }}
                                 onBlur={(e) => changeHandler(e)}
                                 onChange={(e) => changeHandler(e)}
                             />
-                            {validator.message(
-                                "email",
-                                value.email,
-                                "required|email"
-                            )}
                         </Grid>
                         <Grid item xs={12}>
                             <TextField
                                 className="inputOutline"
                                 fullWidth
                                 placeholder="Password"
-                                value={value.password}
                                 variant="outlined"
                                 name="password"
                                 type="password"
                                 label="Password"
-                                InputLabelProps={{
-                                    shrink: true,
-                                }}
+                                // InputLabelProps={{
+                                //     shrink: true,
+                                // }}
                                 onBlur={(e) => changeHandler(e)}
                                 onChange={(e) => changeHandler(e)}
                             />
-                            {validator.message(
-                                "password",
-                                value.password,
-                                "required"
-                            )}
                         </Grid>
                         <Grid item xs={12}>
                             <Grid className="formAction">
                                 <FormControlLabel
                                     control={
-                                        <Checkbox
-                                            checked={value.remember}
-                                            onChange={rememberHandler}
-                                        />
+                                        <Checkbox onChange={rememberHandler} />
                                     }
                                     label="Remember Me"
                                 />

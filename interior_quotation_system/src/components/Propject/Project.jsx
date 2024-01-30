@@ -1,11 +1,12 @@
 import Projects from "../../api/projects"
 import "../../styles/components/project.scss"
+import {Link} from "react-router-dom"
 const Project = () => {
     const ClickHandler = () => {
         window.scrollTo(10, 0);
     }
     return (
-        <div className="wpo-project-area-s2 section-padding">
+        <div className="wpo-project-area section-padding">
             <div className="container">
                 <div className="row">
                     <div className="wpo-section-title">
@@ -28,7 +29,7 @@ const Project = () => {
                                                         <div className="right-border"></div>
                                                     </div>
                                                     <div className="wpo-project-text">
-                                                        <h2><a onClick={ClickHandler}>{project.title}</a></h2>
+                                                        <h2><Link to={`project-single`} onClick={ClickHandler}>{project.title}</Link></h2>
                                                         <span>{project.subTitle}</span>
                                                     </div>
                                                 </div>
@@ -43,6 +44,6 @@ const Project = () => {
             </div>
         </div>
     )
-}
+};
 
 export default Project

@@ -2,13 +2,15 @@
 @import "../variable/mixin.scss";
 
 .wpo-page-title{
-    background: url(/images/page-title.jpg) no-repeat center top / cover;
-    min-height: 450px;
+    background: url("https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") no-repeat center top / cover;
+    // min-height: 450px;
     position: relative;
     display: flex;
     justify-content: center;
     flex-direction: column;
     z-index: 1;
+	top: 97px;
+	height: 650px;
 
 	@media(max-width: 767px) {
 		min-height: 250px;

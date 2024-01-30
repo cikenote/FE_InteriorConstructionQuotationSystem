@@ -3,8 +3,7 @@ import Navbar from "../../components/Navbar/Navbar"
 import PageTitle from '../../components/PageTitle/PageTitle';
 import Project from '../../components/Propject/Project';
 import Footer from "../../components/Footer/Footer"
-import "../../styles/pages/blogPage.scss"
-import "../../styles/components/project.scss"
+import "../../styles/pages/projectPage.scss"
 const ProjectPage = () => {
     return (
         <Fragment>

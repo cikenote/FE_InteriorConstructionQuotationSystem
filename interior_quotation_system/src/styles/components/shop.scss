@@ -1,13 +1,12 @@
 .landing-page {
-  background-image: url("https://arkio-next.netlify.app/images/page-title.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 510px;
+  background: url("https://images.pexels.com/photos/189333/pexels-photo-189333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") no-repeat center top / cover;
+  min-height: 450px;
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 100%;
+  flex-direction: column;
+  z-index: 1;
+  top: 87px;
 
   .content {
     display: flex;

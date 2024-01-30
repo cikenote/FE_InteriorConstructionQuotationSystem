@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import "../../styles/components/shop.scss";
+
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const ShopItem = () => {
@@ -13,6 +14,7 @@ const ShopItem = () => {
           <h3 className="title">Product</h3>
           <div className="links">
             <div className="home-link">Home</div>
+            
             <div className="dot"></div>
             <div>Product</div>
           </div>
@@ -29,7 +31,7 @@ const ShopItem = () => {
               className="image"
             />
             <div className="content">
-              <a className="title" href="/shop/item/123">
+              <a className="title" href="/shop/item/details">
               Single Sofa Chairs
               </a>
               <p className="price">$100.00</p>
@@ -44,7 +46,7 @@ const ShopItem = () => {
               className="image"
             />
             <div className="content">
-              <a className="title" href="/shop/item/123">
+              <a className="title" href="/shop/item/details">
               Sofa Table Set
               </a>
               <p className="price">$165.00</p>
@@ -59,7 +61,7 @@ const ShopItem = () => {
               className="image"
             />
             <div className="content">
-              <a className="title" href="/shop/item/123">
+              <a className="title" href="/shop/item/details">
               Wooden Chair with Cushion
               </a>
               <p className="price">$125.00</p>
@@ -74,7 +76,7 @@ const ShopItem = () => {
               className="image"
             />
             <div className="content">
-              <a className="title" href="/shop/item/123">
+              <a className="title" href="/shop/item/details">
                 Black Timber Chairs
               </a>
               <p className="price">$65.00</p>
@@ -89,7 +91,7 @@ const ShopItem = () => {
               className="image"
             />
             <div className="content">
-              <a className="title" href="/shop/item/123">
+              <a className="title" href="/shop/item/details">
               Folding Dining Table Set
               </a>
               <p className="price">$265.00</p>
@@ -104,7 +106,7 @@ const ShopItem = () => {
               className="image"
             />
             <div className="content">
-              <a className="title" href="/shop/item/123">
+              <a className="title" href="/shop/item/details">
               Relaxation Table Set
               </a>
               <p className="price">$65.00</p>

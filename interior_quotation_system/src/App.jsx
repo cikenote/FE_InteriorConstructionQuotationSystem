@@ -8,11 +8,11 @@ import LoginPage from "./pages/login/LoginPage";
 // import ProjectSingle from "./components/ProjectSingle/ProjectSingle";
 function App() {
     return (
-        // <HomePage />
+        <HomePage />
         // <ProjectPage />
         // <ProjectSingle />
         // <Page_404 />
-        <LoginPage></LoginPage>
+        // <LoginPage></LoginPage>
     );
 }
 

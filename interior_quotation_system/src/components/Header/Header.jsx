@@ -53,6 +53,7 @@ const Header = () => {
                       <a onClick={ClickHandler} href="/blog">Blog</a>
                     </li>
                     <li><a onClick={ClickHandler} href="/contact">Contact</a></li>
+                    <li><a onClick={ClickHandler} href="/quotation">Quotation</a></li>
                   </ul>
                 </div>
               </div>

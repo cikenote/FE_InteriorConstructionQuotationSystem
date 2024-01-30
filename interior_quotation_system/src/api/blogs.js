@@ -32,7 +32,7 @@ const blogs = [
         screens: blogImg2,
         description: 'Consectetur adipiscing elit. Purusout phasellus malesuada lectus.',
         author: 'Nguyễn Khải Nam',
-        authorTitle:'Nguyễn Khải Nam',
+        authorTitle:'Nguyễn Hải Nam',
         create_at: '19 Jan, 2024',
         blogSingleImg:blogSingleImg2, 
         comment:'80',
@@ -46,11 +46,11 @@ const blogs = [
         screens: blogImg3,
         description: 'Consectetur adipiscing elit. Purusout phasellus malesuada lectus.',
         author: 'Nguyễn Khải Nam',
-        authorTitle:'Nguyễn Khải Nam',
+        authorTitle:'Nguyễn Hải Nam',
         create_at: '9 Jan, 2024',
         blogSingleImg:blogSingleImg3,
         comment:'95',
-        blClass:'format-video',
+        blClass:'format-standard-image',
     },
 ];
 export default blogs;

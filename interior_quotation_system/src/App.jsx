@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import ProjectPage from "./pages/project/ProjectPage";
 import ProjectSingle from "./components/ProjectSingle/ProjectSingle";
 import BlogPage from "./pages/blog/BlogPage";
+import QuotationPage from "./pages/quotation/QuotationPage";
 function App() {
     return (
         <Routes>
@@ -15,6 +16,7 @@ function App() {
             <Route path="/project/project-single" element={<ProjectSingle />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/quotation" element={<QuotationPage/>} />
         </Routes>
     );
 }

@@ -11,11 +11,11 @@ const ItemDetail = () => {
       <Header></Header>
       <div className="landing-page">
         <div className="content">
-          <h3 className="title">Bev Accent Chair</h3>
+          <h3 className="title">Product Details</h3>
           <div className="links">
             <div className="home-link">Home</div>
             <div className="dot"></div>
-            <div>Bev Accent Chair</div>
+            <div>Product Details</div>
           </div>
         </div>
       </div>

@@ -71,7 +71,7 @@ const Header = () => {
                     </li>
                     <li className="menu-item-has-children">
                       <a onClick={ClickHandler} href="/shop">
-                        Pages
+                        Product
                       </a>
                     </li>
                   </ul>

@@ -10,21 +10,67 @@ const ShopItem = () => {
       <Navbar></Navbar>
       <div className="landing-page">
         <div className="content">
-          <h3 className="title">Shop</h3>
+          <h3 className="title">Product</h3>
           <div className="links">
             <div className="home-link">Home</div>
             <div className="dot"></div>
-            <div>Shop</div>
+            <div>Product</div>
           </div>
         </div>
       </div>
 
       <div className="products">
         <div className="product-list">
+
           <div className="product-detail">
             <img
               alt="product-alt"
-              src="https://arkio-next.netlify.app/images/shop/1.jpg"
+              src="https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591146/ghe-don-sofa-vai-cao-cap-furnist-bora-do_svg23w.jpg"
+              className="image"
+            />
+            <div className="content">
+              <a className="title" href="/shop/item/123">
+              Single Sofa Chairs
+              </a>
+              <p className="price">$100.00</p>
+              <div className="button-cart">Add to cart</div>
+            </div>
+          </div>
+
+          <div className="product-detail">
+            <img
+              alt="product-alt"
+              src="https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591146/cac-dong-san-pham-cua-noi-that-the-one-5_smjptc.jpg"
+              className="image"
+            />
+            <div className="content">
+              <a className="title" href="/shop/item/123">
+              Sofa Table Set
+              </a>
+              <p className="price">$165.00</p>
+              <div className="button-cart">Add to cart</div>
+            </div>
+          </div>
+
+          <div className="product-detail">
+            <img
+              alt="product-alt"
+              src="https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591146/Ori-furniture-3_qnlft8.jpg"
+              className="image"
+            />
+            <div className="content">
+              <a className="title" href="/shop/item/123">
+              Wooden Chair with Cushion
+              </a>
+              <p className="price">$125.00</p>
+              <div className="button-cart">Add to cart</div>
+            </div>
+          </div>
+
+          <div className="product-detail">
+            <img
+              alt="product-alt"
+              src="https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591145/2020bentleyfurniture1-1590839816_zmgphk.jpg"
               className="image"
             />
             <div className="content">
@@ -39,14 +85,14 @@ const ShopItem = () => {
           <div className="product-detail">
             <img
               alt="product-alt"
-              src="https://arkio-next.netlify.app/images/shop/1.jpg"
+              src="https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591146/bo-ban-an-thong-minh-gap-gon-04_spqcu9.jpg"
               className="image"
             />
             <div className="content">
               <a className="title" href="/shop/item/123">
-                Black Timber Chairs
+              Folding Dining Table Set
               </a>
-              <p className="price">$65.00</p>
+              <p className="price">$265.00</p>
               <div className="button-cart">Add to cart</div>
             </div>
           </div>
@@ -54,57 +100,12 @@ const ShopItem = () => {
           <div className="product-detail">
             <img
               alt="product-alt"
-              src="https://arkio-next.netlify.app/images/shop/1.jpg"
+              src="https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591146/n%E1%BB%99i-th%E1%BA%A5t-in-3d-15_zqm0wq.jpg"
               className="image"
             />
             <div className="content">
               <a className="title" href="/shop/item/123">
-                Black Timber Chairs
-              </a>
-              <p className="price">$65.00</p>
-              <div className="button-cart">Add to cart</div>
-            </div>
-          </div>
-
-          <div className="product-detail">
-            <img
-              alt="product-alt"
-              src="https://arkio-next.netlify.app/images/shop/1.jpg"
-              className="image"
-            />
-            <div className="content">
-              <a className="title" href="/shop/item/123">
-                Black Timber Chairs
-              </a>
-              <p className="price">$65.00</p>
-              <div className="button-cart">Add to cart</div>
-            </div>
-          </div>
-
-          <div className="product-detail">
-            <img
-              alt="product-alt"
-              src="https://arkio-next.netlify.app/images/shop/1.jpg"
-              className="image"
-            />
-            <div className="content">
-              <a className="title" href="/shop/item/123">
-                Black Timber Chairs
-              </a>
-              <p className="price">$65.00</p>
-              <div className="button-cart">Add to cart</div>
-            </div>
-          </div>
-
-          <div className="product-detail">
-            <img
-              alt="product-alt"
-              src="https://arkio-next.netlify.app/images/shop/1.jpg"
-              className="image"
-            />
-            <div className="content">
-              <a className="title" href="/shop/item/123">
-                Black Timber Chairs
+              Relaxation Table Set
               </a>
               <p className="price">$65.00</p>
               <div className="button-cart">Add to cart</div>

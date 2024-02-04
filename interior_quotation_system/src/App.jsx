@@ -12,7 +12,8 @@ import ItemDetail from "./pages/shop/ItemDetail";
 import QuotationPage from "./pages/quotation/QuotationPage";
 import LoginPage from "./pages/login/LoginPage";
 import RegisterPage from "./pages/register/RegisterPage";
-import ForgotPassword from "./pages/forgot-password/ForgotPassword";
+import ForgotPasswordPage from "./pages/forgot-password/ForgotPasswordPage";
+import BlogDetailPage from "./pages/blog-detail/BlogDetailPage";
 
 function App() {
     return (
@@ -22,13 +23,14 @@ function App() {
             <Route path="/project" element={<ProjectPage />} />
             <Route path="/project/project-single" element={<ProjectSingle />} />
             <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/blog-detail" element={<BlogDetailPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/quotation" element={<QuotationPage />} />
             <Route path="/shop" element={<ShopItem />} />
             <Route path="/shop/item/:id" element={<ItemDetail />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         </Routes>
     );
 }

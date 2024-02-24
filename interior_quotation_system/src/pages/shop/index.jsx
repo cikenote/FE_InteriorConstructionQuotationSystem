@@ -35,7 +35,7 @@ const ShopItem = () => {
               Single Sofa Chairs
               </a>
               <p className="price">$100.00</p>
-              <div className="button-cart">Add to cart</div>
+              <div className="button-cart">Add to quotation</div>
             </div>
           </div>
 
@@ -50,7 +50,7 @@ const ShopItem = () => {
               Sofa Table Set
               </a>
               <p className="price">$165.00</p>
-              <div className="button-cart">Add to cart</div>
+              <div className="button-cart">Add to quotation</div>
             </div>
           </div>
 
@@ -65,7 +65,7 @@ const ShopItem = () => {
               Wooden Chair with Cushion
               </a>
               <p className="price">$125.00</p>
-              <div className="button-cart">Add to cart</div>
+              <div className="button-cart">Add to quotation</div>
             </div>
           </div>
 
@@ -80,7 +80,7 @@ const ShopItem = () => {
                 Black Timber Chairs
               </a>
               <p className="price">$65.00</p>
-              <div className="button-cart">Add to cart</div>
+              <div className="button-cart">Add to quotation</div>
             </div>
           </div>
 
@@ -95,7 +95,7 @@ const ShopItem = () => {
               Folding Dining Table Set
               </a>
               <p className="price">$265.00</p>
-              <div className="button-cart">Add to cart</div>
+              <div className="button-cart">Add to quotation</div>
             </div>
           </div>
 
@@ -110,7 +110,7 @@ const ShopItem = () => {
               Relaxation Table Set
               </a>
               <p className="price">$65.00</p>
-              <div className="button-cart">Add to cart</div>
+              <div className="button-cart">Add to quotation</div>
             </div>
           </div>
         </div>

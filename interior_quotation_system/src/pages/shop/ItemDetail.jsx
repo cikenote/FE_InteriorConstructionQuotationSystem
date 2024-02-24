@@ -73,7 +73,7 @@ const ItemDetail = () => {
                 </div>
               </div>
 
-              <button className="btn-cart">Add to cart</button>
+              <button className="btn-cart">Add to quotation</button>
               <div className="item">
                 Categories: <span className="value">Book</span>
               </div>

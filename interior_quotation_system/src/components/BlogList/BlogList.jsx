@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import blogs from "../../api/blogs";
+import BlogDetailPage from "../../pages/blog-detail/BlogDetailPage";
 const BlogList = () => {
     const ClickHandler = () => {
         window.scrollTo(10, 0);
@@ -37,9 +39,12 @@ const BlogList = () => {
                                     </div>
                                     <div className="entry-details">
                                         <h3>
-                                            <a onClick={ClickHandler}>
+                                            <Link
+                                                to="/blog/blog-detail"
+                                                onClick={ClickHandler}
+                                            >
                                                 {blog.title}
-                                            </a>
+                                            </Link>
                                         </h3>
                                         <p>
                                             Law is a great career path if you
@@ -49,12 +54,13 @@ const BlogList = () => {
                                             communications. If you love rising
                                             to a challenge.
                                         </p>
-                                        <a
+                                        <Link
+                                            to="/blog/blog-detail"
                                             onClick={ClickHandler}
                                             className="read-more"
                                         >
                                             READ MORE...
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                             ))}

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import "../../styles/components/header.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+// import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 
 const Header = () => {
   const [menuActive, setMenuState] = useState(false);
-  const [cartActive, setcartState] = useState(false);
+  // const [cartActive, setcartState] = useState(false);
 
   const ClickHandler = () => {
     window.scrollTo(10, 0);
@@ -113,7 +113,7 @@ const Header = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="mini-cart">
+                  {/* <div className="mini-cart">
                     <button
                       className="cart-toggle-btn"
                       onClick={() => setcartState(!cartActive)}
@@ -166,7 +166,7 @@ const Header = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

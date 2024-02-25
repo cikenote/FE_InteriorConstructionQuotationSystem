@@ -4,9 +4,15 @@ import MobileMenu from "../MobileMenu/MobileMenu";
 // import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
+import { Button, Dropdown } from "antd";
+import { FiUser } from "react-icons/fi";
+import { HeaderMenus } from "./constant";
+import { useNavigate } from "react-router";
+import { PAGE_ROUTES } from "../../utils/constant";
 
 const Header = () => {
   const [menuActive, setMenuState] = useState(false);
+  const navigate = useNavigate();
   // const [cartActive, setcartState] = useState(false);
 
   const ClickHandler = () => {
@@ -74,8 +80,12 @@ const Header = () => {
                         Product
                       </a>
                     </li>
-                    
-                    <li><a onClick={ClickHandler} href="/quotation">Quotation</a></li>
+
+                    <li>
+                      <a onClick={ClickHandler} href="/quotation">
+                        Quotation
+                      </a>
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -113,6 +123,13 @@ const Header = () => {
                       </div>
                     </div>
                   </div>
+
+                  <Button
+                    shape="circle"
+                    size="large"
+                    icon={<FiUser />}
+                    onClick={() => navigate(PAGE_ROUTES.LOGIN)}
+                  ></Button>
                   {/* <div className="mini-cart">
                     <button
                       className="cart-toggle-btn"

@@ -14,24 +14,36 @@ import LoginPage from "./pages/login/LoginPage";
 import RegisterPage from "./pages/register/RegisterPage";
 import ForgotPasswordPage from "./pages/forgot-password/ForgotPasswordPage";
 import BlogDetailPage from "./pages/blog-detail/BlogDetailPage";
+import { PAGE_ROUTES } from "./utils/constant";
+import StaffRole from "./module/staff";
+import StaffProjects from "./module/staff/Projects";
+import StaffQuotation from "./module/staff/Quotation";
 
 function App() {
-    return (
-        <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/project" element={<ProjectPage />} />
-            <Route path="/project/project-single" element={<ProjectSingle />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/blog-detail" element={<BlogDetailPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/quotation" element={<QuotationPage />} />
-            <Route path="/shop" element={<ShopItem />} />
-            <Route path="/shop/item/:id" element={<ItemDetail />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-        </Routes>
-    );
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/home" element={<HomePage />} />
+      <Route path="/project" element={<ProjectPage />} />
+      <Route path="/project/project-single" element={<ProjectSingle />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/blog-detail" element={<BlogDetailPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/quotation" element={<QuotationPage />} />
+      <Route path="/shop" element={<ShopItem />} />
+      <Route path="/shop/item/:id" element={<ItemDetail />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+
+      <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
+        <Route path={PAGE_ROUTES.STAFF.PROJECTS} element={<StaffProjects />} />
+        <Route
+          path={PAGE_ROUTES.STAFF.QUOTATIONS}
+          element={<StaffQuotation />}
+        />
+      </Route>
+    </Routes>
+  );
 }
 export default App;

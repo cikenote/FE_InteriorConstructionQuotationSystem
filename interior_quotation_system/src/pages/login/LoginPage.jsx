@@ -69,9 +69,6 @@ const LoginPage = () => {
                 variant="outlined"
                 name="email"
                 label="E-mail"
-                // InputLabelProps={{
-                //     shrink: true,
-                // }}
                 onBlur={(e) => changeHandler(e)}
                 onChange={(e) => changeHandler(e)}
               />
@@ -85,9 +82,6 @@ const LoginPage = () => {
                 name="password"
                 type="password"
                 label="Password"
-                // InputLabelProps={{
-                //     shrink: true,
-                // }}
                 onBlur={(e) => changeHandler(e)}
                 onChange={(e) => changeHandler(e)}
               />

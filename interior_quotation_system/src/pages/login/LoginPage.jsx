@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "../../styles/pages/loginPage.scss";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";

@@ -1,8 +1,6 @@
 import React from "react";
 import { Layout, Menu } from "antd";
 import "./style.scss";
-import { GoProject } from "react-icons/go";
-import { LuQuote } from "react-icons/lu";
 import { Outlet } from "react-router-dom";
 
 const { Header, Sider, Content } = Layout;

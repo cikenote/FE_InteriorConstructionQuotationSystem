@@ -8,3 +8,9 @@ export const PAGE_ROUTES = {
     QUOTATIONS: "/staff/quotation",
   },
 };
+
+export const FORM_RULES = {
+  required: {
+    required: true,
+  },
+};

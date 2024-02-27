@@ -2,7 +2,7 @@ import { Modal, Form, Row, Col, Select } from "antd";
 import { forwardRef, useImperativeHandle, useState } from "react";
 import { FORM_RULES } from "../../../utils/constant";
 
-const QuouTationModal = ({ quoUpdate }, ref) => {
+const QuotationModal = ({ quoUpdate }, ref) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [form] = Form.useForm();
 
@@ -20,7 +20,7 @@ const QuouTationModal = ({ quoUpdate }, ref) => {
 
   return (
     <Modal
-      title={quoUpdate ? "Update Quotation" : "New Quotation"}
+      title={quoUpdate ? "Update Quotation" : "Confirm Quotation"}
       open={isOpenModal}
       onCancel={onCloseModal}
     >
@@ -57,4 +57,4 @@ const QuouTationModal = ({ quoUpdate }, ref) => {
   );
 };
 
-export default forwardRef(QuouTationModal);
+export default forwardRef(QuotationModal);

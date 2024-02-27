@@ -1,7 +1,7 @@
 import { Form, Modal } from "antd";
 import { forwardRef, useImperativeHandle, useState } from "react";
 
-const ProductDetailModal = ({}, ref) => {
+const QuotationDetailModal = ({}, ref) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [form] = Form.useForm();
 
@@ -19,15 +19,15 @@ const ProductDetailModal = ({}, ref) => {
 
   return (
     <Modal
-      title="Product Detail"
+      title="Quotation Detail"
       onCancel={onCloseModal}
       closable
       width={800}
       open={isOpenModal}
     >
-      ProductDetailModal
+      QuotationDetailModal
     </Modal>
   );
 };
 
-export default forwardRef(ProductDetailModal);
+export default forwardRef(QuotationDetailModal);

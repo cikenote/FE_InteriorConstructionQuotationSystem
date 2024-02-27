@@ -8,6 +8,23 @@ export const PROJECT_COLUMNS = [
     key: "title",
   },
   {
+    title: "Image",
+    dataIndex: "image",
+    key: "image",
+    render: (image) => (
+      <img
+        alt="image-alt"
+        src={image}
+        style={{
+          height: "100px",
+          objectFit: "cover",
+          borderRadius: "8px",
+          width: "150%",
+        }}
+      />
+    ),
+  },
+  {
     title: "Style",
     dataIndex: "style",
     key: "style",
@@ -17,23 +34,7 @@ export const PROJECT_COLUMNS = [
     dataIndex: "description",
     key: "description",
   },
-  {
-    title: "Image",
-    dataIndex: "image",
-    key: "image",
-    render: (image) => (
-      <img
-        alt="image-alt"
-        src={image}
-        style={{
-          height: "60px",
-          objectFit: "cover",
-          borderRadius: "8px",
-          width: "100%",
-        }}
-      />
-    ),
-  },
+  
   {
     title: "Start date",
     dataIndex: "startDate",

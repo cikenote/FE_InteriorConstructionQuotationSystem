@@ -6,6 +6,7 @@ export const PAGE_ROUTES = {
     MAIN: "/staff",
     PROJECTS: "/staff/projects",
     QUOTATIONS: "/staff/quotation",
+    PRODUCTS: "/staff/products"
   },
 };
 

@@ -22,6 +22,18 @@ const StaffRole = () => {
           ),
         },
         {
+          key: "products",
+          icon: <GoProject />,
+          label: (
+            <Link
+              style={{ textDecoration: "none" }}
+              to={PAGE_ROUTES.STAFF.PRODUCTS}
+            >
+              Product
+            </Link>
+          ),
+        },
+        {
           key: "quotation",
           icon: <LuQuote />,
           label: (

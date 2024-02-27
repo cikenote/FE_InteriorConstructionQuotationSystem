@@ -6,14 +6,14 @@ import ProductDetailModal from "./ProductDetailModal";
 
 const StaffQuotation = () => {
   const quotationModal = useRef();
-  const productDetailModal = useRef();
+  const productModalRef = useRef();
 
   const searchStaffQuotation = (event) => {};
 
   return (
     <>
       <QuouTationModal ref={quotationModal} />
-      <ProductDetailModal ref={productDetailModal} />
+      <ProductDetailModal ref={productModalRef} />
 
       <TableLayout
         tableColumns={QUOTATION_COLUMNS}
@@ -21,6 +21,7 @@ const StaffQuotation = () => {
         actionName={"New Quotation"}
         onchangeSearch={searchStaffQuotation}
         addNewAction={() => quotationModal.current.openModal()}
+        viewProductDetail={() => console.log("Hello world")}
       />
     </>
   );

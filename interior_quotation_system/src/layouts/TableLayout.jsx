@@ -10,6 +10,7 @@ const TableLayout = ({
   onchangeSearch,
   addNewAction,
   actionName,
+  viewProductDetail,
 }) => {
   return (
     <div className="table-container">
@@ -27,7 +28,12 @@ const TableLayout = ({
       </Card>
 
       <Card size="small">
-        <Table columns={tableColumns} dataSource={tableDataSource} />
+        <Table
+          columns={tableColumns({
+            viewProductDetail,
+          })}
+          dataSource={tableDataSource()}
+        />
       </Card>
     </div>
   );

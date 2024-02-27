@@ -1,4 +1,4 @@
-import { Form, Modal } from "antd";
+import { Col, Form, Grid, Modal } from "antd";
 import { forwardRef, useImperativeHandle, useState } from "react";
 
 const ProductDetailModal = ({}, ref) => {
@@ -25,7 +25,10 @@ const ProductDetailModal = ({}, ref) => {
       width={800}
       open={isOpenModal}
     >
-      ProductDetailModal
+      <Grid gutter={[10, 10]}>
+        <Col span={12}></Col>
+        <Col span={12}></Col>
+      </Grid>
     </Modal>
   );
 };

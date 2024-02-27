@@ -2,7 +2,7 @@ import { DeleteOutline, EditOutlined } from "@mui/icons-material";
 import { Button, Flex, Tag } from "antd";
 import { LuEye } from "react-icons/lu";
 
-export const QUOTATION_COLUMNS = [
+export const QUOTATION_COLUMNS = ({ viewProductDetail }) => [
   {
     title: "Id",
     dataIndex: "id",
@@ -26,7 +26,7 @@ export const QUOTATION_COLUMNS = [
     dataIndex: "details",
     key: "details",
     render: () => (
-      <Button background="clear" icon={<LuEye />}>
+      <Button background="clear" icon={<LuEye />} onClick={viewProductDetail}>
         View detail
       </Button>
     ),
@@ -44,7 +44,7 @@ export const QUOTATION_COLUMNS = [
   },
 ];
 
-export const QUOTATION_DATA_SOURCE = [
+export const QUOTATION_DATA_SOURCE = () => [
   {
     id: "1",
     status: "Active",

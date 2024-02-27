@@ -8,6 +8,23 @@ export const PROJECT_COLUMNS = () => [
     key: "title",
   },
   {
+    title: "Image",
+    dataIndex: "image",
+    key: "image",
+    render: (image) => (
+      <img
+        alt="image-alt"
+        src={image}
+        style={{
+          height: "100px",
+          objectFit: "cover",
+          borderRadius: "8px",
+          width: "150%",
+        }}
+      />
+    ),
+  },
+  {
     title: "Style",
     dataIndex: "style",
     key: "style",
@@ -17,23 +34,7 @@ export const PROJECT_COLUMNS = () => [
     dataIndex: "description",
     key: "description",
   },
-  {
-    title: "Image",
-    dataIndex: "image",
-    key: "image",
-    render: (image) => (
-      <img
-        alt="image-alt"
-        src={image}
-        style={{
-          height: "60px",
-          objectFit: "cover",
-          borderRadius: "8px",
-          width: "100%",
-        }}
-      />
-    ),
-  },
+  
   {
     title: "Start date",
     dataIndex: "startDate",
@@ -63,7 +64,7 @@ export const PROJECT_DATA_SOURCE = () => [
     style: "New style",
     description: "This is a new description",
     image:
-      "https://images.unsplash.com/photo-1707343843344-011332037abb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8",
+      "https://res.cloudinary.com/dnzzvunuu/image/upload/v1706592703/pngtree-home-interior-living-area-with-minimalist-3d-render-image_3770536_pa6hjr.jpg",
     startDate: "05/02/2024",
     endDate: "15/02/2024",
   },
@@ -73,7 +74,7 @@ export const PROJECT_DATA_SOURCE = () => [
     style: "New style",
     description: "This is a new description",
     image:
-      "https://images.unsplash.com/photo-1707343843344-011332037abb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8",
+      "https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591146/ghe-don-sofa-vai-cao-cap-furnist-bora-do_svg23w.jpg",
     startDate: "05/02/2024",
     endDate: "15/02/2024",
   },
@@ -83,7 +84,7 @@ export const PROJECT_DATA_SOURCE = () => [
     style: "New style",
     description: "This is a new description",
     image:
-      "https://images.unsplash.com/photo-1707343843344-011332037abb?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHx8",
+      "https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591146/cac-dong-san-pham-cua-noi-that-the-one-5_smjptc.jpg",
     startDate: "05/02/2024",
     endDate: "15/02/2024",
   },

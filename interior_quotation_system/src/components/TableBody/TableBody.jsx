@@ -43,7 +43,7 @@ const TableBody = () => {
                                     className='noprint-border'
                                 />
                             </td>
-                            <td className="table-cell size-item">
+                            {/* <td className="table-cell size-item">
                                 <input
                                     type="number"
                                     value=""
@@ -56,7 +56,7 @@ const TableBody = () => {
                                     value=""
                                     className='noprint-border'
                                 />
-                            </td>
+                            </td> */}
                             <td className="table-cell unit">Cột unit</td>
                             <td className="table-cell size-item weight"><input
                                 type="number"

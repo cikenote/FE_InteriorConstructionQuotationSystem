@@ -18,6 +18,7 @@ import { PAGE_ROUTES } from "./utils/constant";
 import StaffRole from "./module/staff";
 import StaffProjects from "./module/staff/Projects";
 import StaffQuotation from "./module/staff/Quotation";
+import StaffProducts from "./module/staff/Products";
 
 function App() {
   return (
@@ -38,9 +39,8 @@ function App() {
 
       <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
         <Route path={PAGE_ROUTES.STAFF.PROJECTS} element={<StaffProjects />} />
-        <Route
-          path={PAGE_ROUTES.STAFF.QUOTATIONS}
-          element={<StaffQuotation />}
+        <Route path={PAGE_ROUTES.STAFF.QUOTATIONS} element={<StaffQuotation />} />
+        <Route path={PAGE_ROUTES.STAFF.PRODUCTS} element={<StaffProducts />}
         />
       </Route>
     </Routes>

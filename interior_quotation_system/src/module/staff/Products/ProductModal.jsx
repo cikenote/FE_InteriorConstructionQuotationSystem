@@ -47,7 +47,16 @@ const ProductModal = ({ productUpdate }, ref) => {
               <Input.TextArea rows={3} />
             </Form.Item>
           </Col>
-         
+          <Col span={24}>
+            <Form.Item name="size" label="Size" required={false}>
+              <Input.TextArea rows={3} />
+            </Form.Item>
+          </Col>
+          <Col span={24}>
+            <Form.Item name="category" label="Category" required={false}>
+              <Input.TextArea rows={3} />
+            </Form.Item>
+          </Col>
 
           <Col span={24}>
             <Form.Item name="image" label="Image" required={false}>

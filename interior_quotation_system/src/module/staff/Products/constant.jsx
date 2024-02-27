@@ -39,7 +39,16 @@ export const PRODUCT_COLUMNS = [
     dataIndex: "quantity",
     key: "quantity",
   },
-  
+  {
+    title: "Size",
+    dataIndex: "size",
+    key: "size",
+  },
+  {
+    title: "Category",
+    dataIndex: "category",
+    key: "category",
+  },
   {
     title: "Actions",
     dataIndex: "action",

@@ -1,20 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../../components/Footer/Footer";
 import "../../styles/components/shop.scss";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import ProductAPI from "../../api/products";
+import { message } from "antd";
+import QuotationAPI from "../../api/quotation";
 
 const ShopItem = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+  const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const loadProductsData = async () => {
+      try {
+        const productsResponse = await ProductAPI.getProductList(currentPage);
+      } catch (error) {
+        messageApi.open({
+          type: "error",
+          content: "Error occur when get products list",
+        });
+      }
+    };
+
+    loadProductsData();
+  }, []);
+
+  const addProductIntoQuotation = async (productId) => {
+    try {
+      await QuotationAPI.AddNewQuotation({
+        productId,
+        quantity: 1,
+      });
+
+      await messageApi.open({
+        type: "success",
+        content: "Add new quotation is successful",
+      });
+    } catch (error) {
+      messageApi.open({
+        type: "error",
+        content: "Error occur when add new quotation",
+      });
+    }
+  };
+
   return (
     <div>
+      {contextHolder}
       <Navbar></Navbar>
       <div className="landing-page">
         <div className="content">
           <h3 className="title">Product</h3>
           <div className="links">
             <div className="home-link">Home</div>
-            
+
             <div className="dot"></div>
             <div>Product</div>
           </div>
@@ -23,7 +65,6 @@ const ShopItem = () => {
 
       <div className="products">
         <div className="product-list">
-
           <div className="product-detail">
             <img
               alt="product-alt"
@@ -32,7 +73,7 @@ const ShopItem = () => {
             />
             <div className="content">
               <a className="title" href="/shop/item/details">
-              Single Sofa Chairs
+                Single Sofa Chairs
               </a>
               <p className="price">$100.00</p>
               <div className="button-cart">Add to quotation</div>
@@ -47,7 +88,7 @@ const ShopItem = () => {
             />
             <div className="content">
               <a className="title" href="/shop/item/details">
-              Sofa Table Set
+                Sofa Table Set
               </a>
               <p className="price">$165.00</p>
               <div className="button-cart">Add to quotation</div>
@@ -62,7 +103,7 @@ const ShopItem = () => {
             />
             <div className="content">
               <a className="title" href="/shop/item/details">
-              Wooden Chair with Cushion
+                Wooden Chair with Cushion
               </a>
               <p className="price">$125.00</p>
               <div className="button-cart">Add to quotation</div>
@@ -92,7 +133,7 @@ const ShopItem = () => {
             />
             <div className="content">
               <a className="title" href="/shop/item/details">
-              Folding Dining Table Set
+                Folding Dining Table Set
               </a>
               <p className="price">$265.00</p>
               <div className="button-cart">Add to quotation</div>
@@ -107,7 +148,7 @@ const ShopItem = () => {
             />
             <div className="content">
               <a className="title" href="/shop/item/details">
-              Relaxation Table Set
+                Relaxation Table Set
               </a>
               <p className="price">$65.00</p>
               <div className="button-cart">Add to quotation</div>

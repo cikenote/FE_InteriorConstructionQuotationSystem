@@ -33,15 +33,17 @@ function App() {
       <Route path="/quotation" element={<QuotationPage />} />
       <Route path="/shop" element={<ShopItem />} />
       <Route path="/shop/item/:id" element={<ItemDetail />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/login" index element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
 
       <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
         <Route path={PAGE_ROUTES.STAFF.PROJECTS} element={<StaffProjects />} />
-        <Route path={PAGE_ROUTES.STAFF.QUOTATIONS} element={<StaffQuotation />} />
-        <Route path={PAGE_ROUTES.STAFF.PRODUCTS} element={<StaffProducts />}
+        <Route
+          path={PAGE_ROUTES.STAFF.QUOTATIONS}
+          element={<StaffQuotation />}
         />
+        <Route path={PAGE_ROUTES.STAFF.PRODUCTS} element={<StaffProducts />} />
       </Route>
     </Routes>
   );

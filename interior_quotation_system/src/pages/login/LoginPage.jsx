@@ -1,117 +1,111 @@
 import React from "react";
 import "../../styles/pages/loginPage.scss";
 import Grid from "@mui/material/Grid";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import SimpleReactValidator from "simple-react-validator";
-import { PAGE_ROUTES } from "../../utils/constant";
+import { FORM_RULES, PAGE_ROUTES } from "../../utils/constant";
 import { useNavigate } from "react-router";
+import { useMutation } from "@tanstack/react-query";
+import AuthenticateAPI from "../../api/authen";
+import { Button, Col, Form, Input, Row, message } from "antd";
 
 const LoginPage = () => {
+  const [form] = Form.useForm();
   const navigate = useNavigate();
-
-  const changeHandler = (e) => {
-    setValue({ ...value, [e.target.name]: e.target.value });
-    validator.showMessages();
-  };
+  const [messageApi, contextHolder] = message.useMessage();
+  const { mutate, isPending } = useMutation({
+    mutationFn: AuthenticateAPI.LoginAccount,
+    onSuccess: (response) => {
+      localStorage.setItem("accessToken", response.token);
+      navigate("/shop");
+    },
+    onError: () => {
+      messageApi.open({
+        type: "error",
+        content: "Your account is invalid. Please  try again !!",
+      });
+    },
+  });
 
   const rememberHandler = () => {
     setValue({ ...value, remember: !value.remember });
   };
 
-  const [validator] = React.useState(
-    new SimpleReactValidator({
-      className: "errorMessage",
-    })
-  );
-
-  const submitForm = (e) => {
-    e.preventDefault();
-    if (validator.allValid()) {
-      setValue({
-        email: "",
-        password: "",
-        remember: false,
-      });
-      validator.hideMessages();
-
-      const userRegex = /^user+.*/gm;
-      const email = value.email;
-
-      if (email.match(userRegex)) {
-        toast.success("You successfully Login on Arkio !");
-        router.push("/");
-      }
-    } else {
-      validator.showMessages();
-      toast.error("Empty field is not allowed!");
-    }
-  };
-
-  const newSubmitForm = () => {
-    navigate(PAGE_ROUTES.STAFF.PROJECTS);
+  const submitForm = (values) => {
+    mutate(values);
   };
 
   return (
     <Grid className="loginWrapper">
+      {contextHolder}
       <Grid className="loginForm">
         <h2>Sign In</h2>
         <p>Sign in to your account</p>
-        <form onSubmit={newSubmitForm}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <TextField
-                className="inputOutline"
-                fullWidth
-                placeholder="E-mail"
-                variant="outlined"
-                name="email"
-                label="E-mail"
-                onBlur={(e) => changeHandler(e)}
-                onChange={(e) => changeHandler(e)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                className="inputOutline"
-                fullWidth
-                placeholder="Password"
-                variant="outlined"
+        <Form
+          layout="vertical"
+          requiredMark={false}
+          form={form}
+          onFinish={submitForm}
+        >
+          <Row>
+            <Col span={24}>
+              <Form.Item
+                name="username"
+                label="User Name"
+                rules={[FORM_RULES.required]}
+              >
+                <Input />
+              </Form.Item>{" "}
+            </Col>
+            <Col span={24}>
+              <Form.Item
                 name="password"
-                type="password"
                 label="Password"
-                onBlur={(e) => changeHandler(e)}
-                onChange={(e) => changeHandler(e)}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Grid className="formAction">
-                <FormControlLabel
-                  control={<Checkbox onChange={rememberHandler} />}
-                  label="Remember Me"
-                />
-                <a href="/forgot-password">Forgot Password?</a>
-              </Grid>
-              <Grid className="formFooter">
-                <Button fullWidth className="cBtnTheme" type="submit">
-                  Login
-                </Button>
-              </Grid>
-              <Grid className="loginWithSocial">
-                <Button className="google">
-                  <img src="../../public/images/google_icon.png"></img>
-                  <p>Continue with Google</p>
-                </Button>
-              </Grid>
-              <p className="noteHelp">
-                Don't have an account?{" "}
-                <a href={PAGE_ROUTES.REGISTER}>Create free account</a>
-              </p>
-            </Grid>
-          </Grid>
-        </form>
+                rules={[FORM_RULES.required]}
+              >
+                <Input.Password />
+              </Form.Item>
+            </Col>
+
+            <Col span={24}>
+              <Row gutter={[14, 14]}>
+                <Col span={24}>
+                  <div className="formAction">
+                    <FormControlLabel
+                      control={<Checkbox onChange={rememberHandler} />}
+                      label="Remember Me"
+                    />
+                    <a href="/forgot-password">Forgot Password?</a>
+                  </div>
+                </Col>
+
+                <Col span={24}>
+                  <Button
+                    loading={isPending}
+                    htmlType="submit"
+                    className="cBtnTheme"
+                    style={{
+                      width: "100%",
+                      fontSize: "18px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    Login Account
+                  </Button>
+                </Col>
+
+                <Col span={24}>
+                  <p className="noteHelp">
+                    Don't have an account?{" "}
+                    <a href={PAGE_ROUTES.REGISTER}>Create free account</a>
+                  </p>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Form>
       </Grid>
     </Grid>
   );

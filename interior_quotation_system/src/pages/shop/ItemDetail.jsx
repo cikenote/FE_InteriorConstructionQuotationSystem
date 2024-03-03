@@ -1,14 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../styles/components/shop.scss";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import { FcRating } from "react-icons/fc";
 import { CiStar } from "react-icons/ci";
+import { useParams } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import ProductAPI from "../../api/products";
+import { Spin, message } from "antd";
 
 const ItemDetail = () => {
+  const { productId } = useParams();
+  const [productDetail, setProductDetail] = useState();
+  const [messageApi, contextHolder] = message.useMessage();
+  const { isPending: productDetailLoading, mutate } = useMutation({
+    mutationFn: ProductAPI.getProductDetailById(productId),
+    onSuccess: (response) => {
+      console.log(response);
+    },
+    onError: () => {
+      messageApi.open({
+        type: "error",
+        content: "Error occur when get product detail",
+      });
+    },
+  });
+
+  useEffect(() => {
+    if (productId) {
+      mutate(productId);
+    }
+  }, [productId]);
+
   return (
-    <div>
+    <Spin tip="Loading..." spinning={productDetailLoading}>
       <Header></Header>
+      {contextHolder}
       <div className="landing-page">
         <div className="content">
           <h3 className="title">Product Details</h3>
@@ -105,7 +131,7 @@ const ItemDetail = () => {
       </div>
 
       <Footer></Footer>
-    </div>
+    </Spin>
   );
 };
 

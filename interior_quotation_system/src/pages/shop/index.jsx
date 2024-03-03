@@ -6,6 +6,7 @@ import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import ProductAPI from "../../api/products";
 import { Empty, Spin, message } from "antd";
 import { useMutation } from "@tanstack/react-query";
+import QuotationAPI from "../../api/quotation";
 
 const ShopItem = () => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -30,12 +31,35 @@ const ShopItem = () => {
     },
   });
 
+  const { isPending, mutate: mutateAddIntoQuotation } = useMutation({
+    mutationFn: QuotationAPI.AddNewQuotation,
+    onSuccess: () => {
+      messageApi.open({
+        type: "success",
+        content: "Add product into quotation is successfull",
+      });
+    },
+    onError: () => {
+      messageApi.open({
+        type: "error",
+        content: "Error occur when add into quotationn",
+      });
+    },
+  });
+
   useEffect(() => {
     mutate(currentPage);
   }, [currentPage]);
 
+  const onAddProductIntoQuotation = (productId) => {
+    mutateAddIntoQuotation({
+      productId,
+      quantity: 1,
+    });
+  };
+
   return (
-    <Spin tip="Loading..." spinning={productListLoading}>
+    <Spin tip="Loading..." spinning={productListLoading || isPending}>
       {contextHolder}
       <Navbar></Navbar>
       <div className="landing-page">
@@ -72,7 +96,12 @@ const ShopItem = () => {
                       {product.name}
                     </a>
                     <p className="price">${product.price}</p>
-                    <div className="button-cart">Add to quotation</div>
+                    <div
+                      className="button-cart"
+                      onClick={() => onAddProductIntoQuotation(product.id)}
+                    >
+                      Add to quotation
+                    </div>
                   </div>
                 </div>
               );
@@ -93,16 +122,19 @@ const ShopItem = () => {
             <IoIosArrowBack />
           </div>
 
-          {Array.from(Array(products.totalCount / 10).keys()).map((page) => {
-            return (
-              <div
-                className={`item ${page + 1 === currentPage && "active"}`}
-                onClick={() => setCurrentPage(page + 1)}
-              >
-                {page + 1}
-              </div>
-            );
-          })}
+          {products.totalCount > 0 &&
+            Array.from(Array(Math.ceil(products.totalCount / 10)).keys()).map(
+              (page) => {
+                return (
+                  <div
+                    className={`item ${page + 1 === currentPage && "active"}`}
+                    onClick={() => setCurrentPage(page + 1)}
+                  >
+                    {page + 1}
+                  </div>
+                );
+              }
+            )}
 
           <div
             className="item"

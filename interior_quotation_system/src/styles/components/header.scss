@@ -38,7 +38,7 @@
   position: fixed;
   left: 0;
   top: -400px;
-  z-index: 9999;
+  z-index: 100;
   opacity: 0;
   visibility: hidden;
   -webkit-transition: all 1s;
@@ -92,7 +92,7 @@
 
 .fixed-navbar {
   position: relative;
-  z-index: 5555;
+  z-index: 100;
 }
 
 .fixed-navbar.active .site-header {
@@ -951,7 +951,7 @@
       position: fixed;
       left: -320px;
       top: 0px;
-      z-index: 999999;
+      z-index: 100;
       opacity: 0;
       visibility: hidden;
 
@@ -1169,7 +1169,7 @@
   left: 0;
   top: 0;
   width: 100%;
-  z-index: 99;
+  z-index: 1;
   // background: transparent;
 
   .navigation {

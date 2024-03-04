@@ -14,7 +14,6 @@ const ShopItem = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const [products, setProducts] = useState({
     responses: [],
-    totalCount: 0,
   });
   const [currentPage, setCurrentPage] = useState(1);
   const indexLastPost = currentPage * 10;
@@ -78,7 +77,7 @@ const ShopItem = () => {
 
       <div className="products">
         <div className="product-list">
-          {products.responses
+          {products.responses.$values
             .slice(indexFirstPost, indexLastPost)
             .map((product) => {
               return (

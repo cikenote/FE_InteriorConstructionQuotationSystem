@@ -4,8 +4,12 @@ import TableHeader from "../TableHeader/TableHeader";
 const QuotationForm = () => {
     return (
         <div className="quotation-form" id='dangpro'>
-            <div className="logo">
+            <div className="title">
+                <h3>Quotation Table</h3>
             </div>
+            {/* <div className="logo">
+                Quotation Table
+            </div> */}
             <div className="text-container">
                 <div className="left-text">
                     <div>
@@ -56,7 +60,7 @@ const QuotationForm = () => {
                 </div>
             </div>
             <TableHeader />
-            <TableBody/>
+            <TableBody />
             <div className="note-2">
                 <p className="note-text">
                     Báo giá trên chỉ mang tính chất tham khảo do chưa có số liệu công trình thực tế. Vui lòng liên hệ sale:

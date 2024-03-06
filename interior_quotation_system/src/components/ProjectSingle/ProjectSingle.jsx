@@ -3,7 +3,7 @@ import "../../styles/components/projectSingle.scss"
 import RelatedProject from "../../components/RelatedProject/RelatedProject";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Navbar from "../../components/Navbar/Navbar";
-import Discuss from "../Discuss/Discuss";
+// import Discuss from "../Discuss/Discuss";
 import Footer from "../Footer/Footer"
 const ProjectSingle = () => {
 
@@ -47,10 +47,10 @@ const ProjectSingle = () => {
                                                     <li>Location :<span>7 Lake Street,London</span></li>
                                                     <li>Client :<span>wpOceans</span></li>
                                                     <li>Architect :<span>Harry Johnson</span></li>
-                                                    <li>Project Type :<span>Interior</span></li>
+                                                    {/* <li>Project Type :<span>Interior</span></li>
                                                     <li>Duration :<span>6 Month</span></li>
                                                     <li>Completion :<span>15 Apr 2022</span></li>
-                                                    <li>Share :<span>Architectural, Business</span></li>
+                                                    <li>Share :<span>Architectural, Business</span></li> */}
                                                 </ul>
                                             </div>
                                         </div>
@@ -62,7 +62,7 @@ const ProjectSingle = () => {
 
                                     </div>
                                     <div className="wpo-project-single-item list-widget">
-                                        <div className="row">
+                                        {/* <div className="row">
                                             <div className="col-lg-6">
                                                 <div className="wpo-project-single-title">
                                                     <h3>Our Strategies</h3>
@@ -87,7 +87,7 @@ const ProjectSingle = () => {
                                                     <span>Robert - <span>Yellow Theme</span></span>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div className="wpo-project-single-item">
                                         <div className="wpo-project-single-title">
@@ -125,7 +125,7 @@ const ProjectSingle = () => {
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="wpo-project-single-item list-widget">
+                                    {/* <div className="wpo-project-single-item list-widget">
                                         <div className="row">
                                             <div className="col-lg-6">
                                                 <div className="wpo-project-single-title">
@@ -150,9 +150,9 @@ const ProjectSingle = () => {
                                                 </ul>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
                                     <RelatedProject />
-                                    <Discuss />
+                                    {/* <Discuss /> */}
                                 </div>
                             </div>
                         </div>

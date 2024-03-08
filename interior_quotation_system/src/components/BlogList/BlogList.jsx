@@ -27,10 +27,10 @@ const BlogList = () => {
                                                 <i className="fi ti-user"></i>{" "}
                                                 By <a href="/">{blog.author}</a>{" "}
                                             </li>
-                                            <li>
+                                            {/* <li>
                                                 <i className="fi ti-comment-alt"></i>{" "}
                                                 Comments {blog.comment}
-                                            </li>
+                                            </li> */}
                                             <li>
                                                 <i className="fi flaticon-calendar"></i>{" "}
                                                 {blog.create_at}

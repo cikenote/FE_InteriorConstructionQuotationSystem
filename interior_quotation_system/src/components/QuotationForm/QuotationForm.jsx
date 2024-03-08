@@ -3,11 +3,14 @@ import "../../styles/components/quotationForm.scss";
 import TableBody from "../TableBody/TableBody";
 import TableHeader from "../TableHeader/TableHeader";
 const QuotationForm = () => {
-  const [quotation, setQuotation] = useState([]);
-
   return (
     <div className="quotation-form" id="dangpro">
-      <div className="logo"></div>
+      <div className="title">
+        <h3>Quotation Table</h3>
+      </div>
+      {/* <div className="logo">
+                Quotation Table
+            </div> */}
       <div className="text-container">
         <div className="left-text">
           <div>

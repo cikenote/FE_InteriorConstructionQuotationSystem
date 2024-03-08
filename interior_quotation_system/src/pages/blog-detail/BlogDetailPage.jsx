@@ -31,10 +31,10 @@ const BlogDetailPage = () => {
                                                 <i className="fi ti-user"></i>{" "}
                                                 By <a href="/">Author</a>{" "}
                                             </li>
-                                            <li>
+                                            {/* <li>
                                                 <i className="fi ti-comment-alt"></i>{" "}
                                                 Comments
-                                            </li>
+                                            </li> */}
                                             <li>
                                                 <i className="fi flaticon-calendar"></i>{" "}
                                                 Create at
@@ -59,14 +59,14 @@ const BlogDetailPage = () => {
                                         dictionary of over 200 Latin words,
                                         combined with a handful.
                                     </p>
-                                    <blockquote>
+                                    {/* <blockquote>
                                         Combined with a handful of model
                                         sentence structures, generate Lorem
                                         Ipsum which looks reasonable. The
                                         generated Lorem Ipsum is therefore
                                         always free from repetition, injected
                                         humour, or non-characteristic words etc.
-                                    </blockquote>
+                                    </blockquote> */}
                                     <p>
                                         I must explain to you how all this
                                         mistaken idea of denouncing pleasure and
@@ -87,8 +87,96 @@ const BlogDetailPage = () => {
                                             <img src={blogSingleImg1} alt="" />
                                         </div>
                                     </div>
-                                </div>
 
+                                    <p>
+                                        There are many variations of passages of
+                                        Lorem Ipsum available, but the majority
+                                        have suffered alteration in some form,
+                                        by injected humour, or randomised words
+                                        which don't look even slightly
+                                        believable. If you are going to use a
+                                        passage of Lorem Ipsum, you need to be
+                                        sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the
+                                        Lorem Ipsum generators on the Internet
+                                        tend to repeat predefined chunks as
+                                        necessary, making this the first true
+                                        generator on the Internet. It uses a
+                                        dictionary of over 200 Latin words,
+                                        combined with a handful.
+                                    </p>
+
+                                    <p>
+                                        There are many variations of passages of
+                                        Lorem Ipsum available, but the majority
+                                        have suffered alteration in some form,
+                                        by injected humour, or randomised words
+                                        which don't look even slightly
+                                        believable. If you are going to use a
+                                        passage of Lorem Ipsum, you need to be
+                                        sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the
+                                        Lorem Ipsum generators on the Internet
+                                        tend to repeat predefined chunks as
+                                        necessary, making this the first true
+                                        generator on the Internet. It uses a
+                                        dictionary of over 200 Latin words,
+                                        combined with a handful.
+                                    </p>
+
+                                    <p>
+                                        There are many variations of passages of
+                                        Lorem Ipsum available, but the majority
+                                        have suffered alteration in some form,
+                                        by injected humour, or randomised words
+                                        which don't look even slightly
+                                        believable. If you are going to use a
+                                        passage of Lorem Ipsum, you need to be
+                                        sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the
+                                        Lorem Ipsum generators on the Internet
+                                        tend to repeat predefined chunks as
+                                        necessary, making this the first true
+                                        generator on the Internet. It uses a
+                                        dictionary of over 200 Latin words,
+                                        combined with a handful.
+                                    </p>
+
+                                    <div className="gallery">
+                                        <div>
+                                            <img src={blogSingleImg1} alt="" />
+                                        </div>
+                                        <div>
+                                            <img src={blogSingleImg1} alt="" />
+                                        </div>
+                                    </div>
+                                    <div className="gallery">
+                                        <div>
+                                            <img src={blogSingleImg1} alt="" />
+                                        </div>
+                                        <div>
+                                            <img src={blogSingleImg1} alt="" />
+                                        </div>
+                                    </div>
+                                    <p>
+                                        There are many variations of passages of
+                                        Lorem Ipsum available, but the majority
+                                        have suffered alteration in some form,
+                                        by injected humour, or randomised words
+                                        which don't look even slightly
+                                        believable. If you are going to use a
+                                        passage of Lorem Ipsum, you need to be
+                                        sure there isn't anything embarrassing
+                                        hidden in the middle of text. All the
+                                        Lorem Ipsum generators on the Internet
+                                        tend to repeat predefined chunks as
+                                        necessary, making this the first true
+                                        generator on the Internet. It uses a
+                                        dictionary of over 200 Latin words,
+                                        combined with a handful.
+                                    </p>
+                                </div>
+{/* 
                                 <div className="tag-share clearfix">
                                     <div className="tag">
                                         <span>Share: </span>
@@ -104,26 +192,7 @@ const BlogDetailPage = () => {
                                             </li>
                                         </ul>
                                     </div>
-                                </div>
-                                <div className="tag-share-s2 clearfix">
-                                    <div className="tag">
-                                        <span>Share: </span>
-                                        <ul>
-                                            <li>
-                                                <a href="/">facebook</a>
-                                            </li>
-                                            <li>
-                                                <a href="/">twitter</a>
-                                            </li>
-                                            <li>
-                                                <a href="/">linkedin</a>
-                                            </li>
-                                            <li>
-                                                <a href="/">pinterest</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
+                                </div> */}
 
                                 <div className="author-box">
                                     <div className="author-avatar">
@@ -145,7 +214,7 @@ const BlogDetailPage = () => {
                                             totam rem aperiam, eaque ipsa quae
                                             ab illo inventore veritatis.
                                         </p>
-                                        <div className="socials">
+                                        {/* <div className="socials">
                                             <ul className="social-link">
                                                 <li>
                                                     <a href="/">
@@ -168,11 +237,11 @@ const BlogDetailPage = () => {
                                                     </a>
                                                 </li>
                                             </ul>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
 
-                                <div className="more-posts">
+                                {/* <div className="more-posts">
                                     <div className="previous-post">
                                         <a href="/">
                                             <span className="post-control-link">
@@ -197,9 +266,9 @@ const BlogDetailPage = () => {
                                             </span>
                                         </a>
                                     </div>
-                                </div>
+                                </div> */}
 
-                                <div className="comments-area">
+                                {/* <div className="comments-area">
                                     <div className="comments-section">
                                         <h3 className="comments-title">
                                             Comments
@@ -483,7 +552,7 @@ const BlogDetailPage = () => {
                                             </div>
                                         </form>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

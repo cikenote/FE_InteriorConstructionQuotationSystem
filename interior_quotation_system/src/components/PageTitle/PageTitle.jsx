@@ -1,5 +1,5 @@
-import "../../styles/components/pagetitle.scss"
-import { Link } from "react-router-dom"
+import "../../styles/components/pagetitle.scss";
+import { Link } from "react-router-dom";
 const PageTitle = (props) => {
     return (
         <section className="wpo-page-title">
@@ -9,15 +9,19 @@ const PageTitle = (props) => {
                         <div className="wpo-breadcumb-wrap">
                             <h2>{props.pageTitle}</h2>
                             <ol className="wpo-breadcumb-wrap">
-                                <li><Link href="/home">Home</Link></li>
-                                <li><span>{props.pagesub}</span></li>
+                                <li>
+                                    <Link href="/home">Home</Link>
+                                </li>
+                                <li>
+                                    <span>{props.pagesub}</span>
+                                </li>
                             </ol>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-    )
-}
+    );
+};
 
-export default PageTitle
+export default PageTitle;

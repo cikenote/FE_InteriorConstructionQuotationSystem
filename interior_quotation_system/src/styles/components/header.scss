@@ -904,6 +904,9 @@
 
     .menu-close {
         display: none;
+        .clox {
+            margin-top: -3px;
+        }
     }
 
     /* style for navigation less than 992px */
@@ -1260,6 +1263,7 @@
 
 .responsivemenu li a {
     position: relative;
+    text-decoration: none;
 }
 
 .responsivemenu li i {

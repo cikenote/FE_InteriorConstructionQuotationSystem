@@ -42,7 +42,7 @@ const Header = () => {
                                         href="/home"
                                     >
                                         <img
-                                            src="/images/logo-2.png"
+                                            src="/images/logo.png"
                                             alt="logo"
                                         />
                                     </a>

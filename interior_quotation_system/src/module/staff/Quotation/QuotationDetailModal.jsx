@@ -29,7 +29,6 @@ const QuotationDetailModal = ({}, ref) => {
       },
     };
   });
-  console.log(productDetail);
   useEffect(() => {
     if (productId) {
       mutate(productId);
@@ -42,7 +41,6 @@ const QuotationDetailModal = ({}, ref) => {
   const onFinishForm = (values) => {};
 
   return (
-    
     <Modal
       title="Quotation Detail"
       onCancel={onCloseModal}
@@ -50,7 +48,7 @@ const QuotationDetailModal = ({}, ref) => {
       width={800}
       open={isOpenModal}
     >
-    {productDetail && (
+      {productDetail && (
         <div className="products">
           <div className="product-info">
             <div className="product-data">
@@ -110,7 +108,8 @@ const QuotationDetailModal = ({}, ref) => {
                 </div>
 
                 <div className="item">
-                  Tags <span className="value">Kithen, Basement, Bathroommm</span>
+                  Tags{" "}
+                  <span className="value">Kithen, Basement, Bathroommm</span>
                 </div>
               </div>
             </div>

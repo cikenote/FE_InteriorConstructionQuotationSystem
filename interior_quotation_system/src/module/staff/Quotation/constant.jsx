@@ -1,48 +1,52 @@
 import { DeleteOutline, EditOutlined } from "@mui/icons-material";
 import { Button, Flex, Tag, Typography } from "antd";
+import dayjs from "dayjs";
 import { LuEye } from "react-icons/lu";
 
-export const QUOTATION_COLUMNS = ({ viewProductDetail, onEditQuotation, onDeleteQuotation }) => [
+export const QUOTATION_COLUMNS = ({
+  viewProductDetail,
+  onEditQuotation,
+  onDeleteQuotation,
+}) => [
   {
     title: "Id",
     dataIndex: "$id",
     key: "$id",
   },
   {
-    title: "Name",
-    dataIndex: "name",
-    key: "name",
-    // render: (status) => (
-    //   <Tag color={status === "Active" ? "green" : "red"}>{status}</Tag>
-    // ),
+    title: "Status",
+    dataIndex: "quotationStatus",
+    key: "quotationStatus",
+    render: (status) => <Tag color="green">{status}</Tag>,
   },
   {
-    title: "Price",
-    dataIndex: "price",
-    key: "price",
-  },
-  {
-    title: "Quantity",
-    dataIndex: "quantity",
-    key: "quantity",
-  },
-  {
-    title: "Total",
-    dataIndex: "quantity",
-    key: "quantity",
-    render: (quantity, data) => (
-      <Typography>{data.price * data.quantity}$</Typography>
+    title: "Created At",
+    dataIndex: "createdAt",
+    key: "createdAt",
+    render: (date) => (
+      <Typography>{dayjs(date).format("MM-DD-YYYY")}</Typography>
     ),
   },
   {
-    title: "Details",
-    dataIndex: "productId",
-    key: "productId",
-    render: (id) => (
-      <Button background="clear" icon={<LuEye />} onClick={() => viewProductDetail(id)}>
-        View detail
-      </Button>
-    ),
+    title: "Style",
+    dataIndex: "style",
+    key: "style",
+    render: (style) => <Typography>{style?.name || "-"}</Typography>,
+  },
+  // {
+  //   title: "Price",
+  //   dataIndex: "style",
+  //   key: "style",
+  // },
+  // {
+  //   title: "Quantity",
+  //   dataIndex: "quantity",
+  //   key: "quantity",
+  // },
+  {
+    title: "Total Bill",
+    dataIndex: "totalBill",
+    key: "totalBill",
   },
   {
     title: "Actions",
@@ -50,8 +54,16 @@ export const QUOTATION_COLUMNS = ({ viewProductDetail, onEditQuotation, onDelete
     key: "productId",
     render: (id) => (
       <Flex gap="middle">
-        <Button icon={<EditOutlined />} type="primary" onClick={() => onEditQuotation(id)} />
-        <Button icon={<DeleteOutline />} danger onClick={() => onDeleteQuotation(id)}/>
+        <Button
+          icon={<EditOutlined />}
+          type="primary"
+          onClick={() => onEditQuotation(id)}
+        />
+        <Button
+          icon={<DeleteOutline />}
+          danger
+          onClick={() => onDeleteQuotation(id)}
+        />
       </Flex>
     ),
   },

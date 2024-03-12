@@ -110,7 +110,7 @@ const QuotationDetailModal = ({}, ref) => {
                 </div>
 
                 <div className="item">
-                  Tags <span className="value">Kithen, Basement, Bathroom</span>
+                  Tags <span className="value">Kithen, Basement, Bathroommm</span>
                 </div>
               </div>
             </div>

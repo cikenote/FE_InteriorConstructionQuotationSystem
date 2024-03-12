@@ -8,6 +8,7 @@ import { useNavigate } from "react-router";
 import { useMutation } from "@tanstack/react-query";
 import AuthenticateAPI from "../../api/authen";
 import { Button, Col, Form, Input, Row, message } from "antd";
+import { jwtDecode } from "jwt-decode";
 
 const LoginPage = () => {
   const [form] = Form.useForm();
@@ -17,7 +18,16 @@ const LoginPage = () => {
     mutationFn: AuthenticateAPI.LoginAccount,
     onSuccess: (response) => {
       localStorage.setItem("accessToken", response.token);
+      const userDecode = jwtDecode(response.token);
+      console.log(userDecode);
       navigate("/shop");
+      if(userDecode.Role == 'staff'){
+        navigate('/staff/quotation');
+      }else if(userDecode.Role == 'admin'){
+        navigate('/staff/quotation');
+      }else{
+        navigate('/shop')
+      }
     },
     onError: () => {
       messageApi.open({

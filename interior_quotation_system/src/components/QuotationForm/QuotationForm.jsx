@@ -21,6 +21,7 @@ const QuotationForm = () => {
     queryFn: () => QuotationAPI.GetQuotationsList(),
     onSuccess: (response) => {
       setQuotation(response);
+    
     },
     onError: () => {
       messageApi.open({
@@ -29,10 +30,14 @@ const QuotationForm = () => {
       });
     },
   });
-
+  console.log(quotationsList);
   const onEditQuotation = (id) => {
+    console.log(id);
     quotationRef.current.openModal(id);
   };
+  const total = quotationsList?.$values.reduce((accumulator, product) => {
+    return accumulator + (product.price * product.quantity);
+  }, 0);
 
   return (
     <Spin tip="Loading..." spinning={isPending}>
@@ -88,7 +93,9 @@ const QuotationForm = () => {
               <input type="text" />
             </div>
           </div>
+          
         </div>
+        <strong style={{fontSize: '32px'}} className="">Total Price:</strong> <span style={{fontSize: '32px'}}>{total}$</span>
         {quotationsList && (
           <Table
             columns={QuotationColumns({ onEditQuotation })}

@@ -16,7 +16,9 @@ const QuotationModal = ({ quoUpdate }, ref) => {
     setIsOpenModal(false);
   };
 
-  const onFinishForm = (values) => {};
+  const onFinishForm = (values) => {
+    console.log(values)
+  };
 
   return (
     <Modal

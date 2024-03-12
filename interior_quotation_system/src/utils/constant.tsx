@@ -8,6 +8,9 @@ export const PAGE_ROUTES = {
     QUOTATIONS: "/staff/quotation",
     PRODUCTS: "/staff/products",
   },
+  ADMIN: {
+    
+  }
 };
 
 export const FORM_RULES = {

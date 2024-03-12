@@ -11,6 +11,7 @@ const TableLayout = ({
   addNewAction,
   actionName,
   viewProductDetail,
+  onEditQuotation
 }) => {
   return (
     <div className="table-container">
@@ -31,6 +32,7 @@ const TableLayout = ({
         <Table
           columns={tableColumns({
             viewProductDetail,
+            onEditQuotation
           })}
           dataSource={tableDataSource()}
         />

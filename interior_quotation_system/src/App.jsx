@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import './index.css'
 import ContactPage from "./pages/contact/ContactPage";
 import HomePage from "./pages/home/HomePage";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -23,7 +24,7 @@ import StaffProducts from "./module/staff/Products";
 function App() {
     return (
         <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<LoginPage />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="/project" element={<ProjectPage />} />
             <Route path="/project/project-single" element={<ProjectSingle />} />

@@ -1,43 +1,56 @@
 import { DeleteOutline, EditOutlined } from "@mui/icons-material";
-import { Button, Flex, Tag } from "antd";
+import { Button, Flex, Tag, Typography } from "antd";
 import { LuEye } from "react-icons/lu";
 
-export const QUOTATION_COLUMNS = ({ viewProductDetail }) => [
+export const QUOTATION_COLUMNS = ({ viewProductDetail, onEditQuotation }) => [
   {
     title: "Id",
-    dataIndex: "id",
-    key: "id",
+    dataIndex: "$id",
+    key: "$id",
   },
   {
-    title: "Status",
-    dataIndex: "status",
-    key: "status",
-    render: (status) => (
-      <Tag color={status === "Active" ? "green" : "red"}>{status}</Tag>
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
+    // render: (status) => (
+    //   <Tag color={status === "Active" ? "green" : "red"}>{status}</Tag>
+    // ),
+  },
+  {
+    title: "Price",
+    dataIndex: "price",
+    key: "price",
+  },
+  {
+    title: "Quantity",
+    dataIndex: "quantity",
+    key: "quantity",
+  },
+  {
+    title: "Total",
+    dataIndex: "quantity",
+    key: "quantity",
+    render: (quantity, data) => (
+      <Typography>{data.price * data.quantity}$</Typography>
     ),
   },
   {
-    title: "Created at",
-    dataIndex: "createdAt",
-    key: "createdAt",
-  },
-  {
     title: "Details",
-    dataIndex: "details",
-    key: "details",
-    render: () => (
-      <Button background="clear" icon={<LuEye />} onClick={viewProductDetail}>
+    dataIndex: "productId",
+    key: "productId",
+    render: (id) => (
+      <Button background="clear" icon={<LuEye />} onClick={() => viewProductDetail(id)}>
         View detail
       </Button>
     ),
   },
   {
     title: "Actions",
-    dataIndex: "createdAt",
-    key: "createdAt",
-    render: () => (
+    dataIndex: "productId",
+    key: "productId",
+    render: (id) => (
       <Flex gap="middle">
-        <Button icon={<EditOutlined />} type="primary" />
+        <Button icon={<EditOutlined />} type="primary" onClick={() => onEditQuotation(id)} />
         <Button icon={<DeleteOutline />} danger />
       </Flex>
     ),

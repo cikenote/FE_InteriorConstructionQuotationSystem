@@ -18,11 +18,10 @@ const QuotationModal = ({ AfterCloseModal }, ref) => {
   });
 
   const { mutate, isPending: updateQuotationLoading } = useMutation({
-    mutationFn: () =>
-      QuotationAPI.UpdateQuotation({
-        productId,
-        quantity: 10,
-      }),
+    mutationFn: (newValue) =>
+      QuotationAPI.UpdateQuotation(
+        newValue
+      ),
     onError: () => {
       messageApi.open({
         type: "error",

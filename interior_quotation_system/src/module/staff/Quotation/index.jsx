@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import QuotationModal from '../../../components/QuotationForm/QuotationModal';
+import QuotationDeleteModal from '../../../components/QuotationForm/QuotationDeleteModal'
 import { QUOTATION_COLUMNS, QUOTATION_DATA_SOURCE } from './constant';
 import TableLayout from '../../../layouts/TableLayout';
 import QuotationDetailModal from './QuotationDetailModal';
@@ -10,6 +11,7 @@ import { message } from 'antd';
 const StaffQuotation = () => {
   const quotationModal = useRef();
   const quotationDetailModal = useRef();
+  const quotationDelete = useRef();
   const quotationEdit = useRef();
   const quotationRef = useRef();
   const [messageApi, contextHolder] = message.useMessage();
@@ -45,13 +47,16 @@ const StaffQuotation = () => {
     quotationDetailModal.current.openModal(id);
   };
   const onEditQuotation = (id) => {
-    console.log(id)
     quotationRef.current.openModal(id);
   };
+  const onDeleteQuotation = (id) => {
+    quotationDelete.current.openModal(id);
+  }
   return (
     <>
       <QuotationModal ref={quotationModal} />
       <QuotationDetailModal ref={quotationDetailModal} />
+      <QuotationDeleteModal ref={quotationDelete} AfterCloseModal={() => getQuotationList()} />
       <QuotationModal
         ref={quotationRef}
         AfterCloseModal={() => getQuotationList()}
@@ -65,6 +70,7 @@ const StaffQuotation = () => {
         addNewAction={() => quotationModal.current.openModal()}
         onEditQuotation={onEditQuotation}
         viewProductDetail={onDetailQuotation}
+        onDeleteQuotation={onDeleteQuotation}
       />
     </>
   );

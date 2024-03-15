@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import './index.css'
+import "./index.css";
 import ContactPage from "./pages/contact/ContactPage";
 import HomePage from "./pages/home/HomePage";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,39 +20,39 @@ import StaffRole from "./module/staff";
 import StaffProjects from "./module/staff/Projects";
 import StaffQuotation from "./module/staff/Quotation";
 import StaffProducts from "./module/staff/Products";
+import QuotationForm from "./components/QuotationForm/QuotationForm";
+import QuotationFormPage from "./pages/quotation/Form";
 
 function App() {
-    return (
-        <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/project" element={<ProjectPage />} />
-            <Route path="/project/project-single" element={<ProjectSingle />} />
-            <Route path="/blog" element={<BlogPage />} />
-            <Route path="/blog/blog-detail" element={<BlogDetailPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/quotation" element={<QuotationPage />} />
-            <Route path="/shop" element={<ShopItem />} />
-            <Route path="/shop/item/:productId" element={<ItemDetail />} />
-            <Route path="/login" index element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+  return (
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+      <Route path="/home" element={<HomePage />} />
+      <Route path="/project" element={<ProjectPage />} />
+      <Route path="/project/project-single" element={<ProjectSingle />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/blog-detail" element={<BlogDetailPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/quotation" element={<QuotationPage />} />
+      <Route path="/shop" element={<ShopItem />} />
+      <Route path="/shop/item/:productId" element={<ItemDetail />} />
+      <Route path="/login" index element={<LoginPage />} />
+      <Route path="/register" element={<RegisterPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+      <Route
+        path={PAGE_ROUTES.QUOTATION_FORM}
+        element={<QuotationFormPage />}
+      />
 
-            <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
-                <Route
-                    path={PAGE_ROUTES.STAFF.PROJECTS}
-                    element={<StaffProjects />}
-                />
-                <Route
-                    path={PAGE_ROUTES.STAFF.QUOTATIONS}
-                    element={<StaffQuotation />}
-                />
-                <Route
-                    path={PAGE_ROUTES.STAFF.PRODUCTS}
-                    element={<StaffProducts />}
-                />
-            </Route>
-        </Routes>
-    );
+      <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
+        <Route path={PAGE_ROUTES.STAFF.PROJECTS} element={<StaffProjects />} />
+        <Route
+          path={PAGE_ROUTES.STAFF.QUOTATIONS}
+          element={<StaffQuotation />}
+        />
+        <Route path={PAGE_ROUTES.STAFF.PRODUCTS} element={<StaffProducts />} />
+      </Route>
+    </Routes>
+  );
 }
 export default App;

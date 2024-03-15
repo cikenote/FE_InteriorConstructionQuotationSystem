@@ -11,6 +11,7 @@ import {
   Row,
   Select,
   Table,
+  Typography,
 } from "antd";
 import "./styled.scss";
 import {
@@ -31,10 +32,70 @@ const QuotationFormPage = () => {
             <Col span={8}>
               <Flex className="layout-item" vertical>
                 <p className="title">Bảng giá niêm yiết</p>
-                <Table
-                  columns={PRODUCTS_LIST_MOCK_2}
-                  dataSource={PRODUCT_MOCK_2}
-                />
+
+                <Flex vertical gap="middle">
+                  <Typography.Title level={4}>
+                    Loại hình thi công:{" "}
+                  </Typography.Title>
+                  <Flex vertical gap="middle">
+                    <Typography.Text
+                      style={{ marginLeft: "1rem", fontWeight: "bold" }}
+                    >
+                      Ốp nền: (Chiều dài x Chiều rộng){" "}
+                    </Typography.Text>
+
+                    <Typography.Text
+                      style={{ marginLeft: "2rem", fontWeight: "bold" }}
+                    >
+                      + Bằng gạch: Giá măc định là 200k/1met vuông
+                    </Typography.Text>
+
+                    <Typography.Text
+                      style={{ marginLeft: "2rem", fontWeight: "bold" }}
+                    >
+                      + Bằng gạch: Giá măc định là 200k/1met vuông
+                    </Typography.Text>
+                  </Flex>
+                  <Flex vertical gap="middle">
+                    <Typography.Text
+                      style={{ marginLeft: "1rem", fontWeight: "bold" }}
+                    >
+                      Tường:{" "}
+                    </Typography.Text>
+
+                    <Typography.Text
+                      style={{ marginLeft: "2rem", fontWeight: "bold" }}
+                    >
+                      + Bằng gạch: Giá măc định là 200k/1met vuông
+                    </Typography.Text>
+
+                    <Typography.Text
+                      style={{ marginLeft: "2rem", fontWeight: "bold" }}
+                    >
+                      + Bằng gạch: Giá măc định là 200k/1met vuông
+                    </Typography.Text>
+                  </Flex>
+
+                  <Flex vertical gap="middle">
+                    <Typography.Text
+                      style={{ marginLeft: "1rem", fontWeight: "bold" }}
+                    >
+                      Trần nhà:{" "}
+                    </Typography.Text>
+
+                    <Typography.Text
+                      style={{ marginLeft: "2rem", fontWeight: "bold" }}
+                    >
+                      + Bằng gạch: Giá măc định là 200k/1met vuông
+                    </Typography.Text>
+
+                    <Typography.Text
+                      style={{ marginLeft: "2rem", fontWeight: "bold" }}
+                    >
+                      + Bằng gạch: Giá măc định là 200k/1met vuông
+                    </Typography.Text>
+                  </Flex>
+                </Flex>
               </Flex>
             </Col>
             <Col span={8}>

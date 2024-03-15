@@ -1,6 +1,7 @@
 export const PAGE_ROUTES = {
   LOGIN: "/login",
   REGISTER: "/register",
+  QUOTATION_FORM: "/quotation/form",
 
   STAFF: {
     MAIN: "/staff",
@@ -8,9 +9,7 @@ export const PAGE_ROUTES = {
     QUOTATIONS: "/staff/quotation",
     PRODUCTS: "/staff/products",
   },
-  ADMIN: {
-    
-  }
+  ADMIN: {},
 };
 
 export const FORM_RULES = {

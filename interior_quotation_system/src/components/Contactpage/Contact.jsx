@@ -21,7 +21,7 @@ const Contactpage = () => {
                                             </div>
                                         </div>
                                         <div className="office-info-text">
-                                            <h2>Address</h2>
+                                            <h2>Địa chỉ</h2>
                                             <p>
                                                 ô E2a-7, Đường D1, Đ. D1, Long
                                                 Thạnh Mỹ, Thành Phố Thủ Đức
@@ -37,9 +37,9 @@ const Contactpage = () => {
                                             </div>
                                         </div>
                                         <div className="office-info-text">
-                                            <h2>Email Us</h2>
-                                            <p>fpt@gmail.com</p>
+                                            <h2>Email</h2>
                                             <p>admin@gmail.com</p>
+                                            <p>interiorquotation@gmail.com</p>
                                         </div>
                                     </div>
                                 </div>
@@ -51,19 +51,19 @@ const Contactpage = () => {
                                             </div>
                                         </div>
                                         <div className="office-info-text">
-                                            <h2>Call Now</h2>
-                                            <p>+1 800 123 456 789</p>
-                                            <p>+1 800 123 654 987</p>
+                                            <h2>Liên hệ</h2>
+                                            <p> +84 28 7300 5588</p>
+                                            <p> +84 28 6868 6868</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="wpo-contact-title">
-                            <h2>Have Any Question?</h2>
+                            <h2>Yêu cầu tư vấn</h2>
                             <p>
-                                It is a long established fact that a reader will
-                                be distracted content of a page when looking.
+                                Cùng Interior Quotation trải nghiệm thiết kế thi
+                                công nội thất hoàn hảo tiện nghi và hiện đại.
                             </p>
                         </div>
                         <div className="wpo-contact-form-area">

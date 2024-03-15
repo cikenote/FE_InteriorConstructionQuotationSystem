@@ -1,21 +1,21 @@
-import React, { useState } from 'react'
-import SimpleReactValidator from 'simple-react-validator';
-
+import React, { useState } from "react";
+import SimpleReactValidator from "simple-react-validator";
 
 const ContactForm = () => {
-
     const [forms, setForms] = useState({
-        name: '',
-        email: '',
-        subject: '',
-        phone: '',
-        message: ''
+        name: "",
+        email: "",
+        subject: "",
+        phone: "",
+        message: "",
     });
-    const [validator] = useState(new SimpleReactValidator({
-        className: 'errorMessage'
-    }));
-    const changeHandler = e => {
-        setForms({ ...forms, [e.target.name]: e.target.value })
+    const [validator] = useState(
+        new SimpleReactValidator({
+            className: "errorMessage",
+        })
+    );
+    const changeHandler = (e) => {
+        setForms({ ...forms, [e.target.name]: e.target.value });
         if (validator.allValid()) {
             validator.hideMessages();
         } else {
@@ -23,24 +23,27 @@ const ContactForm = () => {
         }
     };
 
-    const submitHandler = e => {
+    const submitHandler = (e) => {
         e.preventDefault();
         if (validator.allValid()) {
             validator.hideMessages();
             setForms({
-                name: '',
-                email: '',
-                subject: '',
-                phone: '',
-                message: ''
-            })
+                name: "",
+                email: "",
+                subject: "",
+                phone: "",
+                message: "",
+            });
         } else {
             validator.showMessages();
         }
     };
 
     return (
-        <form onSubmit={(e) => submitHandler(e)} className="contact-validation-active" >
+        <form
+            onSubmit={(e) => submitHandler(e)}
+            className="contact-validation-active"
+        >
             <div className="row">
                 <div className="col col-lg-6 col-12">
                     <div className="form-field">
@@ -50,8 +53,13 @@ const ContactForm = () => {
                             name="name"
                             onBlur={(e) => changeHandler(e)}
                             onChange={(e) => changeHandler(e)}
-                            placeholder="Your Name" />
-                        {validator.message('name', forms.name, 'required|alpha_space')}
+                            placeholder="Tên của bạn"
+                        />
+                        {validator.message(
+                            "name",
+                            forms.name,
+                            "required|alpha_space"
+                        )}
                     </div>
                 </div>
                 <div className="col col-lg-6 col-12">
@@ -62,8 +70,13 @@ const ContactForm = () => {
                             name="email"
                             onBlur={(e) => changeHandler(e)}
                             onChange={(e) => changeHandler(e)}
-                            placeholder="Your Email" />
-                        {validator.message('email', forms.email, 'required|email')}
+                            placeholder="Email"
+                        />
+                        {validator.message(
+                            "email",
+                            forms.email,
+                            "required|email"
+                        )}
                     </div>
                 </div>
                 <div className="col col-lg-6 col-12">
@@ -74,8 +87,13 @@ const ContactForm = () => {
                             name="phone"
                             onBlur={(e) => changeHandler(e)}
                             onChange={(e) => changeHandler(e)}
-                            placeholder="Your phone" />
-                        {validator.message('phone', forms.phone, 'required|phone')}
+                            placeholder="Số điện thoại"
+                        />
+                        {validator.message(
+                            "phone",
+                            forms.phone,
+                            "required|phone"
+                        )}
                     </div>
                 </div>
                 <div className="col col-lg-6 col-12">
@@ -85,14 +103,19 @@ const ContactForm = () => {
                             onChange={(e) => changeHandler(e)}
                             value={forms.subject}
                             type="text"
-                            name="subject">
-                            <option >Support</option>
-                            <option>Product</option>
-                            <option>Quotation</option>
-                            <option>Service</option>                           
-                            <option>Other</option>
+                            name="subject"
+                        >
+                            <option>Hỗ trợ</option>
+                            <option>Đồ nội thất</option>
+                            <option>Báo giá nội thất</option>
+                            <option>Dịch vụ</option>
+                            <option>Khác</option>
                         </select>
-                        {validator.message('subject', forms.subject, 'required')}
+                        {validator.message(
+                            "subject",
+                            forms.subject,
+                            "required"
+                        )}
                     </div>
                 </div>
                 <div className="col col-lg-12 col-12">
@@ -102,16 +125,18 @@ const ContactForm = () => {
                         value={forms.message}
                         type="text"
                         name="message"
-                        placeholder="Message">
-                    </textarea>
-                    {validator.message('message', forms.message, 'required')}
+                        placeholder="Nội dung"
+                    ></textarea>
+                    {validator.message("message", forms.message, "required")}
                 </div>
             </div>
             <div className="submit-area">
-                <button type="submit" className="theme-btn">Submit Now</button>
+                <button type="submit" className="theme-btn">
+                    Submit Now
+                </button>
             </div>
-        </form >
-    )
-}
+        </form>
+    );
+};
 
 export default ContactForm;

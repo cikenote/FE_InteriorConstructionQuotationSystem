@@ -7,34 +7,34 @@ import CloseIcon from "@mui/icons-material/Close";
 const menus = [
     {
         id: 1,
-        title: "Home",
+        title: "Trang chủ",
         link: "/home",
     },
 
     {
         id: 2,
-        title: "Project",
+        title: "Dự án",
         link: "/project",
     },
 
     {
         id: 3,
-        title: "Blog",
+        title: "Tin tức",
         link: "/blog",
     },
     {
         id: 4,
-        title: "Contact",
+        title: "Liên hệ",
         link: "/contact",
     },
     {
         id: 5,
-        title: "Product",
+        title: "Đồ nội thất",
         link: "/shop",
     },
     {
         id: 6,
-        title: "Quotation",
+        title: "Báo giá",
         link: "/quotation",
     },
 ];

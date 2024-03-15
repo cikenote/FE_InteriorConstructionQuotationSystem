@@ -10,7 +10,7 @@ const PageTitle = (props) => {
                             <h2>{props.pageTitle}</h2>
                             <ol className="wpo-breadcumb-wrap">
                                 <li>
-                                    <Link href="/home">Home</Link>
+                                    <Link href="/home">Trang chủ</Link>
                                 </li>
                                 <li>
                                     <span>{props.pagesub}</span>

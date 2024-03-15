@@ -1,22 +1,12 @@
 import { useState } from "react";
 import "../../styles/components/header.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import { useState } from "react";
 import "../../styles/components/header.scss";
-import MobileMenu from "../MobileMenu/MobileMenu";
 // import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
-import { Avatar, Button, Dropdown } from "antd";
+import {  Button, Dropdown } from "antd";
 import { FiUser } from "react-icons/fi";
-import { HeaderMenus } from "./constant";
-import { useNavigate } from "react-router";
-import { PAGE_ROUTES } from "../../utils/constant";
-import CloseIcon from "@mui/icons-material/Close";
-import SearchIcon from "@mui/icons-material/Search";
-import { Avatar, Button, Dropdown } from "antd";
-import { FiUser } from "react-icons/fi";
-import { HeaderMenus } from "./constant";
 import { useNavigate } from "react-router";
 import { PAGE_ROUTES } from "../../utils/constant";
 

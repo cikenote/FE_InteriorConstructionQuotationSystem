@@ -5,7 +5,7 @@ import "../../styles/components/header.scss";
 // import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
-import {  Button, Dropdown } from "antd";
+import { Button, Dropdown } from "antd";
 import { FiUser } from "react-icons/fi";
 import { useNavigate } from "react-router";
 import { PAGE_ROUTES } from "../../utils/constant";
@@ -68,7 +68,7 @@ const Header = () => {
                                                 onClick={ClickHandler}
                                                 href="/home"
                                             >
-                                                Home
+                                                Trang chủ
                                             </a>
                                         </li>
 
@@ -77,7 +77,7 @@ const Header = () => {
                                                 onClick={ClickHandler}
                                                 href="/project"
                                             >
-                                                Project
+                                                Dự án
                                             </a>
                                         </li>
                                         <li className="menu-item-has-children">
@@ -85,7 +85,7 @@ const Header = () => {
                                                 onClick={ClickHandler}
                                                 href="/blog"
                                             >
-                                                Blog
+                                                Tin tức
                                             </a>
                                         </li>
                                         <li>
@@ -93,7 +93,7 @@ const Header = () => {
                                                 onClick={ClickHandler}
                                                 href="/contact"
                                             >
-                                                Contact
+                                                Liên hệ
                                             </a>
                                         </li>
                                         <li className="menu-item-has-children">
@@ -101,7 +101,7 @@ const Header = () => {
                                                 onClick={ClickHandler}
                                                 href="/shop"
                                             >
-                                                Product
+                                                Đồ nội thất
                                             </a>
                                         </li>
 
@@ -121,7 +121,7 @@ const Header = () => {
                                                     PAGE_ROUTES.QUOTATION_FORM
                                                 }
                                             >
-                                                Quotation Form
+                                                Báo giá
                                             </a>
                                         </li>
                                     </ul>

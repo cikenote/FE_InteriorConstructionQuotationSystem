@@ -138,3 +138,36 @@ export const DATA_SELECT_FAKE = [
         value: "data",
     },
 ];
+
+export const DATA_SELECT_FAKE_2 = [
+    {
+        label: "Bằng gạch",
+        value: "data",
+    },
+    {
+        label: "Bằng gỗ",
+        value: "data",
+    },
+];
+
+export const DATA_SELECT_FAKE_3 = [
+    {
+        label: "Sơn tường",
+        value: "data",
+    },
+    {
+        label: "Dán tường",
+        value: "data",
+    },
+];
+
+export const DATA_SELECT_FAKE_4 = [
+    {
+        label: "Thạch cao",
+        value: "data",
+    },
+    {
+        label: "Bê tông",
+        value: "data",
+    },
+];

@@ -16,6 +16,9 @@ import {
 import "./styled.scss";
 import {
     DATA_SELECT_FAKE,
+    DATA_SELECT_FAKE_2,
+    DATA_SELECT_FAKE_3,
+    DATA_SELECT_FAKE_4,
     PRODUCTS_LIST_MOCK,
     PRODUCTS_LIST_MOCK_2,
     PRODUCT_MOCK,
@@ -53,7 +56,8 @@ const QuotationFormPage = () => {
                                                 fontWeight: "bold",
                                             }}
                                         >
-                                            + Bằng gạch: Giá măc định là 200k/m
+                                            + Bằng gạch: Giá măc định là
+                                            200.000VND/m
                                             <sup>2</sup>
                                         </Typography.Text>
 
@@ -63,7 +67,8 @@ const QuotationFormPage = () => {
                                                 fontWeight: "bold",
                                             }}
                                         >
-                                            + Bằng gỗ: Giá măc định là 350K/m
+                                            + Bằng gỗ: Giá măc định là
+                                            350.000VND/m
                                             <sup>2</sup>
                                         </Typography.Text>
                                     </Flex>
@@ -83,7 +88,8 @@ const QuotationFormPage = () => {
                                                 fontWeight: "bold",
                                             }}
                                         >
-                                            + Sơn tường: Giá măc định là 150K/m
+                                            + Sơn tường: Giá măc định là
+                                            150.000VND/m
                                             <sup>2</sup>
                                         </Typography.Text>
 
@@ -93,7 +99,8 @@ const QuotationFormPage = () => {
                                                 fontWeight: "bold",
                                             }}
                                         >
-                                            + Dán tường: Giá măc định là 250k/m
+                                            + Dán tường: Giá măc định là
+                                            250.000VND/m
                                             <sup>2</sup>
                                         </Typography.Text>
                                     </Flex>
@@ -115,7 +122,7 @@ const QuotationFormPage = () => {
                                             }}
                                         >
                                             + Thạch cao chống cháy: Giá măc định
-                                            là 100k/m<sup>2</sup>
+                                            là 100.000VND/m<sup>2</sup>
                                         </Typography.Text>
 
                                         <Typography.Text
@@ -125,7 +132,7 @@ const QuotationFormPage = () => {
                                             }}
                                         >
                                             + Thạch cao tiêu âm: Giá măc định là
-                                            200k/m<sup>2</sup>
+                                            200.000VND/m<sup>2</sup>
                                         </Typography.Text>
                                     </Flex>
                                 </Flex>
@@ -233,10 +240,9 @@ const QuotationFormPage = () => {
                                                         </p>
                                                         <Select
                                                             options={
-                                                                DATA_SELECT_FAKE
+                                                                DATA_SELECT_FAKE_2
                                                             }
                                                         />
-                                                      
                                                     </Flex>
 
                                                     <Flex gap="middle">
@@ -251,10 +257,9 @@ const QuotationFormPage = () => {
                                                         </p>
                                                         <Select
                                                             options={
-                                                                DATA_SELECT_FAKE
+                                                                DATA_SELECT_FAKE_3
                                                             }
                                                         />
-                                                       
                                                     </Flex>
 
                                                     <Flex gap="middle">
@@ -269,10 +274,9 @@ const QuotationFormPage = () => {
                                                         </p>
                                                         <Select
                                                             options={
-                                                                DATA_SELECT_FAKE
+                                                                DATA_SELECT_FAKE_4
                                                             }
                                                         />
-                                                       
                                                     </Flex>
                                                 </Flex>
                                             </Form.Item>
@@ -353,16 +357,18 @@ const QuotationFormPage = () => {
                             <Flex gap="middle" vertical>
                                 <p className="price-label">
                                     Tổng giá tiền thi công :{" "}
-                                    <span className="price">199$</span>
+                                    <span className="price">20.000.000VND</span>
                                 </p>
 
                                 <p className="price-label">
                                     Tổng giá tiền sản phẩm :{" "}
-                                    <span className="price">199$</span>
+                                    <span className="price">50.000.000VND</span>
                                 </p>
                             </Flex>
 
-                            <p className="total-price">Thành tiền: 400$</p>
+                            <p className="total-price">
+                                Thành tiền: 70.000.000VND
+                            </p>
 
                             <Flex gap="middle">
                                 <Button size="large">Hủy Hóa Đơn</Button>
@@ -373,7 +379,7 @@ const QuotationFormPage = () => {
                         </Col>
                     </Row>
                 </div>
-            </div>         
+            </div>
         </div>
     );
 };

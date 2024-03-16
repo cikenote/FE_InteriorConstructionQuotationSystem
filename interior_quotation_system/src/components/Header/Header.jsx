@@ -105,14 +105,14 @@ const Header = () => {
                                             </a>
                                         </li>
 
-                                        <li>
+                                        {/* <li>
                                             <a
                                                 onClick={ClickHandler}
                                                 href="/quotation"
                                             >
                                                 Quotation
                                             </a>
-                                        </li>
+                                        </li> */}
 
                                         <li>
                                             <a

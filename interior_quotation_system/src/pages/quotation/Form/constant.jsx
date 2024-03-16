@@ -67,6 +67,30 @@ export const PRODUCT_MOCK = [
         img: "https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591146/n%E1%BB%99i-th%E1%BA%A5t-in-3d-15_zqm0wq.jpg",
         action: "stt",
     },
+    {
+        stt: 1,
+        name: "Bàn ăn tròn",
+        img: "https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591146/n%E1%BB%99i-th%E1%BA%A5t-in-3d-15_zqm0wq.jpg",
+        action: "stt",
+    },
+    {
+        stt: 1,
+        name: "Bàn ăn tròn",
+        img: "https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591146/n%E1%BB%99i-th%E1%BA%A5t-in-3d-15_zqm0wq.jpg",
+        action: "stt",
+    },
+    {
+        stt: 1,
+        name: "Bàn ăn tròn",
+        img: "https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591146/n%E1%BB%99i-th%E1%BA%A5t-in-3d-15_zqm0wq.jpg",
+        action: "stt",
+    },
+    {
+        stt: 1,
+        name: "Bàn ăn tròn",
+        img: "https://res.cloudinary.com/dnzzvunuu/image/upload/v1706591146/n%E1%BB%99i-th%E1%BA%A5t-in-3d-15_zqm0wq.jpg",
+        action: "stt",
+    },
 ];
 
 export const PRODUCT_MOCK_2 = [

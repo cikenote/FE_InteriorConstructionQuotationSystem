@@ -31,7 +31,7 @@ const QuotationFormPage = () => {
                     <Row gutter={[14, 14]} className="content-detail">
                         <Col span={8}>
                             <Flex className="layout-item" vertical>
-                                <p className="title">Bảng giá niêm yiết</p>
+                                <p className="title">Bảng giá niêm yết</p>
 
                                 <Flex vertical gap="middle">
                                     <Typography.Title level={4}>
@@ -236,7 +236,7 @@ const QuotationFormPage = () => {
                                                                 DATA_SELECT_FAKE
                                                             }
                                                         />
-                                                        <Input type="number" />
+                                                      
                                                     </Flex>
 
                                                     <Flex gap="middle">
@@ -254,7 +254,7 @@ const QuotationFormPage = () => {
                                                                 DATA_SELECT_FAKE
                                                             }
                                                         />
-                                                        <Input type="number" />
+                                                       
                                                     </Flex>
 
                                                     <Flex gap="middle">
@@ -272,7 +272,7 @@ const QuotationFormPage = () => {
                                                                 DATA_SELECT_FAKE
                                                             }
                                                         />
-                                                        <Input type="number" />
+                                                       
                                                     </Flex>
                                                 </Flex>
                                             </Form.Item>
@@ -373,8 +373,7 @@ const QuotationFormPage = () => {
                         </Col>
                     </Row>
                 </div>
-            </div>
-            <Footer></Footer>
+            </div>         
         </div>
     );
 };

@@ -51,7 +51,7 @@ const Contactpage = () => {
                                             </div>
                                         </div>
                                         <div className="office-info-text">
-                                            <h2>Liên hệ</h2>
+                                            <h2>Hotline</h2>
                                             <p> +84 28 7300 5588</p>
                                             <p> +84 28 6868 6868</p>
                                         </div>

@@ -27,7 +27,7 @@ import {
 
 const QuotationFormPage = () => {
     return (
-        <div>
+        <div className="quotation-page">
             <Navbar></Navbar>
             <div className="form-container">
                 <div className="content">
@@ -35,7 +35,56 @@ const QuotationFormPage = () => {
                         <Col span={8}>
                             <Flex className="layout-item" vertical>
                                 <p className="title">Bảng giá niêm yết</p>
+                                {/* Loại nhà thi công */}
+                                <Flex vertical gap="middle">
+                                    <Typography.Title level={4}>
+                                        Loại nhà thi công:{" "}
+                                    </Typography.Title>
+                                    <Flex vertical gap="middle">
+                                        <Typography.Text
+                                            style={{
+                                                marginLeft: "1rem",
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            + Biệt thự: Giá mặc định là
+                                            350.000VND/m
+                                            <sup>2</sup>{" "}
+                                        </Typography.Text>
+                                        <Typography.Text
+                                            style={{
+                                                marginLeft: "1rem",
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            + Chung cư: Giá mặc định là
+                                            220.000VND/m
+                                            <sup>2</sup>{" "}
+                                        </Typography.Text>
+                                        <Typography.Text
+                                            style={{
+                                                marginLeft: "1rem",
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            + Nhà phố: Giá mặc định là
+                                            220.000VND/m
+                                            <sup>2</sup>{" "}
+                                        </Typography.Text>
+                                        <Typography.Text
+                                            style={{
+                                                marginLeft: "1rem",
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            + Văn phòng - Cafe: Giá mặc định là
+                                            200.000VND/m
+                                            <sup>2</sup>{" "}
+                                        </Typography.Text>
+                                    </Flex>
+                                </Flex>
 
+                                {/* Loại hình thi công */}
                                 <Flex vertical gap="middle">
                                     <Typography.Title level={4}>
                                         Loại hình thi công:{" "}
@@ -133,6 +182,54 @@ const QuotationFormPage = () => {
                                         >
                                             + Thạch cao tiêu âm: Giá măc định là
                                             200.000VND/m<sup>2</sup>
+                                        </Typography.Text>
+                                    </Flex>
+                                </Flex>
+
+                                {/* Loại nhà thi công */}
+                                <Flex vertical gap="middle">
+                                    <Typography.Title level={4}>
+                                        Phong cách thiết kế:{" "}
+                                    </Typography.Title>
+                                    <Flex vertical gap="middle">
+                                        <Typography.Text
+                                            style={{
+                                                marginLeft: "1rem",
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            + Cố điển: Giá mặc định là
+                                            350.000VND/m
+                                            <sup>2</sup>{" "}
+                                        </Typography.Text>
+                                        <Typography.Text
+                                            style={{
+                                                marginLeft: "1rem",
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            + Tân cổ điển: Giá mặc định là
+                                            220.000VND/m
+                                            <sup>2</sup>{" "}
+                                        </Typography.Text>
+                                        <Typography.Text
+                                            style={{
+                                                marginLeft: "1rem",
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            + Nhật Bản: Giá mặc định là
+                                            220.000VND/m
+                                            <sup>2</sup>{" "}
+                                        </Typography.Text>
+                                        <Typography.Text
+                                            style={{
+                                                marginLeft: "1rem",
+                                                fontWeight: "bold",
+                                            }}
+                                        >
+                                            + Ý: Giá mặc định là 200.000VND/m
+                                            <sup>2</sup>{" "}
                                         </Typography.Text>
                                     </Flex>
                                 </Flex>
@@ -326,7 +423,7 @@ const QuotationFormPage = () => {
                                                                 width: "20%",
                                                             }}
                                                         >
-                                                            Nhật bản{" "}
+                                                            Nhật Bản{" "}
                                                         </p>
                                                         <Checkbox />
                                                     </Flex>
@@ -378,6 +475,12 @@ const QuotationFormPage = () => {
                             </Flex>
                         </Col>
                     </Row>
+                    <footer>
+                        <p>
+                            Báo giá trên chỉ mang tính chất tham khảo. Vui lòng
+                            liên hệ sale qua hotline: 0987654321
+                        </p>
+                    </footer>
                 </div>
             </div>
         </div>

@@ -122,6 +122,10 @@ export const PRODUCT_MOCK_2 = [
 
 export const DATA_SELECT_FAKE = [
     {
+        label: "Biệt thự",
+        value: "data",
+    },
+    {
         label: "Chung cư",
         value: "data",
     },
@@ -130,11 +134,7 @@ export const DATA_SELECT_FAKE = [
         value: "data",
     },
     {
-        label: "Văn phòng",
-        value: "data",
-    },
-    {
-        label: "Phòng ngủ",
+        label: "Văn phòng - Cafe",
         value: "data",
     },
 ];

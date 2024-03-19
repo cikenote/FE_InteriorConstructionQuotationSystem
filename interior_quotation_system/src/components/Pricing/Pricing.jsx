@@ -1,6 +1,7 @@
 import "../../styles/components/pricing.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Error from "../Error/Error";
 const Pricing = () => {
   const ClickHandler = () => {
     window.scrollTo(10, 0);
@@ -8,21 +9,20 @@ const Pricing = () => {
 
   const [styles, setStyles] = useState([]);
 
-  // useEffect(() => {
-  //     const fetchData = async () => {
-  //         try {
-  //             console.log("Making API call..."); // Log before the API call
-  //             const response = await axios.get("https://swp391api.developvn.click/api/Products/GetListStyle");
-  //             console.log("API response:", response.data); // Log the fetched data after a successful response
-  //             setStyles(response.data);
-  //         } catch (error) {
-  //             console.error("Error fetching data:", error); // Log any errors in fetching data
-  //         }
-  //     };
-
-  //     fetchData();
-  //     console.log(styles);
-  // });
+  useEffect(() => {
+      const fetchData = async () => {
+          try {
+              console.log("Making API call..."); // Log before the API call
+              const response = await axios.get("https://swp391api.developvn.click/api/Products/GetListStyle");
+              console.log("API response:", response.data); // Log the fetched data after a successful response
+              setStyles(response.data.$values);
+          } catch (error) {
+              console.error("Error fetching data:", error); // Log any errors in fetching data
+          }
+      };
+      fetchData();
+      console.log(styles);
+  }, []);
 
   console.log("styles state:", styles); // Log the state variable after rendering
 
@@ -40,35 +40,39 @@ const Pricing = () => {
         </div>
         <div className="wpo-pricing-wrap">
           <div className="row">
-            {styles.map((style) => (
+            { styles && styles.length > 0 ? (
+            styles.map((style) => (
               <div className="col col-lg-4 col-md-6 col-12" key={style.id}>
-                <div className="wpo-pricing-item">
-                  <div className="wpo-pricing-top">
-                    <div className="pricing-thumb">
-                      <span>{style.name}</span>
-                    </div>
-                    <div className="wpo-pricing-text">
-                      <h2>
-                        $50<span>/per m²</span>
-                      </h2>
-                      <p>123</p>
-                    </div>
+              <div className="wpo-pricing-item">
+                <div className="wpo-pricing-top">
+                  <div className="pricing-thumb">
+                    <span>{style.name}</span>
                   </div>
-                  <div className="wpo-pricing-bottom">
-                    <div className="wpo-pricing-bottom-text">
-                      <ul>
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>4</li>
-                        <li>5</li>
-                      </ul>
-                      <a onClick={ClickHandler}>Choose Plan</a>
-                    </div>
+                  <div className="wpo-pricing-text">
+                    <h2>
+                      {style.price}<span>VNĐ/m²</span>
+                    </h2>
+                    <p>123</p>
+                  </div>
+                </div>
+                <div className="wpo-pricing-bottom">
+                  <div className="wpo-pricing-bottom-text">
+                    <ul>
+                      <li>1</li>
+                      <li>2</li>
+                      <li>3</li>
+                      <li>4</li>
+                      <li>5</li>
+                    </ul>
+                    <a onClick={ClickHandler}>Choose Plan</a>
                   </div>
                 </div>
               </div>
-            ))}
+            </div>
+            ))
+            ) : (
+              <Error/>
+          )}
           </div>
         </div>
       </div>

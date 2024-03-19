@@ -83,8 +83,6 @@ const QuotationFormPage = () => {
                                         </Typography.Text>
                                     </Flex>
                                 </Flex>
-
-                                {/* Loại hình thi công */}
                                 <Flex vertical gap="middle">
                                     <Typography.Title level={4}>
                                         Loại hình thi công:{" "}

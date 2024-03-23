@@ -9,6 +9,12 @@ const ProductAPI = {
   },
   getProductDetailById: (productId) =>
     axiosClient.get(`${END_POINT_API.PRODUCTS}/${productId}`),
+  getListStyle: () => axiosClient.get(END_POINT_API.PRODUCTS_STYLE),
+  getListHomeStyle: () => axiosClient.get(END_POINT_API.PRODUCTS_HOME_STYLE),
+  getListConstructorStyle: (TypeId) =>
+    axiosClient.get(
+      `${END_POINT_API.PRODUCTS_CONSTRUCTOR_STYLE}?TypeID=${TypeId}`
+    ),
 };
 
 export default ProductAPI;

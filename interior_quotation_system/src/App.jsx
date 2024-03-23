@@ -20,37 +20,46 @@ import StaffRole from "./module/staff";
 import StaffProjects from "./module/staff/Projects";
 import StaffQuotation from "./module/staff/Quotation";
 import StaffProducts from "./module/staff/Products";
-import QuotationForm from "./components/QuotationForm/QuotationForm";
 import QuotationFormPage from "./pages/quotation/Form";
+import PrivateRoutes from "./routes/PrivateRoutes";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/home" element={<HomePage />} />
-      <Route path="/project" element={<ProjectPage />} />
-      <Route path="/project/project-single" element={<ProjectSingle />} />
-      <Route path="/blog" element={<BlogPage />} />
-      <Route path="/blog/blog-detail" element={<BlogDetailPage />} />
-      <Route path="/contact" element={<ContactPage />} />
-      <Route path="/quotation" element={<QuotationPage />} />
-      <Route path="/shop" element={<ShopItem />} />
-      <Route path="/shop/item/:productId" element={<ItemDetail />} />
-      <Route path="/login" index element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
       <Route
-        path={PAGE_ROUTES.QUOTATION_FORM}
-        element={<QuotationFormPage />}
+        path={PAGE_ROUTES.FORGOT_PASSWORD}
+        element={<ForgotPasswordPage />}
       />
-
-      <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
-        <Route path={PAGE_ROUTES.STAFF.PROJECTS} element={<StaffProjects />} />
+      <Route path={PAGE_ROUTES.LOGIN} index element={<LoginPage />} />
+      <Route path={PAGE_ROUTES.REGISTER} element={<RegisterPage />} />
+      <Route element={<PrivateRoutes />}>
+        <Route path={PAGE_ROUTES.HOME} element={<HomePage />} />
         <Route
-          path={PAGE_ROUTES.STAFF.QUOTATIONS}
-          element={<StaffQuotation />}
+          path={PAGE_ROUTES.QUOTATION_FORM}
+          element={<QuotationFormPage />}
         />
-        <Route path={PAGE_ROUTES.STAFF.PRODUCTS} element={<StaffProducts />} />
+        <Route path="/project" element={<ProjectPage />} />
+        <Route path="/project/project-single" element={<ProjectSingle />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/blog-detail" element={<BlogDetailPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/quotation" element={<QuotationPage />} />
+        <Route path="/shop" element={<ShopItem />} />
+        <Route path="/shop/item/:productId" element={<ItemDetail />} />
+        <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
+          <Route
+            path={PAGE_ROUTES.STAFF.PROJECTS}
+            element={<StaffProjects />}
+          />
+          <Route
+            path={PAGE_ROUTES.STAFF.QUOTATIONS}
+            element={<StaffQuotation />}
+          />
+          <Route
+            path={PAGE_ROUTES.STAFF.PRODUCTS}
+            element={<StaffProducts />}
+          />
+        </Route>
       </Route>
     </Routes>
   );

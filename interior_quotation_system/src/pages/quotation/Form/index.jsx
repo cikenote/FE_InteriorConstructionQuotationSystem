@@ -1,7 +1,4 @@
-import React from "react";
-import Navbar from "../../../components/Navbar/Navbar";
-import Footer from "../../../components/Footer/Footer";
-import {
+ import {
     Button,
     Checkbox,
     Col,
@@ -13,17 +10,16 @@ import {
     Table,
     Typography,
 } from "antd";
-import "./styled.scss";
+import Navbar from "../../../components/Navbar/Navbar";
 import {
     DATA_SELECT_FAKE,
     DATA_SELECT_FAKE_2,
     DATA_SELECT_FAKE_3,
     DATA_SELECT_FAKE_4,
     PRODUCTS_LIST_MOCK,
-    PRODUCTS_LIST_MOCK_2,
     PRODUCT_MOCK,
-    PRODUCT_MOCK_2,
 } from "./constant";
+import "./styled.scss";
 
 const QuotationFormPage = () => {
     return (

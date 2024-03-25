@@ -1,27 +1,25 @@
-import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import "./index.css";
-import ContactPage from "./pages/contact/ContactPage";
-import HomePage from "./pages/home/HomePage";
-import "bootstrap/dist/css/bootstrap.min.css";
-import ProjectPage from "./pages/project/ProjectPage";
 import ProjectSingle from "./components/ProjectSingle/ProjectSingle";
-import BlogPage from "./pages/blog/BlogPage";
-import ShopItem from "./pages/shop/index";
-import ItemDetail from "./pages/shop/ItemDetail";
-import QuotationPage from "./pages/quotation/QuotationPage";
-import LoginPage from "./pages/login/LoginPage";
-import RegisterPage from "./pages/register/RegisterPage";
-import ForgotPasswordPage from "./pages/forgot-password/ForgotPasswordPage";
-import BlogDetailPage from "./pages/blog-detail/BlogDetailPage";
-import { PAGE_ROUTES } from "./utils/constant";
+import "./index.css";
 import StaffRole from "./module/staff";
+import StaffProducts from "./module/staff/Products";
 import StaffProjects from "./module/staff/Projects";
 import StaffQuotation from "./module/staff/Quotation";
-import StaffProducts from "./module/staff/Products";
-import QuotationForm from "./components/QuotationForm/QuotationForm";
+import BlogDetailPage from "./pages/blog-detail/BlogDetailPage";
+import BlogPage from "./pages/blog/BlogPage";
+import ContactPage from "./pages/contact/ContactPage";
+import ForgotPasswordPage from "./pages/forgot-password/ForgotPasswordPage";
+import HomePage from "./pages/home/HomePage";
+import LoginPage from "./pages/login/LoginPage";
+import ProjectPage from "./pages/project/ProjectPage";
 import QuotationFormPage from "./pages/quotation/Form";
+import QuotationPage from "./pages/quotation/QuotationPage";
+import RegisterPage from "./pages/register/RegisterPage";
+import ItemDetail from "./pages/shop/ItemDetail";
+import ShopItem from "./pages/shop/index";
+import { PAGE_ROUTES } from "./utils/constant";
 
 function App() {
   return (

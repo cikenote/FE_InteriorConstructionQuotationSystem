@@ -1,8 +1,8 @@
-import { Button, Col, Flex, Form, Input, Modal, Row, message } from "antd";
-import React, { forwardRef, useImperativeHandle, useState } from "react";
-import { FORM_RULES } from "../../utils/constant";
 import { useMutation } from "@tanstack/react-query";
+import { Button, Col, Flex, Form, Input, Modal, Row, message } from "antd";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import QuotationAPI from "../../api/quotation";
+import { FORM_RULES } from "../../utils/constant";
 
 const QuotationModal = ({ AfterCloseModal }, ref) => {
   const [messageApi, contextHolder] = message.useMessage();
@@ -18,10 +18,7 @@ const QuotationModal = ({ AfterCloseModal }, ref) => {
   });
 
   const { mutate, isPending: updateQuotationLoading } = useMutation({
-    mutationFn: (newValue) =>
-      QuotationAPI.UpdateQuotation(
-        newValue
-      ),
+    mutationFn: (newValue) => QuotationAPI.UpdateQuotation(newValue),
     onError: () => {
       messageApi.open({
         type: "error",

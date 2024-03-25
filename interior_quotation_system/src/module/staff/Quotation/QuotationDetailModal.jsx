@@ -1,15 +1,15 @@
-import { Col, Form, Grid, Modal } from "antd";
-import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
-import ProductAPI from "../../../api/products";
 import { useMutation } from "@tanstack/react-query";
+import { Modal } from "antd";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import { CiStar } from "react-icons/ci";
+import ProductAPI from "../../../api/products";
 
-const QuotationDetailModal = ({}, ref) => {
+const QuotationDetailModal = (ref) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [productDetail, setProductDetail] = useState();
   const [productId, setProductId] = useState(15);
-  const [form] = Form.useForm();
-  const { isPending: productDetailLoading, mutate } = useMutation({
+  const [messageApi] = useState();
+  const { isPending: mutate } = useMutation({
     mutationFn: ProductAPI.getProductDetailById,
     onSuccess: (response) => {
       setProductDetail(response);
@@ -37,8 +37,6 @@ const QuotationDetailModal = ({}, ref) => {
   const onCloseModal = () => {
     setIsOpenModal(false);
   };
-
-  const onFinishForm = (values) => {};
 
   return (
     <Modal

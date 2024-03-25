@@ -1,14 +1,14 @@
-import React from "react";
-import "../../styles/pages/loginPage.scss";
-import Grid from "@mui/material/Grid";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { FORM_RULES, PAGE_ROUTES } from "../../utils/constant";
-import { useNavigate } from "react-router";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Grid from "@mui/material/Grid";
 import { useMutation } from "@tanstack/react-query";
-import AuthenticateAPI from "../../api/authen";
 import { Button, Col, Form, Input, Row, message } from "antd";
 import { jwtDecode } from "jwt-decode";
+import { useState } from "react"; // Import useState hook
+import { useNavigate } from "react-router";
+import AuthenticateAPI from "../../api/authen";
+import "../../styles/pages/loginPage.scss";
+import { FORM_RULES, PAGE_ROUTES } from "../../utils/constant";
 
 const LoginPage = () => {
   const [form] = Form.useForm();
@@ -21,24 +21,27 @@ const LoginPage = () => {
       const userDecode = jwtDecode(response.token);
       console.log(userDecode);
       navigate("/shop");
-      if(userDecode.Role == 'staff'){
-        navigate('/staff/quotation');
-      }else if(userDecode.Role == 'admin'){
-        navigate('/staff/quotation');
-      }else{
-        navigate('/shop')
+      if (userDecode.Role === "staff") {
+        navigate("/staff/quotation");
+      } else if (userDecode.Role === "admin") {
+        navigate("/staff/quotation");
+      } else {
+        navigate("/shop");
       }
     },
     onError: () => {
       messageApi.open({
         type: "error",
-        content: "Your account is invalid. Please  try again !!",
+        content: "Your account is invalid. Please try again !!",
       });
     },
   });
 
+  // Define state for remember
+  const [remember, setRemember] = useState(false);
+
   const rememberHandler = () => {
-    setValue({ ...value, remember: !value.remember });
+    setRemember(!remember);
   };
 
   const submitForm = (values) => {
@@ -82,7 +85,12 @@ const LoginPage = () => {
                 <Col span={24}>
                   <div className="formAction">
                     <FormControlLabel
-                      control={<Checkbox onChange={rememberHandler} />}
+                      control={
+                        <Checkbox
+                          checked={remember}
+                          onChange={rememberHandler}
+                        />
+                      }
                       label="Remember Me"
                     />
                     <a href="/forgot-password">Forgot Password?</a>
@@ -108,7 +116,7 @@ const LoginPage = () => {
 
                 <Col span={24}>
                   <p className="noteHelp">
-                    Don't have an account?{" "}
+                    Do not have an account?{" "}
                     <a href={PAGE_ROUTES.REGISTER}>Create free account</a>
                   </p>
                 </Col>

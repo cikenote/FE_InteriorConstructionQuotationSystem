@@ -1,5 +1,5 @@
 export const PAGE_ROUTES = {
-  LOGIN: "/login",
+  LOGIN: "/",
   REGISTER: "/register",
   QUOTATION_FORM: "/quotation/form",
   HOME: "/home",

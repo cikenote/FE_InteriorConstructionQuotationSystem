@@ -11,7 +11,8 @@ const QuotationAPI = {
   GetAllQuotation: () => axiosClient.get(END_POINT_API.ALL_QUOTATION),
   GetCurrentQuotation: () =>
     axiosClient.get(END_POINT_API.GET_CURRENT_QUOTATION),
-  SubmitQuotation: (params) => axiosClient.post(END_POINT_API.SUBMIT_QUOTATION),
+  SubmitQuotation: (params) =>
+    axiosClient.post(END_POINT_API.SUBMIT_QUOTATION, params),
 };
 
 export default QuotationAPI;

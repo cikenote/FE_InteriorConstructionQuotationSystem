@@ -1,6 +1,8 @@
 import { Form, Input, Modal } from "antd";
 import { forwardRef, useImperativeHandle, useState } from "react";
-const HomeParameterModal = ({}, ref) => {
+import { FORM_RULES } from "../../../utils/constant";
+
+const HomeParameterModal = ({ CallBackParameter }, ref) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [form] = Form.useForm();
 
@@ -17,7 +19,8 @@ const HomeParameterModal = ({}, ref) => {
   };
 
   const onFinishForm = (values) => {
-    console.log(values);
+    CallBackParameter(values);
+    onCloseModal();
   };
 
   return (
@@ -26,6 +29,7 @@ const HomeParameterModal = ({}, ref) => {
       onCancel={onCloseModal}
       title="Home Parameter"
       closeIcon={false}
+      onOk={form.submit}
       footer={(_, { OkBtn, CancelBtn }) => {
         return (
           <>
@@ -35,37 +39,14 @@ const HomeParameterModal = ({}, ref) => {
         );
       }}
     >
-      <Form layout="vertical" onFinish={onFinishForm} form={form}>
-        <Form.Item
-          name="length"
-          label="Chiều dài"
-          rules={[
-            { required: true, message: "Trường này không được bỏ trống" },
-            { min: 0, message: "Hello world" },
-          ]}
-        >
+      <Form name="myForm" layout="vertical" onFinish={onFinishForm} form={form}>
+        <Form.Item name="length" label="Length" rules={[FORM_RULES.required]}>
           <Input type="number" />
         </Form.Item>
-
-        <Form.Item
-          name="width"
-          label="Chiều rộng"
-          rules={[
-            { required: true, message: "Trường này không được bỏ trống" },
-            { min: 0, message: "Giá trị tối thiểu là 0" },
-          ]}
-        >
+        <Form.Item name="witdh" label="Width" rules={[FORM_RULES.required]}>
           <Input type="number" />
         </Form.Item>
-
-        <Form.Item
-          name="height"
-          label="Chiều cao"
-          rules={[
-            { required: true, message: "Trường này không được bỏ trống" },
-            { min: 0, message: "Giá trị tối thiểu là 0" },
-          ]}
-        >
+        <Form.Item name="height" label="Height" rules={[FORM_RULES.required]}>
           <Input type="number" />
         </Form.Item>
       </Form>

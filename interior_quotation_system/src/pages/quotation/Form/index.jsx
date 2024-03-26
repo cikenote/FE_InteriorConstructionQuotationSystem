@@ -1,37 +1,90 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../../../components/Navbar/Navbar";
 import {
   Button,
-  Checkbox,
+  Card,
   Col,
+  Descriptions,
   Flex,
   Form,
-  Input,
   Radio,
   Row,
   Select,
   Skeleton,
-  Spin,
   Table,
   Typography,
   message,
 } from "antd";
 import "./styled.scss";
 import {
-  DATA_SELECT_FAKE,
   DATA_SELECT_FAKE_2,
   DATA_SELECT_FAKE_3,
   DATA_SELECT_FAKE_4,
   PRODUCTS_LIST_MOCK,
-  PRODUCT_MOCK,
 } from "./constant";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import ProductAPI from "../../../api/products";
 import HomeParameterModal from "./HomeParameterModal";
 import QuotationAPI from "../../../api/quotation";
+import * as yup from "yup";
+import {  useFormik } from "formik";
+
+
+const schema = yup.object().shape({
+  styleId: yup.string().required("Home style is required"),
+  witdh: yup.number().required(),
+  height: yup.number().required(),
+  length: yup.number().required(),
+  totalConstructionCost: yup.number(),
+  totalProductCost: yup.number(),
+  homeStyleId: yup.number().required("Home is required"),
+  floorConstructionId: yup.number().required("Floor is required"),
+  wallConstructId: yup.number().required("Wall is required"),
+  ceilingConstructId: yup.number().required('Ceil is required'),
+  quotationDetailDTOs: yup.array().min(1,'You need to select 1 product item')
+})
+
 
 const QuotationFormPage = () => {
+  const formik = useFormik({
+    initialValues: {
+      styleId: 1,
+      witdh: 0,
+      height: 0,
+      length: 0,
+      totalConstructionCost: 0,
+      totalProductCost: 0,
+      homeStyleId: "",
+      floorConstructionId: "",
+      wallConstructId: '',
+      ceilingConstructId: "",
+      quotationDetailDTOs: [],
+    },
+    validationSchema: schema,
+    onSubmit: (values) => {
+      console.log(values);
+    }
+  })
+
+
   const homeParameterRef = useRef();
+  const [products, setProducts] = useState([]);
+  
+  useEffect(() => {
+    mutate();
+  }, []);
+
+  const calculateTotalProductPrice = () => {
+    const result = formik.values.quotationDetailDTOs.reduce(
+      (acc, current) => acc + current.price,
+      0
+    );
+    formik.setFieldValue('totalProductCost', result)
+  };
+
+  useEffect(() => {
+    calculateTotalProductPrice();
+  }, [formik.values]);
 
   const { isLoading: isLoadingCurrentQuotation, data: currentQuotation } =
     useQuery({
@@ -49,20 +102,107 @@ const QuotationFormPage = () => {
     queryKey: ["home-style-list"],
   });
 
+  const { isPending: isProductLoading, mutate } = useMutation({
+    mutationFn: ProductAPI.getAllProductList,
+    mutationKey: "products-list",
+    onError: () => {
+      message.error("Error occur when get all products");
+    },
+    onSuccess: (res) => {
+      const result = res.responses.$values.map((product) => {
+        return {
+          name: product.name,
+          image: product.imageUrl,
+          price: product.price,
+          action: product.productId,
+        };
+      });
+
+      setProducts(result);
+    },
+  });
+
+  const { isPending: isLoadingSubmitQuotation, mutate: mutateQuotationForm } =
+    useMutation({
+      mutationFn: QuotationAPI.SubmitQuotation,
+      mutationKey: "submit-quotation",
+      onSuccess: () => {
+        message.success("Save quotation is successfully");
+      },
+      onError: (error) => {
+        message.error(error);
+      },
+    });
+
   if (
     isHomeStyleLoading ||
     isProductStyleLoading ||
-    isLoadingCurrentQuotation
+    isLoadingCurrentQuotation ||
+    isProductLoading
   ) {
     return <Skeleton avatar paragraph={{ rows: 4 }} />;
   }
 
+  const onCallBackParameter = (values) => {
+    formik.setValues({
+      ...formik.values,
+      ...values
+    })
+
+
+  };
+
+  const onCallBackSelectedProduct = (product) => {
+    const productIndex = formik.values.quotationDetailDTOs.findIndex(
+      (productItem) => productItem.productId === product.action
+    );
+    if (productIndex > -1) {
+      const result = formik.values.quotationDetailDTOs.filter(
+        (item) => item.productId !== product.action
+      );
+
+      formik.setFieldValue('quotationDetailDTOs', result)
+    } else {
+      const newProductsList = [
+        ...formik.values.quotationDetailDTOs,
+        {
+          productId: product.action,
+          quantity: 1,
+          price: product.price,
+        },
+      ];
+      formik.setFieldValue('quotationDetailDTOs', newProductsList)
+
+    }
+  };
+
+  const onSubmitQuotationForm = () => {
+    // mutateQuotationForm(quotationForm);
+  };
+
+
+  const onCalculateHomeStyle = () => {
+    const totalHomePrice= formik.values.totalConstructionCost
+  }
+
+
+  const getHomePrice = () => {
+    if(formik.values.homeStyleId) {
+    }
+
+    return 0
+  }
+
+
   return (
     <>
-      <HomeParameterModal ref={homeParameterRef} />
+      <HomeParameterModal
+        ref={homeParameterRef}
+        CallBackParameter={onCallBackParameter}
+      />
 
       <Navbar></Navbar>
-      <div className="form-container">
+      <form onSubmit={formik.handleSubmit} className="form-container">
         <div className="content">
           <Row gutter={[14, 14]} className="content-detail">
             <Col span={8}>
@@ -257,158 +397,190 @@ const QuotationFormPage = () => {
             <Col span={8}>
               <Flex className="layout-item" vertical>
                 <p className="title">Danh sách sản phẩm</p>
-                <Table columns={PRODUCTS_LIST_MOCK} dataSource={PRODUCT_MOCK} />
+                <Table
+                  columns={PRODUCTS_LIST_MOCK({
+                    onSelectedProduct: onCallBackSelectedProduct,
+                  })}
+                  dataSource={products}
+                />
               </Flex>
             </Col>
             <Col span={8}>
               <Flex className="layout-item" vertical>
                 <p className="title">Bảng giá dự tính</p>
 
-                <div
-                  className="home-content"
-                  onClick={() => homeParameterRef.current.openModal()}
-                >
-                  <Button type="primary" size="large" style={{ width: "100%" }}>
-                    Nhập số liệu{" "}
-                  </Button>
-                </div>
+                {!formik.values.witdh && (
+                  <div
+                    className="home-content"
+                    onClick={() => homeParameterRef.current.openModal()}
+                  >
+                    <Button
+                      type="primary"
+                      size="large"
+                      style={{ width: "100%" }}
+                    >
+                      Nhập số liệu{" "}
+                    </Button>
+                  </div>
+                )}
 
-                {/* 
-                <Form layout="vertical">
-                  <Row gutter={[20, 20]}>
-                    <Col span={24}>
-                      <Form.Item
-                        className="title-label"
-                        label="1. Loại nhà thi công"
-                      >
-                        <Select>
-                          {homeStyles.$values.map((style) => (
-                            <Select.Option value={style.id}>
-                              {style.name}
-                            </Select.Option>
-                          ))}
-                        </Select>
-                      </Form.Item>
+                {formik.values.witdh && (
+                  <>
+                    <Card>
+                      <Flex vertical gap="middle">
+                        <Descriptions
+                          layout="vertical"
+                          bordered
+                          items={[
+                            {
+                              key: "width",
+                              label: "Width",
+                              children: formik.values.witdh,
+                            },
+                            {
+                              key: "height",
+                              label: "Height",
+                              children: formik.values.height,
+                            },
+                            {
+                              key: "length",
+                              label: "Length",
+                              children: formik.values.length,
+                            },
+                          ]}
+                        />
 
-                      <Form.Item className="title-label" label="2. Kích thước">
-                        <Row
-                          gutter={[12, 12]}
-                          style={{
-                            marginTop: "1rem",
-                          }}
+                        <Button
+                          style={{ width: "100%" }}
+                          type="primary"
+                          onClick={() => homeParameterRef.current.openModal()}
                         >
-                          <Col span={12}>
-                            <Flex gap="middle">
-                              <p
-                                style={{
-                                  whiteSpace: "nowrap",
-                                }}
-                              >
-                                Chiều dài:{" "}
-                              </p>
-                              <Input width={"50%"} />
-                            </Flex>
-                          </Col>
-                          <Col span={12}>
-                            <Flex gap="middle">
-                              <p
-                                style={{
-                                  whiteSpace: "nowrap",
-                                }}
-                              >
-                                Chiều rộng:{" "}
-                              </p>
-                              <Input />
-                            </Flex>
-                          </Col>
+                          Edit Parameter
+                        </Button>
+                      </Flex>
+                    </Card>
+
+                    <Card>
+                      <Form layout="vertical">
+                        <Row gutter={[20, 20]}>
                           <Col span={24}>
-                            <Flex gap="middle">
-                              <p
+                            <Form.Item
+                              className="title-label"
+                              label="1. Loại nhà thi công"
+                            >
+                              <Select 
+                              name ="homeStyleId"
+                              onChange={(value) => formik.setFieldValue('homeStyleId', value)}
+                              >
+                                {homeStyles.$values.map((style) => (
+                                  <Select.Option
+                                    value={style.id}
+                                    key={style.id}
+                                  >
+                                    {style.name}
+                                  </Select.Option>
+                                ))}
+                              </Select>
+                              {formik.errors && <div className="error-msg">
+                                {formik.errors.homeStyleId}
+                                </div>}
+                            </Form.Item>
+                            <Form.Item
+                              className="title-label"
+                              label="3. Loại hình thi công"
+                            >
+                              <Flex
+                                gap="middle"
+                                vertical
                                 style={{
-                                  whiteSpace: "nowrap",
+                                  marginTop: "1rem",
                                 }}
                               >
-                                Chiều cao:{" "}
-                              </p>
-                              <Input />
-                            </Flex>
+                                <Flex gap="middle">
+                                  <p
+                                    style={{
+                                      whiteSpace: "nowrap",
+                                      width: "40%",
+                                    }}
+                                  >
+                                    Ốp nền:{" "}
+                                  </p>
+                                  <Select name = "floorConstructionId" options={DATA_SELECT_FAKE_2}
+                               onChange={(value) => formik.setFieldValue('floorConstructionId', value)}
+                                  
+                                  />
+
+                                  
+                              {formik.errors && <div className="error-msg">
+                                {formik.errors.floorConstructionId}
+                                </div>}
+                                </Flex>
+
+                                <Flex gap="middle">
+                                  <p
+                                    style={{
+                                      whiteSpace: "nowrap",
+                                      width: "40%",
+                                    }}
+                                  >
+                                    Ốp tường:{" "}
+                                  </p>
+                                  <Select name = "wallConstructId" options={DATA_SELECT_FAKE_3} 
+                                  onChange={(value) => formik.setFieldValue('wallConstructId', value)}
+                                  />
+
+
+                                  
+                              {formik.errors && <p className="error-msg">
+                                {formik.errors.wallConstructId}
+                                </p>}
+                                </Flex>
+
+                                <Flex gap="middle">
+                                  <p
+                                    style={{
+                                      whiteSpace: "nowrap",
+                                      width: "40%",
+                                    }}
+                                  >
+                                    Trần nhà:{" "}
+                                  </p>
+                                  <Select name = "ceilingConstructId" options={DATA_SELECT_FAKE_4}
+                               onChange={(value) => formik.setFieldValue('ceilingConstructId', value)}
+                                  />
+
+
+                                  
+                              {formik.errors && <p className="error-msg"> 
+                                {formik.errors.ceilingConstructId}
+                                </p>}
+                                </Flex>
+                              </Flex>
+                            </Form.Item>
+                            <Form.Item
+                              className="title-label"
+                              label="4. Phong cách thiết kế"
+                            >
+                              <Radio.Group 
+                              defaultValue={1}
+                              onChange={(value) => formik.setFieldValue('styleId', value.target.value)}
+                              >
+                               
+                                  {productStyles.$values.map((item) => {
+                                    return (
+                                      <Radio value={item.id} key={item.id}>
+                                        {item.name}
+                                      </Radio>
+                                    );
+                                  })}
+                              </Radio.Group>
+                            </Form.Item>
                           </Col>
                         </Row>
-                      </Form.Item>
-
-                      <Form.Item
-                        className="title-label"
-                        label="3. Loại hình thi công"
-                      >
-                        <Flex
-                          gap="middle"
-                          vertical
-                          style={{
-                            marginTop: "1rem",
-                          }}
-                        >
-                          <Flex gap="middle">
-                            <p
-                              style={{
-                                whiteSpace: "nowrap",
-                                width: "40%",
-                              }}
-                            >
-                              Ốp nền:{" "}
-                            </p>
-                            <Select options={DATA_SELECT_FAKE_2} />
-                          </Flex>
-
-                          <Flex gap="middle">
-                            <p
-                              style={{
-                                whiteSpace: "nowrap",
-                                width: "40%",
-                              }}
-                            >
-                              Ốp tường:{" "}
-                            </p>
-                            <Select options={DATA_SELECT_FAKE_3} />
-                          </Flex>
-
-                          <Flex gap="middle">
-                            <p
-                              style={{
-                                whiteSpace: "nowrap",
-                                width: "40%",
-                              }}
-                            >
-                              Trần nhà:{" "}
-                            </p>
-                            <Select options={DATA_SELECT_FAKE_4} />
-                          </Flex>
-                        </Flex>
-                      </Form.Item>
-
-                      <Form.Item
-                        className="title-label"
-                        label="4. Phong cách thiết kế"
-                      >
-                        <Radio.Group>
-                          <Flex
-                            gap="middle"
-                            vertical
-                            style={{
-                              marginTop: "1rem",
-                            }}
-                          >
-                            {productStyles.$values.map((item) => {
-                              console.log(item);
-                              return (
-                                <Radio values={item.id}>{item.name}</Radio>
-                              );
-                            })}
-                          </Flex>
-                        </Radio.Group>
-                      </Form.Item>
-                    </Col>
-                  </Row>
-                </Form> */}
+                      </Form>
+                    </Card>
+                  </>
+                )}
               </Flex>
             </Col>
           </Row>
@@ -418,20 +590,36 @@ const QuotationFormPage = () => {
               <Flex gap="middle" vertical>
                 <p className="price-label">
                   Tổng giá tiền thi công :{" "}
-                  <span className="price">20.000.000VND</span>
+                  <span className="price">
+                    {formik.values.totalConstructionCost}
+                    VND
+                  </span>
                 </p>
 
                 <p className="price-label">
                   Tổng giá tiền sản phẩm :{" "}
-                  <span className="price">50.000.000VND</span>
+                  <span className="price">
+                    {formik.values.totalProductCost} 
+                    VND
+                  </span>
                 </p>
               </Flex>
 
-              <p className="total-price">Thành tiền: 70.000.000VND</p>
+              <p className="total-price">
+                Thành tiền:
+                {formik.values.totalConstructionCost +
+                 formik.values.totalProductCost}
+                VND
+              </p>
 
               <Flex gap="middle">
-                <Button size="large">Hủy Hóa Đơn</Button>
-                <Button type="primary" size="large">
+                <Button
+                  htmlType="submit"
+                  type="primary"
+                  size="large"
+                  disabled = {formik.errors}
+                  
+                >
                   Lưu Hóa Đơn
                 </Button>
               </Flex>
@@ -444,7 +632,7 @@ const QuotationFormPage = () => {
             </p>
           </footer>
         </div>
-      </div>
+      </form>
     </>
   );
 };

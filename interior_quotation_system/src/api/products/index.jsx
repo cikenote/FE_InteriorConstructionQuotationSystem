@@ -7,6 +7,11 @@ const ProductAPI = {
       `${END_POINT_API.PRODUCTS}?page=${page}&pageSize=10&sortByDateDescending=true`
     );
   },
+  getAllProductList: () => {
+    return axiosClient.get(
+      `${END_POINT_API.PRODUCTS}?page=1&pageSize=10000&sortByDateDescending=true`
+    );
+  },
   getProductDetailById: (productId) =>
     axiosClient.get(`${END_POINT_API.PRODUCTS}/${productId}`),
   getListStyle: () => axiosClient.get(END_POINT_API.PRODUCTS_STYLE),

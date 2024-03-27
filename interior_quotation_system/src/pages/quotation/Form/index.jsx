@@ -273,12 +273,7 @@ const QuotationFormPage = () => {
 
     return 0;
   };
-  if (
-    isHomeStyleLoading ||
-    isProductStyleLoading ||
-    isLoadingCurrentQuotation ||
-    isProductLoading
-  ) {
+  if (isHomeStyleLoading || isProductStyleLoading || isProductLoading) {
     return <Skeleton avatar paragraph={{ rows: 4 }} />;
   }
 

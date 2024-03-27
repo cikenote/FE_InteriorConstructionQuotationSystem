@@ -38,28 +38,23 @@ function App() {
           path={PAGE_ROUTES.QUOTATION_FORM}
           element={<QuotationFormPage />}
         />
-        <Route path="/project" element={<ProjectPage />} />
-        <Route path="/project/project-single" element={<ProjectSingle />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog/blog-detail" element={<BlogDetailPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/quotation" element={<QuotationPage />} />
-        <Route path="/shop" element={<ShopItem />} />
-        <Route path="/shop/item/:productId" element={<ItemDetail />} />
-        <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
-          <Route
-            path={PAGE_ROUTES.STAFF.PROJECTS}
-            element={<StaffProjects />}
-          />
-          <Route
-            path={PAGE_ROUTES.STAFF.QUOTATIONS}
-            element={<StaffQuotation />}
-          />
-          <Route
-            path={PAGE_ROUTES.STAFF.PRODUCTS}
-            element={<StaffProducts />}
-          />
-        </Route>
+      </Route>
+
+      <Route path="/project" element={<ProjectPage />} />
+      <Route path="/project/project-single" element={<ProjectSingle />} />
+      <Route path="/blog" element={<BlogPage />} />
+      <Route path="/blog/blog-detail" element={<BlogDetailPage />} />
+      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/quotation" element={<QuotationPage />} />
+      <Route path="/shop" element={<ShopItem />} />
+      <Route path="/shop/item/:productId" element={<ItemDetail />} />
+      <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
+        <Route path={PAGE_ROUTES.STAFF.PROJECTS} element={<StaffProjects />} />
+        <Route
+          path={PAGE_ROUTES.STAFF.QUOTATIONS}
+          element={<StaffQuotation />}
+        />
+        <Route path={PAGE_ROUTES.STAFF.PRODUCTS} element={<StaffProducts />} />
       </Route>
     </Routes>
   );

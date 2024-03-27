@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "../../styles/components/header.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import "../../styles/components/header.scss";
@@ -9,8 +9,10 @@ import { Button, Dropdown } from "antd";
 import { FiUser } from "react-icons/fi";
 import { useNavigate } from "react-router";
 import { PAGE_ROUTES } from "../../utils/constant";
+import QuotationStatus from "./QuotationStatus";
 
 const Header = () => {
+  const quotationStatusRef = useRef();
   const accessToken = localStorage.getItem("accessToken");
   const [menuActive, setMenuState] = useState(false);
   const navigate = useNavigate();
@@ -20,6 +22,14 @@ const Header = () => {
   };
   const getUser = localStorage.getItem("accessToken");
   const items = [
+    {
+      key: "quotation-status",
+      label: (
+        <div onClick={() => quotationStatusRef.current.openModal()}>
+          Quotation status
+        </div>
+      ),
+    },
     {
       key: "1",
       label: <div onClick={logoutAccount}>Log out</div>,
@@ -35,6 +45,8 @@ const Header = () => {
 
   return (
     <header id="header">
+      <QuotationStatus ref={quotationStatusRef} />
+
       <div className="site-header header-style-1">
         <nav className="navigation navbar navbar-expand-lg navbar-light">
           <div className="container-fluid">
@@ -46,11 +58,7 @@ const Header = () => {
               </div>
               <div className="col-lg-3 col-md-6 col-6">
                 <div className="navbar-header">
-                  <a
-                    onClick={ClickHandler}
-                    className="navbar-brand"
-                    href="/home"
-                  >
+                  <a onClick={ClickHandler} className="navbar-brand" href="/">
                     <img src="/images/logo.png" alt="logo" />
                   </a>
                 </div>
@@ -65,7 +73,7 @@ const Header = () => {
                   </button>
                   <ul className="nav navbar-nav mb-2 mb-lg-0">
                     <li className="menu-item-has-children">
-                      <a onClick={ClickHandler} href="/home">
+                      <a onClick={ClickHandler} href={PAGE_ROUTES.HOME}>
                         Trang chủ
                       </a>
                     </li>

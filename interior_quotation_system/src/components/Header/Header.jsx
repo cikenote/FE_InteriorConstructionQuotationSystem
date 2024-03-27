@@ -45,7 +45,7 @@ const Header = () => {
 
   return (
     <header id="header">
-      <QuotationStatus ref={quotationStatusRef} />
+      {/* <QuotationStatus ref={quotationStatusRef} /> */}
 
       <div className="site-header header-style-1">
         <nav className="navigation navbar navbar-expand-lg navbar-light">

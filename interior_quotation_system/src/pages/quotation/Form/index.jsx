@@ -78,12 +78,6 @@ const QuotationFormPage = () => {
     onCalculateHomeStyle();
   }, [formik.values]);
 
-  const { isLoading: isLoadingCurrentQuotation, data: currentQuotation } =
-    useQuery({
-      queryFn: QuotationAPI.GetCurrentQuotation,
-      queryKey: ["current-quotation"],
-    });
-
   const { isPending: isProductStyleLoading, data: productStyles } = useQuery({
     queryFn: ProductAPI.getListStyle,
     queryKey: ["product-style-list"],

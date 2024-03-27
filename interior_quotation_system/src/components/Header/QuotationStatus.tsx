@@ -19,6 +19,16 @@ const QuotationStatus = ({}, ref: any) => {
       queryKey: ["current-quotation"],
     });
 
+  useEffect(() => {
+    if (currentQuotation) {
+      const data = currentQuotation as any;
+      const quotationPending = data.$values.filter(
+        (item) => item.quotationStatus === "Pending"
+      );
+      setQuotations(quotationPending);
+    }
+  }, [currentQuotation]);
+
   useImperativeHandle(ref, () => {
     return {
       openModal: () => setIsOpenModal(true),
@@ -32,16 +42,6 @@ const QuotationStatus = ({}, ref: any) => {
   if (isLoadingCurrentQuotation) {
     return <Skeleton />;
   }
-
-  useEffect(() => {
-    if (currentQuotation) {
-      const data = currentQuotation as any;
-      const quotationPending = data.$values.filter(
-        (item) => item.quotationStatus === "Pending"
-      );
-      setQuotations(quotationPending);
-    }
-  }, [currentQuotation]);
 
   return (
     <Modal

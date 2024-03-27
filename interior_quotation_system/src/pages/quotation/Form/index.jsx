@@ -17,33 +17,31 @@ import {
 } from "antd";
 import "./styled.scss";
 import {
-  DATA_SELECT_FAKE_2,
-  DATA_SELECT_FAKE_3,
-  DATA_SELECT_FAKE_4,
+  CEIL_DATA,
+  FLOOR_DATA,
   PRODUCTS_LIST_MOCK,
+  WALL_DATA,
 } from "./constant";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import ProductAPI from "../../../api/products";
 import HomeParameterModal from "./HomeParameterModal";
 import QuotationAPI from "../../../api/quotation";
 import * as yup from "yup";
-import {  useFormik } from "formik";
-
+import { useFormik } from "formik";
+import { FormatCurrency } from "../../../utils/helper";
+import { useNavigate } from "react-router-dom";
+import { PAGE_ROUTES } from "../../../utils/constant";
 
 const schema = yup.object().shape({
   styleId: yup.string().required("Home style is required"),
-  witdh: yup.number().required(),
-  height: yup.number().required(),
-  length: yup.number().required(),
   totalConstructionCost: yup.number(),
   totalProductCost: yup.number(),
   homeStyleId: yup.number().required("Home is required"),
   floorConstructionId: yup.number().required("Floor is required"),
   wallConstructId: yup.number().required("Wall is required"),
-  ceilingConstructId: yup.number().required('Ceil is required'),
-  quotationDetailDTOs: yup.array().min(1,'You need to select 1 product item')
-})
-
+  ceilingConstructId: yup.number().required("Ceil is required"),
+  quotationDetailDTOs: yup.array().min(1, "You need to select 1 product item"),
+});
 
 const QuotationFormPage = () => {
   const formik = useFormik({
@@ -56,34 +54,28 @@ const QuotationFormPage = () => {
       totalProductCost: 0,
       homeStyleId: "",
       floorConstructionId: "",
-      wallConstructId: '',
+      wallConstructId: "",
       ceilingConstructId: "",
       quotationDetailDTOs: [],
     },
+    enableReinitialize: true,
     validationSchema: schema,
     onSubmit: (values) => {
-      console.log(values);
-    }
-  })
-
+      mutateQuotationForm(values);
+    },
+  });
 
   const homeParameterRef = useRef();
   const [products, setProducts] = useState([]);
-  
-  useEffect(() => {
-    mutate();
-  }, []);
+  const navigate = useNavigate();
 
-  const calculateTotalProductPrice = () => {
-    const result = formik.values.quotationDetailDTOs.reduce(
-      (acc, current) => acc + current.price,
-      0
-    );
-    formik.setFieldValue('totalProductCost', result)
-  };
+  useEffect(() => {
+    mutateProductsList();
+  }, []);
 
   useEffect(() => {
     calculateTotalProductPrice();
+    onCalculateHomeStyle();
   }, [formik.values]);
 
   const { isLoading: isLoadingCurrentQuotation, data: currentQuotation } =
@@ -102,66 +94,51 @@ const QuotationFormPage = () => {
     queryKey: ["home-style-list"],
   });
 
-  const { isPending: isProductLoading, mutate } = useMutation({
-    mutationFn: ProductAPI.getAllProductList,
-    mutationKey: "products-list",
-    onError: () => {
-      message.error("Error occur when get all products");
-    },
-    onSuccess: (res) => {
-      const result = res.responses.$values.map((product) => {
-        return {
-          name: product.name,
-          image: product.imageUrl,
-          price: product.price,
-          action: product.productId,
-        };
-      });
+  const { isPending: isProductLoading, mutate: mutateProductsList } =
+    useMutation({
+      mutationFn: ProductAPI.getAllProductList,
+      mutationKey: "products-list",
+      onError: () => {
+        message.error("Error occur when get all products");
+      },
+      onSuccess: (res) => {
+        const result = res.responses.$values.map((product) => {
+          return {
+            name: product.name,
+            image: product.imageUrl,
+            price: product.price,
+            action: product.productId,
+          };
+        });
 
-      setProducts(result);
-    },
-  });
+        setProducts(result);
+      },
+    });
 
   const { isPending: isLoadingSubmitQuotation, mutate: mutateQuotationForm } =
     useMutation({
       mutationFn: QuotationAPI.SubmitQuotation,
       mutationKey: "submit-quotation",
       onSuccess: () => {
-        message.success("Save quotation is successfully");
+        message.success("Lưu hóa đơn thành công");
+        navigate(PAGE_ROUTES.HOME);
       },
       onError: (error) => {
         message.error(error);
       },
     });
 
-  if (
-    isHomeStyleLoading ||
-    isProductStyleLoading ||
-    isLoadingCurrentQuotation ||
-    isProductLoading
-  ) {
-    return <Skeleton avatar paragraph={{ rows: 4 }} />;
-  }
-
-  const onCallBackParameter = (values) => {
-    formik.setValues({
-      ...formik.values,
-      ...values
-    })
-
-
-  };
-
   const onCallBackSelectedProduct = (product) => {
     const productIndex = formik.values.quotationDetailDTOs.findIndex(
       (productItem) => productItem.productId === product.action
     );
+
     if (productIndex > -1) {
       const result = formik.values.quotationDetailDTOs.filter(
         (item) => item.productId !== product.action
       );
 
-      formik.setFieldValue('quotationDetailDTOs', result)
+      formik.setFieldValue("quotationDetailDTOs", result);
     } else {
       const newProductsList = [
         ...formik.values.quotationDetailDTOs,
@@ -171,34 +148,156 @@ const QuotationFormPage = () => {
           price: product.price,
         },
       ];
-      formik.setFieldValue('quotationDetailDTOs', newProductsList)
 
+      formik.setFieldValue("quotationDetailDTOs", newProductsList);
     }
   };
 
-  const onSubmitQuotationForm = () => {
-    // mutateQuotationForm(quotationForm);
+  const calculateTotalProductPrice = () => {
+    const result = formik.values.quotationDetailDTOs.reduce(
+      (acc, current) => acc + current.price,
+      0
+    );
+    formik.setFieldValue("totalProductCost", result * 1000);
   };
-
 
   const onCalculateHomeStyle = () => {
-    const totalHomePrice= formik.values.totalConstructionCost
-  }
+    const totalHomePrice = getHomePrice();
+    const totalStylePrice = getStylePrice();
+    const totalWallPrice = getWallConstructionStyle();
+    const totalFloorPrice = getFloorConstructionStyle();
+    const totalCeilPrice = getCeilStyle();
 
+    formik.setFieldValue(
+      "totalConstructionCost",
+      totalHomePrice +
+        totalStylePrice +
+        totalWallPrice +
+        totalFloorPrice +
+        totalCeilPrice
+    );
+  };
 
   const getHomePrice = () => {
-    if(formik.values.homeStyleId) {
+    const areaSquare = formik.values.witdh * formik.values.length;
+    if (formik.values.homeStyleId) {
+      switch (formik.values.homeStyleId) {
+        case 1: {
+          return areaSquare * 350000;
+        }
+
+        case 2: {
+          return areaSquare * 220000;
+        }
+
+        case 3: {
+          return areaSquare * 220000;
+        }
+
+        case 4: {
+          return areaSquare * 200000;
+        }
+      }
     }
 
-    return 0
-  }
+    return 0;
+  };
 
+  const getStylePrice = () => {
+    const areaSquare = formik.values.witdh * formik.values.length;
+    if (formik.values.styleId) {
+      switch (formik.values.styleId) {
+        case 1: {
+          return areaSquare * 200000;
+        }
+
+        case 2: {
+          return areaSquare * 220000;
+        }
+
+        case 3: {
+          return areaSquare * 220000;
+        }
+
+        case 4: {
+          return areaSquare * 350000;
+        }
+      }
+    }
+
+    return 0;
+  };
+
+  const getWallConstructionStyle = () => {
+    const heightSQuare = formik.values.height * formik.values.length;
+
+    switch (formik.values.wallConstructId) {
+      case 3: {
+        return heightSQuare * 150000;
+      }
+
+      case 4: {
+        return heightSQuare * 250000;
+      }
+    }
+
+    return 0;
+  };
+
+  const getFloorConstructionStyle = () => {
+    const areaSquare = formik.values.witdh * formik.values.length;
+
+    if (formik.values.floorConstructionId) {
+      switch (formik.values.floorConstructionId) {
+        case 1: {
+          return areaSquare * 200000;
+        }
+
+        case 2: {
+          return areaSquare * 350000;
+        }
+      }
+    }
+
+    return 0;
+  };
+
+  const getCeilStyle = () => {
+    const areaSquare = formik.values.witdh * formik.values.length;
+
+    if (formik.values.ceilingConstructId) {
+      switch (formik.values.ceilingConstructId) {
+        case 5: {
+          return areaSquare * 100000;
+        }
+
+        case 6: {
+          return areaSquare * 200000;
+        }
+      }
+    }
+
+    return 0;
+  };
+  if (
+    isHomeStyleLoading ||
+    isProductStyleLoading ||
+    isLoadingCurrentQuotation ||
+    isProductLoading
+  ) {
+    return <Skeleton avatar paragraph={{ rows: 4 }} />;
+  }
 
   return (
     <>
       <HomeParameterModal
         ref={homeParameterRef}
-        CallBackParameter={onCallBackParameter}
+        CallBackParameter={(values) => {
+          formik.setValues({
+            ...formik.values,
+            ...values,
+          });
+        }}
       />
 
       <Navbar></Navbar>
@@ -468,9 +567,11 @@ const QuotationFormPage = () => {
                               className="title-label"
                               label="1. Loại nhà thi công"
                             >
-                              <Select 
-                              name ="homeStyleId"
-                              onChange={(value) => formik.setFieldValue('homeStyleId', value)}
+                              <Select
+                                name="homeStyleId"
+                                onChange={(value) => {
+                                  formik.setFieldValue("homeStyleId", value);
+                                }}
                               >
                                 {homeStyles.$values.map((style) => (
                                   <Select.Option
@@ -481,9 +582,11 @@ const QuotationFormPage = () => {
                                   </Select.Option>
                                 ))}
                               </Select>
-                              {formik.errors && <div className="error-msg">
-                                {formik.errors.homeStyleId}
-                                </div>}
+                              {formik.errors && (
+                                <div className="error-msg">
+                                  {formik.errors.homeStyleId}
+                                </div>
+                              )}
                             </Form.Item>
                             <Form.Item
                               className="title-label"
@@ -505,15 +608,22 @@ const QuotationFormPage = () => {
                                   >
                                     Ốp nền:{" "}
                                   </p>
-                                  <Select name = "floorConstructionId" options={DATA_SELECT_FAKE_2}
-                               onChange={(value) => formik.setFieldValue('floorConstructionId', value)}
-                                  
+                                  <Select
+                                    name="floorConstructionId"
+                                    options={FLOOR_DATA}
+                                    onChange={(value) =>
+                                      formik.setFieldValue(
+                                        "floorConstructionId",
+                                        value
+                                      )
+                                    }
                                   />
 
-                                  
-                              {formik.errors && <div className="error-msg">
-                                {formik.errors.floorConstructionId}
-                                </div>}
+                                  {formik.errors && (
+                                    <div className="error-msg">
+                                      {formik.errors.floorConstructionId}
+                                    </div>
+                                  )}
                                 </Flex>
 
                                 <Flex gap="middle">
@@ -525,15 +635,22 @@ const QuotationFormPage = () => {
                                   >
                                     Ốp tường:{" "}
                                   </p>
-                                  <Select name = "wallConstructId" options={DATA_SELECT_FAKE_3} 
-                                  onChange={(value) => formik.setFieldValue('wallConstructId', value)}
+                                  <Select
+                                    name="wallConstructId"
+                                    options={WALL_DATA}
+                                    onChange={(value) =>
+                                      formik.setFieldValue(
+                                        "wallConstructId",
+                                        value
+                                      )
+                                    }
                                   />
 
-
-                                  
-                              {formik.errors && <p className="error-msg">
-                                {formik.errors.wallConstructId}
-                                </p>}
+                                  {formik.errors && (
+                                    <p className="error-msg">
+                                      {formik.errors.wallConstructId}
+                                    </p>
+                                  )}
                                 </Flex>
 
                                 <Flex gap="middle">
@@ -545,15 +662,22 @@ const QuotationFormPage = () => {
                                   >
                                     Trần nhà:{" "}
                                   </p>
-                                  <Select name = "ceilingConstructId" options={DATA_SELECT_FAKE_4}
-                               onChange={(value) => formik.setFieldValue('ceilingConstructId', value)}
+                                  <Select
+                                    name="ceilingConstructId"
+                                    options={CEIL_DATA}
+                                    onChange={(value) =>
+                                      formik.setFieldValue(
+                                        "ceilingConstructId",
+                                        value
+                                      )
+                                    }
                                   />
 
-
-                                  
-                              {formik.errors && <p className="error-msg"> 
-                                {formik.errors.ceilingConstructId}
-                                </p>}
+                                  {formik.errors && (
+                                    <p className="error-msg">
+                                      {formik.errors.ceilingConstructId}
+                                    </p>
+                                  )}
                                 </Flex>
                               </Flex>
                             </Form.Item>
@@ -561,18 +685,22 @@ const QuotationFormPage = () => {
                               className="title-label"
                               label="4. Phong cách thiết kế"
                             >
-                              <Radio.Group 
-                              defaultValue={1}
-                              onChange={(value) => formik.setFieldValue('styleId', value.target.value)}
+                              <Radio.Group
+                                defaultValue={1}
+                                onChange={(value) =>
+                                  formik.setFieldValue(
+                                    "styleId",
+                                    value.target.value
+                                  )
+                                }
                               >
-                               
-                                  {productStyles.$values.map((item) => {
-                                    return (
-                                      <Radio value={item.id} key={item.id}>
-                                        {item.name}
-                                      </Radio>
-                                    );
-                                  })}
+                                {productStyles.$values.map((item) => {
+                                  return (
+                                    <Radio value={item.id} key={item.id}>
+                                      {item.name}
+                                    </Radio>
+                                  );
+                                })}
                               </Radio.Group>
                             </Form.Item>
                           </Col>
@@ -591,25 +719,24 @@ const QuotationFormPage = () => {
                 <p className="price-label">
                   Tổng giá tiền thi công :{" "}
                   <span className="price">
-                    {formik.values.totalConstructionCost}
-                    VND
+                    {FormatCurrency.format(formik.values.totalConstructionCost)}{" "}
                   </span>
                 </p>
 
                 <p className="price-label">
                   Tổng giá tiền sản phẩm :{" "}
                   <span className="price">
-                    {formik.values.totalProductCost} 
-                    VND
+                    {FormatCurrency.format(formik.values.totalProductCost)}
                   </span>
                 </p>
               </Flex>
 
               <p className="total-price">
                 Thành tiền:
-                {formik.values.totalConstructionCost +
-                 formik.values.totalProductCost}
-                VND
+                {FormatCurrency.format(
+                  formik.values.totalConstructionCost +
+                    formik.values.totalProductCost
+                )}{" "}
               </p>
 
               <Flex gap="middle">
@@ -617,8 +744,7 @@ const QuotationFormPage = () => {
                   htmlType="submit"
                   type="primary"
                   size="large"
-                  disabled = {formik.errors}
-                  
+                  loading={isLoadingSubmitQuotation}
                 >
                   Lưu Hóa Đơn
                 </Button>

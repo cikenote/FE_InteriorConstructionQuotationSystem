@@ -1,8 +1,8 @@
 export const PAGE_ROUTES = {
-  LOGIN: "/",
+  LOGIN: "/login",
   REGISTER: "/register",
   QUOTATION_FORM: "/quotation/form",
-  HOME: "/home",
+  HOME: "/",
   FORGOT_PASSWORD: "/forgot-password",
 
   STAFF: {

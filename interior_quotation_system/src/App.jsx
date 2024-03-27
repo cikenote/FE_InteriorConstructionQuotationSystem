@@ -26,14 +26,14 @@ import PrivateRoutes from "./routes/PrivateRoutes";
 function App() {
   return (
     <Routes>
+      <Route path={PAGE_ROUTES.HOME} index element={<HomePage />} />
       <Route
         path={PAGE_ROUTES.FORGOT_PASSWORD}
         element={<ForgotPasswordPage />}
       />
-      <Route path={PAGE_ROUTES.LOGIN} index element={<LoginPage />} />
+      <Route path={PAGE_ROUTES.LOGIN} element={<LoginPage />} />
       <Route path={PAGE_ROUTES.REGISTER} element={<RegisterPage />} />
       <Route element={<PrivateRoutes />}>
-        <Route path={PAGE_ROUTES.HOME} element={<HomePage />} />
         <Route
           path={PAGE_ROUTES.QUOTATION_FORM}
           element={<QuotationFormPage />}

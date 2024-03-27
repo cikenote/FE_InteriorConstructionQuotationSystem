@@ -1,4 +1,5 @@
 import { Checkbox, Image, Tag } from "antd";
+import { FormatCurrency } from "../../../utils/helper";
 
 export const PRODUCTS_LIST_MOCK = ({ onSelectedProduct }) => [
   {
@@ -7,12 +8,15 @@ export const PRODUCTS_LIST_MOCK = ({ onSelectedProduct }) => [
   },
   {
     title: "Ảnh",
-    dataIndex: "img",
+    dataIndex: "image",
     render: (img) => <Image alt="product-alt" src={img} width={100} />,
   },
   {
     title: "Giá",
     dataIndex: "price",
+    render: (price) => (
+      <Tag color="geekblue">{FormatCurrency.format(price * 1000)}</Tag>
+    ),
   },
   {
     title: "Chọn",
@@ -141,7 +145,7 @@ export const DATA_SELECT_FAKE = [
   },
 ];
 
-export const DATA_SELECT_FAKE_2 = [
+export const FLOOR_DATA = [
   {
     label: "Bằng gạch",
     value: 1,
@@ -152,31 +156,24 @@ export const DATA_SELECT_FAKE_2 = [
   },
 ];
 
-export const DATA_SELECT_FAKE_3 = [
+export const WALL_DATA = [
   {
-    label: "Tường gạch",
+    label: "Sơn Tường",
     value: 3,
   },
   {
-    label: "Tường vôi",
+    label: "Dán Tường",
     value: 4,
   },
+];
+
+export const CEIL_DATA = [
   {
-    label: "Giấy dán tường",
+    label: "Thạch cao chống cháy",
     value: 5,
   },
-];
-
-export const DATA_SELECT_FAKE_4 = [
   {
-    label: "Thạch cao",
+    label: "Thạch cao tiêu âm",
     value: 6,
   },
-  {
-    label: "Bê tông",
-    value: 7,
-  },
 ];
-
-
-

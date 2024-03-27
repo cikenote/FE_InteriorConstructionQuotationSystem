@@ -11,6 +11,7 @@ import { useNavigate } from "react-router";
 import { PAGE_ROUTES } from "../../utils/constant";
 
 const Header = () => {
+  const accessToken = localStorage.getItem("accessToken");
   const [menuActive, setMenuState] = useState(false);
   const navigate = useNavigate();
   const logoutAccount = () => {
@@ -99,14 +100,16 @@ const Header = () => {
                                             </a>
                                         </li> */}
 
-                    <li>
-                      <a
-                        onClick={ClickHandler}
-                        href={PAGE_ROUTES.QUOTATION_FORM}
-                      >
-                        Báo giá
-                      </a>
-                    </li>
+                    {accessToken && (
+                      <li>
+                        <a
+                          onClick={ClickHandler}
+                          href={PAGE_ROUTES.QUOTATION_FORM}
+                        >
+                          Báo giá
+                        </a>
+                      </li>
+                    )}
                   </ul>
                 </div>
               </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import DashboardAPI from "../apis/DashboardAPI";
+import DashboardAPI from "../../../api/dashboard";
 
 const Dashboard = () => {
   const [productCount, setProductCount] = useState(null);

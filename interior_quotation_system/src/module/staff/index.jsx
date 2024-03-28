@@ -4,6 +4,7 @@ import { GoProject } from "react-icons/go";
 import { LuQuote } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import { PAGE_ROUTES } from "../../utils/constant";
+import Dashboard from './Dashboard/Dashboard';
 
 const StaffRole = () => {
     return (
@@ -42,6 +43,18 @@ const StaffRole = () => {
                             to={PAGE_ROUTES.STAFF.QUOTATIONS}
                         >
                             Quotations
+                        </Link>
+                    ),
+                },
+                {
+                    key: "dashboard",
+                    icon: <LuQuote />,
+                    label: (
+                        <Link
+                            style={{ textDecoration: "none" }}
+                            to={PAGE_ROUTES.STAFF.DASHBOARD}
+                        >
+                            Dashboard
                         </Link>
                     ),
                 },

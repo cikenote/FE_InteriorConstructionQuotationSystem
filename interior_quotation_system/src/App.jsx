@@ -20,6 +20,7 @@ import RegisterPage from "./pages/register/RegisterPage";
 import ItemDetail from "./pages/shop/ItemDetail";
 import ShopItem from "./pages/shop/index";
 import { PAGE_ROUTES } from "./utils/constant";
+import Dashboard from './module/staff/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -37,6 +38,8 @@ function App() {
       <Route path="/login" index element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+
+
       <Route
         path={PAGE_ROUTES.QUOTATION_FORM}
         element={<QuotationFormPage />}
@@ -44,6 +47,7 @@ function App() {
 
       <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
         <Route path={PAGE_ROUTES.STAFF.PROJECTS} element={<StaffProjects />} />
+        <Route path={PAGE_ROUTES.STAFF.DASHBOARD} element={<Dashboard />} />
         <Route
           path={PAGE_ROUTES.STAFF.QUOTATIONS}
           element={<StaffQuotation />}

@@ -2,10 +2,10 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import SimpleReactValidator from "simple-react-validator";
 import "../../styles/pages/loginPage.scss";
+import { useHistory } from "react-router-dom"
 
 const ForgotPassword = () => {
   const [value, setValue] = useState({ email: "" });

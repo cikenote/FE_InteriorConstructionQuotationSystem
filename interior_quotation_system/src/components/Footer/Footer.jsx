@@ -73,7 +73,6 @@ const Footer = (props) => {
                 <div className="contact-ft">
                   <ul>
                     <li>
-                      {" "}
                       <RoomOutlinedIcon /> Lô E2a-7, Đường D1, Đ. D1, Long Thạnh
                       Mỹ, <br /> Thành Phố Thủ Đức, Thành phố Hồ Chí Minh 700000
                     </li>

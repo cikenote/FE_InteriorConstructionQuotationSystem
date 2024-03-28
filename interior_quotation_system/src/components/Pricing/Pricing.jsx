@@ -2,6 +2,7 @@ import "../../styles/components/pricing.scss";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Error from "../Error/Error";
+import { Link } from "react-router-dom"
 const Pricing = () => {
   const ClickHandler = () => {
     window.scrollTo(10, 0);
@@ -98,7 +99,7 @@ const Pricing = () => {
                             <li>5</li>
                           </ul>
                         )}
-                        <a onClick={ClickHandler}>Nhận Báo Giá</a>
+                        <Link to={"/quotation/form"} onClick={ClickHandler}>Nhận Báo Giá</Link>
                       </div>
                     </div>
                   </div>

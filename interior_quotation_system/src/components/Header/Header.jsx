@@ -123,7 +123,7 @@ const Header = () => {
               </div>
               <div className="col-lg-3 col-md-2 col-2">
                 <div className="header-right">
-                  <div className="header-search-form-wrapper">
+                  {/* <div className="header-search-form-wrapper">
                     <div className="cart-search-contact">
                       <button
                         onClick={() => setMenuState(!menuActive)}
@@ -154,7 +154,7 @@ const Header = () => {
                         </form>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                   {getUser ? (
                     <Dropdown
                       menu={{

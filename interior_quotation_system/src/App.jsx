@@ -17,9 +17,9 @@ import ForgotPasswordPage from "./pages/forgot-password/ForgotPasswordPage";
 import BlogDetailPage from "./pages/blog-detail/BlogDetailPage";
 import { PAGE_ROUTES } from "./utils/constant";
 import StaffRole from "./module/staff";
-import StaffProjects from "./module/staff/Projects";
+// import StaffProjects from "./module/staff/Projects";
 import StaffQuotation from "./module/staff/Quotation";
-import StaffProducts from "./module/staff/Products";
+import StaffProduct from "./module/staff/Product";
 import QuotationFormPage from "./pages/quotation/Form";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import StaffDashboard from "./module/staff/Dashboard";
@@ -51,12 +51,12 @@ function App() {
       <Route path="/shop" element={<ShopItem />} />
       <Route path="/shop/item/:productId" element={<ItemDetail />} />
       <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
-        <Route path={PAGE_ROUTES.STAFF.PROJECTS} element={<StaffProjects />} />
+        {/* <Route path={PAGE_ROUTES.STAFF.PROJECTS} element={<StaffProjects />} /> */}
         <Route
           path={PAGE_ROUTES.STAFF.QUOTATIONS}
           element={<StaffQuotation />}
         />
-        <Route path={PAGE_ROUTES.STAFF.PRODUCTS} element={<StaffProducts />} />
+        <Route path={PAGE_ROUTES.STAFF.PRODUCT} element={<StaffProduct />} />
         <Route path={PAGE_ROUTES.STAFF.DASHBOARD} element={<StaffDashboard />} />
       </Route>
     </Routes>

@@ -10,18 +10,7 @@ const StaffRole = () => {
     return (
         <MainLayout
             menuItems={[
-                {
-                    key: "projects",
-                    icon: <GoProject />,
-                    label: (
-                        <Link
-                            style={{ textDecoration: "none" }}
-                            to={PAGE_ROUTES.STAFF.PROJECTS}
-                        >
-                            Projects
-                        </Link>
-                    ),
-                },
+       
                 {
                     key: "dashboard",
                     icon: <Dashboard />,
@@ -34,18 +23,18 @@ const StaffRole = () => {
                         </Link>
                     ),
                 },
-                // {
-                //   key: "products",
-                //   icon: <GoProject />,
-                //   label: (
-                //     <Link
-                //       style={{ textDecoration: "none" }}
-                //       to={PAGE_ROUTES.STAFF.PRODUCTS}
-                //     >
-                //       Product
-                //     </Link>
-                //   ),
-                // },
+                {
+                  key: "product",
+                  icon: <GoProject />,
+                  label: (
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to={PAGE_ROUTES.STAFF.PRODUCT}
+                    >
+                      Product
+                    </Link>
+                  ),
+                },
                 {
                     key: "quotation",
                     icon: <LuQuote />,

@@ -2,7 +2,7 @@ import { Modal, Form, Row, Col, Input, DatePicker } from "antd";
 import { forwardRef, useImperativeHandle, useState } from "react";
 import { FORM_RULES } from "../../../utils/constant";
 
-const ProjectModal = ({ projectUpdate }, ref) => {
+const ProductModal = ({ productUpdate }, ref) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [form] = Form.useForm();
 
@@ -20,7 +20,7 @@ const ProjectModal = ({ projectUpdate }, ref) => {
 
   return (
     <Modal
-      title={projectUpdate ? "Update Project" : "New Project"}
+      title={productUpdate ? "Update Product" : "New Product"}
       open={isOpenModal}
       onCancel={onCloseModal}
     >
@@ -75,4 +75,4 @@ const ProjectModal = ({ projectUpdate }, ref) => {
   );
 };
 
-export default forwardRef(ProjectModal);
+export default forwardRef(ProductModal);

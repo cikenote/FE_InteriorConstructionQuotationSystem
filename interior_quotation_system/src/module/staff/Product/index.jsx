@@ -3,7 +3,7 @@ import TableLayout from "../../../layouts/TableLayout";
 import { PRODUCT_COLUMNS, PRODUCT_DATA_SOURCE } from "./constant";
 import ProductModal from "./ProductModal";
 
-const StaffProducts = () => {
+const StaffProduct = () => {
   const productActionModal = useRef();
 
   const searchStaffProduct = (event) => {};
@@ -23,4 +23,4 @@ const StaffProducts = () => {
   );
 };
 
-export default StaffProducts;
+export default StaffProduct;

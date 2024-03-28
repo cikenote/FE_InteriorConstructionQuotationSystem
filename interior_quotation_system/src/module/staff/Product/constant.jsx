@@ -3,9 +3,9 @@ import { Button, Flex } from "antd";
 
 export const PRODUCT_COLUMNS = () => [
   {
-    title: "Title",
-    dataIndex: "title",
-    key: "title",
+    title: "Name",
+    dataIndex: "name",
+    key: "name",
   },
   {
     title: "Image",
@@ -25,9 +25,9 @@ export const PRODUCT_COLUMNS = () => [
     ),
   },
   {
-    title: "Style",
-    dataIndex: "style",
-    key: "style",
+    title: "Price",
+    dataIndex: "price",
+    key: "price",
   },
   {
     title: "Description",
@@ -36,14 +36,14 @@ export const PRODUCT_COLUMNS = () => [
   },
   
   {
-    title: "Start date",
-    dataIndex: "startDate",
-    key: "startDate",
+    title: "Create at",
+    dataIndex: "createAt",
+    key: "createAt",
   },
   {
-    title: "End Date",
-    dataIndex: "endDate",
-    key: "endDate",
+    title: "Update at",
+    dataIndex: "updateAt",
+    key: "updateAt",
   },
   {
     title: "Actions",

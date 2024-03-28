@@ -51,7 +51,7 @@ const QuotationModal = ({ AfterCloseModal }, ref) => {
     <Modal
       open={isOpenModal}
       onCancel={onCloseModal}
-      title="Update Quotation 123"
+      title="Update Quotation"
       closeIcon={false}
       footer
     >
@@ -60,8 +60,8 @@ const QuotationModal = ({ AfterCloseModal }, ref) => {
         <Row gutter={[10, 10]}>
           <Col span={24}>
             <Form.Item
-              label="Quantity"
-              name="quantity"
+              label="Status"
+              name="quotationStatus"
               rules={[FORM_RULES.required]}
             >
               <Input

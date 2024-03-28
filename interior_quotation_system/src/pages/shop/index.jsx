@@ -108,7 +108,7 @@ const ShopItem = () => {
                                             <p className="price">
                                                 ${product.price}
                                             </p>
-                                            <div
+                                            {/* <div
                                                 className="button-cart"
                                                 onClick={() =>
                                                     onAddProductIntoQuotation(
@@ -117,7 +117,7 @@ const ShopItem = () => {
                                                 }
                                             >
                                                 Xem báo giá
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 );

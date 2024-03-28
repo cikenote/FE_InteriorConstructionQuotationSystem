@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import TableLayout from "../../../layouts/TableLayout";
-import { PROJECT_COLUMNS, PROJECT_DATA_SOURCE } from "./constant";
 import ProjectModal from "./ProjectModal";
 import "./style.scss"
 import RegisterPage from './../../../pages/register/RegisterPage';

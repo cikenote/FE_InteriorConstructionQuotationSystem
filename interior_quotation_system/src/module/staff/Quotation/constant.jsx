@@ -15,15 +15,8 @@ export const QUOTATION_COLUMNS = ({
   },
   {
     title: "Full Name",
-    dataIndex: "user",
-    key: "user",
-    render: (user) => <Typography>{user?.fullname || ""}</Typography>,
-  },
-  {
-    title: "Phone number",
-    dataIndex: "user",
-    key: "user",
-    render: (user) => <Typography>{user?.phoneNumber || ""}</Typography>,
+    dataIndex: "fullname",
+    key: "fullname",
   },
   {
     title: "Status",

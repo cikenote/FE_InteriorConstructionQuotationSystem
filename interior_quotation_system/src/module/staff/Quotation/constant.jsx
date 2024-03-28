@@ -13,18 +13,12 @@ export const QUOTATION_COLUMNS = ({
     dataIndex: "$id",
     key: "$id",
   },
-  {
-    title: "Full Name",
-    dataIndex: "user",
-    key: "user",
-    render: (user) => <Typography>{user?.fullname || ""}</Typography>,
-  },
-  {
-    title: "Phone number",
-    dataIndex: "user",
-    key: "user",
-    render: (user) => <Typography>{user?.phoneNumber || ""}</Typography>,
-  },
+  // {
+  //   title: "Full Name",
+  //   dataIndex: "user",
+  //   key: "user",
+  //   render: (user) => <Typography>{user?.fullname || ""}</Typography>,
+  // },
   {
     title: "Status",
     dataIndex: "quotationStatus",
@@ -39,12 +33,12 @@ export const QUOTATION_COLUMNS = ({
       <Typography>{dayjs(date).format("MM-DD-YYYY")}</Typography>
     ),
   },
-  {
-    title: "Style",
-    dataIndex: "style",
-    key: "style",
-    render: (style) => <Typography>{style?.name || "-"}</Typography>,
-  },
+  // {
+  //   title: "Style",
+  //   dataIndex: "style",
+  //   key: "style",
+  //   render: (style) => <Typography>{style?.name || "-"}</Typography>,
+  // },
   // {
   //   title: "Price",
   //   dataIndex: "style",

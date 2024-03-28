@@ -22,7 +22,7 @@ import StaffQuotation from "./module/staff/Quotation";
 import StaffProducts from "./module/staff/Products";
 import QuotationFormPage from "./pages/quotation/Form";
 import PrivateRoutes from "./routes/PrivateRoutes";
-
+import StaffDashboard from "./module/staff/Dashboard";
 function App() {
   return (
     <Routes>
@@ -56,6 +56,7 @@ function App() {
           element={<StaffQuotation />}
         />
         <Route path={PAGE_ROUTES.STAFF.PRODUCTS} element={<StaffProducts />} />
+        <Route path={PAGE_ROUTES.STAFF.DASHBOARD} element={<StaffDashboard />} />
       </Route>
     </Routes>
   );

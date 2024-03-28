@@ -1,10 +1,10 @@
 import React from "react";
 import MainLayout from "../../layouts/MainLayout";
 import { GoProject } from "react-icons/go";
-import { LuQuote } from "react-icons/lu";
+import { LuQuote, LuTextQuote } from "react-icons/lu";
 import { Link } from "react-router-dom";
 import { PAGE_ROUTES } from "../../utils/constant";
-import { Dashboard } from "@mui/icons-material";
+import { Article, Dashboard } from "@mui/icons-material";
 
 const StaffRole = () => {
     return (
@@ -37,13 +37,25 @@ const StaffRole = () => {
                 },
                 {
                     key: "quotation",
-                    icon: <LuQuote />,
+                    icon: <LuTextQuote />,
                     label: (
                         <Link
                             style={{ textDecoration: "none" }}
                             to={PAGE_ROUTES.STAFF.QUOTATIONS}
                         >
                             Quotations
+                        </Link>
+                    ),
+                },
+                {
+                    key: "article",
+                    icon: <Article />,
+                    label: (
+                        <Link
+                            style={{ textDecoration: "none" }}
+                            to={PAGE_ROUTES.STAFF.ARTICLE}
+                        >
+                            Article
                         </Link>
                     ),
                 },

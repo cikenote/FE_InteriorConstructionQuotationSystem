@@ -11,6 +11,7 @@ export const PAGE_ROUTES = {
     QUOTATIONS: "/staff/quotation",
     PRODUCT: "/staff/product",
     DASHBOARD: "/staff/dashboard",
+    ARTICLE: "/staff/article"
   },
   ADMIN: {},
 };

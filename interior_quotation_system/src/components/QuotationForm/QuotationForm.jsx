@@ -27,9 +27,7 @@ const QuotationForm = () => {
       });
     },
   });
-  console.log(quotationsList);
   const onEditQuotation = (id) => {
-    console.log(id);
     quotationRef.current.openModal(id);
   };
   const total = quotationsList?.$values.reduce((accumulator, product) => {

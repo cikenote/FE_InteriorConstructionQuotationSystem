@@ -16,22 +16,9 @@ const StaffQuotation = () => {
   const quotationRef = useRef();
   const [messageApi, contextHolder] = message.useMessage();
   const [quotations, setQuotations] = useState();
+  const [quotationId, setQuotationId] = useState("");
 
-  // const { data: quotationsList, refetch: getQuotationList } = useQuery({
-  //   queryKey: ["quotation"],
-  //   queryFn: () => QuotationAPI.GetQuotationsList(),
-  //   onSuccess: (response) => {
-  //     setQuotations(response);
-  //   },
-  //   onError: () => {
-  //     messageApi.open({
-  //       type: "error",
-  //       content: "Error occur when get quotation list",
-  //     });
-  //   },
-  // });
-
-  const { data: quotationsList } = useQuery({
+  const { data: quotationsList, refetch: getQuotationList } = useQuery({
     queryKey: ["all-quotation"],
     queryFn: () => QuotationAPI.GetAllQuotation(),
     onSuccess: (response) => {
@@ -54,16 +41,16 @@ const StaffQuotation = () => {
     quotationDetailModal.current.openModal(id);
   };
   const onEditQuotation = (id) => {
+    setQuotationId(id);
     quotationRef.current.openModal(id);
   };
   const onDeleteQuotation = (id) => {
     quotationDelete.current.openModal(id);
   };
 
-  console.log(quotation());
   return (
     <>
-      <QuotationModal ref={quotationModal} />
+      {/* <QuotationModal ref={quotationModal} /> */}
       <QuotationDetailModal ref={quotationDetailModal} />
       <QuotationDeleteModal
         ref={quotationDelete}
@@ -72,6 +59,7 @@ const StaffQuotation = () => {
       <QuotationModal
         ref={quotationRef}
         AfterCloseModal={() => getQuotationList()}
+        QuotationId={quotationId}
       />
       {contextHolder}
       <TableLayout

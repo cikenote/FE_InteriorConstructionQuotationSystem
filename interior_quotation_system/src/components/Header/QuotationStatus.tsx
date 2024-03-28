@@ -39,9 +39,9 @@ const QuotationStatus = ({}, ref: any) => {
     setIsOpenModal(false);
   };
 
-  if (isLoadingCurrentQuotation) {
-    return <Skeleton />;
-  }
+  // if (isLoadingCurrentQuotation) {
+  //   return <Skeleton />;
+  // }
 
   return (
     <Modal

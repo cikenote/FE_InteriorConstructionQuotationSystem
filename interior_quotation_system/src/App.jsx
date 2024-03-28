@@ -47,6 +47,7 @@ function App() {
       <Route path="/blog/blog-detail/:articlesId" element={<BlogDetailPage />} />
       <Route path="/contact" element={<ContactPage />} />
       <Route path="/quotation" element={<QuotationPage />} />
+      <Route path="/quotation/form" element={<QuotationFormPage />} />
       <Route path="/shop" element={<ShopItem />} />
       <Route path="/shop/item/:productId" element={<ItemDetail />} />
       <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>

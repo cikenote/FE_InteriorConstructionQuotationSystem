@@ -31,6 +31,7 @@ import { useFormik } from "formik";
 import { FormatCurrency } from "../../../utils/helper";
 import { useNavigate } from "react-router-dom";
 import { PAGE_ROUTES } from "../../../utils/constant";
+import Footer from "../../../components/Footer/Footer";
 
 const schema = yup.object().shape({
   styleId: yup.string().required("Home style is required"),
@@ -279,6 +280,7 @@ const QuotationFormPage = () => {
 
   return (
     <>
+      <div>
       <HomeParameterModal
         ref={homeParameterRef}
         CallBackParameter={(values) => {
@@ -288,10 +290,10 @@ const QuotationFormPage = () => {
           });
         }}
       />
-
       <Navbar></Navbar>
       <form onSubmit={formik.handleSubmit} className="form-container">
         <div className="content">
+          <h3>Bảng Báo Giá</h3>
           <Row gutter={[14, 14]} className="content-detail">
             <Col span={8}>
               <Flex className="layout-item" vertical>
@@ -748,6 +750,8 @@ const QuotationFormPage = () => {
           </footer>
         </div>
       </form>
+      </div>
+      <Footer/>
     </>
   );
 };

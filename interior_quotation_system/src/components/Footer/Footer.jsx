@@ -13,7 +13,7 @@ const Footer = (props) => {
     <footer className={`wpo-site-footer ${props.ftClass}`}>
       <div className="wpo-upper-footer">
         <div className="container">
-          <div className="row">
+          <div className="row justify-content-between align-items-center">
             <div className="col col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
               <div className="widget about-widget">
                 <div className="logo widget-title">
@@ -25,44 +25,7 @@ const Footer = (props) => {
                     <img src="/images/logo-2.png" alt="logo" />
                   </a>
                 </div>
-                {/* <ul>
-                  <li>
-                    <a onClick={ClickHandler} href="/">
-                      <i className="ti-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a onClick={ClickHandler} href="/">
-                      <i className="ti-twitter-alt"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a onClick={ClickHandler} href="/">
-                      <i className="ti-instagram"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a onClick={ClickHandler} href="/">
-                      <i className="ti-google"></i>
-                    </a>
-                  </li>
-                </ul> */}
-              </div>
-            </div>
-            <div className="col col-xl-3  col-lg-4 col-md-6 col-sm-12 col-12">
-              <div className="widget link-widget">
-                <div className="widget-title">
-                  <h3>DỊCH VỤ NỔI BẬT</h3>
-                </div>
-                <ul>
-                  {Services.slice(0, 5).map((service, srv) => (
-                    <li key={srv}>
-                      <a onClick={ClickHandler} href="/service/[slug]">
-                        {service.sTitle}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+                
               </div>
             </div>
             <div className="col col-xl-3  col-lg-4 col-md-6 col-sm-12 col-12">
@@ -84,23 +47,6 @@ const Footer = (props) => {
                     </li>
                   </ul>
                 </div>
-              </div>
-            </div>
-
-            <div className="col col-xl-3  col-lg-4 col-md-6 col-sm-12 col-12">
-              <div className="widget instagram">
-                <div className="widget-title">
-                  <h3>DỰ ÁN NỔI BẬT</h3>
-                </div>
-                <ul className="d-flex">
-                  {Projects.slice(0, 6).map((project, srv) => (
-                    <li key={srv}>
-                      <a onClick={ClickHandler} href="/project">
-                        <img src={project.pImg} alt="" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </div>
           </div>

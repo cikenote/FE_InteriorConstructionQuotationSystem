@@ -20,6 +20,10 @@ const ProductAPI = {
     axiosClient.get(
       `${END_POINT_API.PRODUCTS_CONSTRUCTOR_STYLE}?TypeID=${TypeId}`
     ),
+  CreateNewProduct: (params) =>
+    axiosClient.post(END_POINT_API.PRODUCTS, params),
+  DeleteProduct: (productId) =>
+    axiosClient.delete(`${END_POINT_API.PRODUCTS}/${productId}`),
 };
 
 export default ProductAPI;

@@ -18,10 +18,7 @@ const QuotationModal = ({ AfterCloseModal }, ref) => {
   });
 
   const { mutate, isPending: updateQuotationLoading } = useMutation({
-    mutationFn: (newValue) =>
-      QuotationAPI.UpdateQuotation(
-        newValue
-      ),
+    mutationFn: (newValue) => QuotationAPI.UpdateQuotation(newValue),
     onError: () => {
       messageApi.open({
         type: "error",
@@ -54,7 +51,7 @@ const QuotationModal = ({ AfterCloseModal }, ref) => {
     <Modal
       open={isOpenModal}
       onCancel={onCloseModal}
-      title="Update Quotation"
+      title="Update Quotation 123"
       closeIcon={false}
       footer
     >

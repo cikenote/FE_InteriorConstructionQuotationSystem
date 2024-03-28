@@ -1,10 +1,28 @@
-import { Modal, Form, Row, Col, Input, DatePicker } from "antd";
+import { Modal, Form, Row, Col, Input, DatePicker, message } from "antd";
 import { forwardRef, useImperativeHandle, useState } from "react";
 import { FORM_RULES } from "../../../utils/constant";
+import { useMutation } from "@tanstack/react-query";
+import QuotationAPI from "../../../api/quotation";
+import ProductAPI from "../../../api/products";
 
 const ProductModal = ({ productUpdate }, ref) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [form] = Form.useForm();
+  const {
+    isPending: isLoadingCreateNewProduct,
+    mutate: mutateCreateNewProduct,
+  } = useMutation({
+    mutationFn: ProductAPI.CreateNewProduct,
+    mutationKey: "product-key",
+    onError: (error) => {
+      message.error(error);
+    },
+    onSuccess: () => {
+      message.success("Create new product is successfully");
+      onCloseModal();
+      form.resetFields();
+    },
+  });
 
   useImperativeHandle(ref, () => {
     return {
@@ -16,7 +34,9 @@ const ProductModal = ({ productUpdate }, ref) => {
     setIsOpenModal(false);
   };
 
-  const onFinishForm = (values) => {};
+  const onFinishForm = (values) => {
+    console.log(values);
+  };
 
   return (
     <Modal

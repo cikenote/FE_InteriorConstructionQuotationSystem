@@ -1,7 +1,7 @@
 import { DeleteOutline, EditOutlined } from "@mui/icons-material";
 import { Button, Flex } from "antd";
 
-export const PRODUCT_COLUMNS = () => [
+export const PRODUCT_COLUMNS = ({ onDeleteQuotation }) => [
   {
     title: "Name",
     dataIndex: "name",
@@ -9,8 +9,8 @@ export const PRODUCT_COLUMNS = () => [
   },
   {
     title: "Image",
-    dataIndex: "image",
-    key: "image",
+    dataIndex: "imageUrl",
+    key: "imageUrl",
     render: (image) => (
       <img
         alt="image-alt"
@@ -34,25 +34,19 @@ export const PRODUCT_COLUMNS = () => [
     dataIndex: "description",
     key: "description",
   },
-  
-  {
-    title: "Create at",
-    dataIndex: "createAt",
-    key: "createAt",
-  },
-  {
-    title: "Update at",
-    dataIndex: "updateAt",
-    key: "updateAt",
-  },
+
   {
     title: "Actions",
-    dataIndex: "action",
-    key: "action",
-    render: () => (
+    dataIndex: "productId",
+    key: "productId",
+    render: (id) => (
       <Flex gap="middle">
         <Button icon={<EditOutlined />} type="primary" />
-        <Button icon={<DeleteOutline />} danger />
+        <Button
+          icon={<DeleteOutline />}
+          danger
+          onClick={() => onDeleteQuotation(id)}
+        />
       </Flex>
     ),
   },

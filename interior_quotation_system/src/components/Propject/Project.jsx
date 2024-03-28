@@ -42,7 +42,7 @@ const Project = () => {
                                 <div className="col-lg-12">
                                     <div className="project-grids gallery-container clearfix">
                                         {projects && projects.length > 0 ? (
-                                            projects.map((project, index) => (
+                                            projects.splice(1,6).map((project, index) => (
                                                 <div className="grid" key={index}>
                                                     <div className="wpo-project-item">
                                                         <div className="wpo-project-img">

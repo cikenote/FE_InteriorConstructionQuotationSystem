@@ -1,4 +1,4 @@
-import { Link,  } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Error from "../Error/Error";
 import axios from "axios";
@@ -36,10 +36,20 @@ const BlogList = () => {
                                         <div className="entry-media video-holder">
                                             <img src={blog.img} alt="" />
                                         </div>
-                                        <div className="entry-meta">
+                                        <div className="entry-meta" >
+                                            <div className="entry-details">
+                                                <h2>
+                                                    <Link to={{
+                                                        pathname: `/blog/blog-detail/${blog.articleId}`,
+                                                    }} className="read-more" style={{textDecoration: "none", listStyle: "none"}}>
+                                                        {blog.title}
+                                                    </Link>
+                                                </h2>
+                                                <p>{blog.content}</p>
+                                            </div>
                                             <ul>
                                                 <li>
-                                                    <i className="fi ti-user"></i>{" "}
+                                                    <i className="fi flaticon-calendar"></i>{" "}
                                                     By <a href="/">{blog.authorName}</a>{" "}
                                                 </li>
                                                 <li>

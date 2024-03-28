@@ -58,37 +58,37 @@ const Pricing = () => {
                     </div>
                     <div className="wpo-pricing-bottom">
                       <div className="wpo-pricing-bottom-text">
-                      {style.name === "Ý" ? (
+                        {style.name === "Ý" ? (
                           <ul>
-                            <li>Ý</li>
-                            <li>Ý</li>
-                            <li>3</li>
-                            <li>4</li>
-                            <li>5</li>
+                            <li>Cái nôi của văn hoá kiến trúc châu Âu</li>
+                            <li>Chuẩn mực cho sự tinh tế</li>
+                            <li>Thiết kế sang trọng, hài hoà</li>
+                            <li>Nghệ thuật, ấn tượng.</li>
+                            <li>Ấm cúng, sang trọng.</li>
                           </ul>
                         ) : style.name === "Cổ điển" ? (
                           <ul>
-                            <li>Cổ điển</li>
-                            <li>Cổ điển</li>
-                            <li>3</li>
-                            <li>4</li>
-                            <li>5</li>
+                            <li>Sang trọng, quý phái, đẳng cấp.</li>
+                            <li>Chi tiết trang trí cầu kỳ, hoa văn tinh xảo.</li>
+                            <li>Màu sắc lộng lẫy, tráng lệ.</li>
+                            <li>Chi tiết trang trí dát vàng, phào chỉ, tranh sơn dầu.</li>
+                            <li>Phù hợp với người yêu thích sự sang trọng, đẳng cấp.</li>
                           </ul>
                         ) : style.name === "Nhật Bản" ? (
                           <ul>
-                            <li>Nhật bản</li>
-                            <li>Nhật bản</li>
-                            <li>3</li>
-                            <li>4</li>
-                            <li>5</li>
+                            <li>Vẻ đẹp thanh bình, tinh tế.</li>
+                            <li>Gần gũi thiên nhiên.</li>
+                            <li>Màu sắc trung tính, nhẹ nhàng.</li>
+                            <li>Chi tiết trang trí mang đậm dấu ấn Nhật Bản.</li>
+                            <li>Phù hợp với người yêu thích sự yên bình, thư giãn.</li>
                           </ul>
-                        ) : style.name === "Tân Cổ Điển" ? (
+                        ) : style.name === "Tân cổ điển" ? (
                           <ul>
-                            <li>Tân Cổ điển</li>
-                            <li>Tân Cổ điển</li>
-                            <li>3</li>
-                            <li>4</li>
-                            <li>5</li>
+                            <li>Giao thoa giữa hiện đại và cổ điển.</li>
+                            <li>Thanh lịch, tiện nghi, sang trọng.</li>
+                            <li>Màu sắc pastel kết hợp gam màu trầm ấm.</li>
+                            <li>Chi tiết trang trí tinh tế, hoa văn đẹp mắt.</li>
+                            <li>Phù hợp với người yêu thích sự thanh lịch, sang trọng.</li>
                           </ul>
                         ) : (
                           <ul>

@@ -29,14 +29,8 @@ export const QUOTATION_COLUMNS = ({
     title: "Status",
     dataIndex: "quotationStatus",
     key: "quotationStatus",
-    render: (status) => <Tag color="green">{status}</Tag>,
-  },
-  {
-    title: "Created At",
-    dataIndex: "createdAt",
-    key: "createdAt",
-    render: (date) => (
-      <Typography>{dayjs(date).format("MM-DD-YYYY")}</Typography>
+    render: (status) => (
+      <Tag color={`${status === "Pending" ? "blue" : "green"}`}>{status}</Tag>
     ),
   },
   {
@@ -45,16 +39,6 @@ export const QUOTATION_COLUMNS = ({
     key: "style",
     render: (style) => <Typography>{style?.name || "-"}</Typography>,
   },
-  // {
-  //   title: "Price",
-  //   dataIndex: "style",
-  //   key: "style",
-  // },
-  // {
-  //   title: "Quantity",
-  //   dataIndex: "quantity",
-  //   key: "quantity",
-  // },
   {
     title: "Total Bill",
     dataIndex: "totalBill",
@@ -62,8 +46,8 @@ export const QUOTATION_COLUMNS = ({
   },
   {
     title: "Actions",
-    dataIndex: "productId",
-    key: "productId",
+    dataIndex: "quotationId",
+    key: "quotationId",
     render: (id) => (
       <Flex gap="middle">
         <Button

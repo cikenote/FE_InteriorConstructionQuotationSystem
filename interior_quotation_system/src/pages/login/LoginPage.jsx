@@ -5,29 +5,40 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { FORM_RULES, PAGE_ROUTES } from "../../utils/constant";
 import { useNavigate } from "react-router";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import AuthenticateAPI from "../../api/authen";
 import { Button, Col, Form, Input, Row, message } from "antd";
 import { jwtDecode } from "jwt-decode";
+import { useDispatch } from "react-redux";
+import { updateUserProfile } from "../../services/redux/UserProfileSlice";
 
 const LoginPage = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
-  const { mutate, isPending } = useMutation({
+  const dispatch = useDispatch();
+
+  const {
+    isLoading: isLoadingUserProfile,
+    refetch: getUserProfile,
+    isError: isErrorGetUserProfile,
+    data: userProfileResponse,
+    isSuccess: isSuccessUserProfile,
+  } = useQuery({
+    queryKey: ["user-profile-key"],
+    queryFn: AuthenticateAPI.GetUserInformation,
+    enabled: false,
+  });
+
+  const {
+    mutate,
+    isPending,
+    data: accessToken,
+  } = useMutation({
     mutationFn: AuthenticateAPI.LoginAccount,
     onSuccess: (response) => {
       localStorage.setItem("accessToken", response.token);
-      const userDecode = jwtDecode(response.token);
-      console.log(userDecode);
-      navigate("/shop");
-      if(userDecode.Role == 'staff'){
-        navigate('/staff/quotation');
-      }else if(userDecode.Role == 'admin'){
-        navigate('/staff/quotation');
-      }else{
-        navigate('/shop')
-      }
+      getUserProfile();
     },
     onError: () => {
       messageApi.open({
@@ -44,6 +55,37 @@ const LoginPage = () => {
   const submitForm = (values) => {
     mutate(values);
   };
+
+  const onAuthenticateUser = () => {
+    const userDecode = jwtDecode(accessToken.token);
+    navigate("/shop");
+    if (userDecode.Role == "staff") {
+      navigate("/staff/quotation");
+    } else if (userDecode.Role == "admin") {
+      navigate("/staff/quotation");
+    } else {
+      navigate("/shop");
+    }
+  };
+
+  if (isErrorGetUserProfile) {
+    message.error("Error when get user profile");
+  }
+
+  if (isSuccessUserProfile && userProfileResponse) {
+    dispatch(
+      updateUserProfile({
+        userId: userProfileResponse.userId,
+        username: userProfileResponse.username,
+        fullname: userProfileResponse.fullname,
+        email: userProfileResponse.email,
+        phoneNumber: userProfileResponse.phoneNumber,
+        avtUrl: userProfileResponse.avtUrl,
+      })
+    );
+
+    onAuthenticateUser();
+  }
 
   return (
     <Grid className="loginWrapper">
@@ -91,7 +133,7 @@ const LoginPage = () => {
 
                 <Col span={24}>
                   <Button
-                    loading={isPending}
+                    loading={isPending || isLoadingUserProfile}
                     htmlType="submit"
                     className="cBtnTheme"
                     style={{

@@ -72,6 +72,7 @@ const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
                 options={[
                   { label: "Pending", value: "Pending" },
                   { label: "Done", value: "Done" },
+                  { label: "Cancle", value: "Cancled" },
                 ]}
               ></Select>
             </Form.Item>

@@ -1,14 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import TableLayout from "../../../layouts/TableLayout";
-import { PRODUCT_COLUMNS } from "./constant";
 import ProductModal from "./ProductModal";
+import { PRODUCT_COLUMNS } from "./constant";
+import "./style.scss";
 import { useMutation } from "@tanstack/react-query";
 import ProductAPI from "../../../api/products";
 import { Skeleton, message } from "antd";
-import "./style.scss";
 
 const StaffProduct = () => {
   const [products, setProducts] = useState([]);
+  const [productUpdate, setProductUpdate] = useState();
 
   const {
     isPending: isLoadingProducts,
@@ -18,7 +19,7 @@ const StaffProduct = () => {
     mutationFn: ProductAPI.getAllProductList,
     mutationKey: "products-list",
     onSuccess: (response) => {
-      setProducts(response.responses.$values);
+      setProducts(response.$values);
     },
     onError: (errors) => {
       console.log(errors);
@@ -33,8 +34,8 @@ const StaffProduct = () => {
         message.success("Delete product is successful");
         mutateProductsList();
       },
-      onError: () => {
-        message.error("Error occur when delete product");
+      onError: (errorResponse) => {
+        message.error(errorResponse.response.data.message);
       },
     });
 
@@ -61,9 +62,21 @@ const StaffProduct = () => {
     return <Skeleton paragraph={{ rows: 5 }} />;
   }
 
+  const onUpdateProduct = (product) => {
+    setProductUpdate(product);
+    productActionModal.current.openModal();
+  };
+
   return (
     <div className="product-container">
-      <ProductModal ref={productActionModal} />
+      <ProductModal
+        ref={productActionModal}
+        afterCloseModal={() => {
+          setProductUpdate(undefined);
+          mutateProductsList();
+        }}
+        productUpdate={productUpdate}
+      />
       <TableLayout
         tableColumns={PRODUCT_COLUMNS}
         tableDataSource={() => products}
@@ -71,6 +84,7 @@ const StaffProduct = () => {
         onchangeSearch={searchStaffProduct}
         addNewAction={() => productActionModal.current.openModal()}
         onDeleteQuotation={deleteProduct}
+        onEditQuotation={onUpdateProduct}
       />
     </div>
   );

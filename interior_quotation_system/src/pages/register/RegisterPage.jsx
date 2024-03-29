@@ -1,33 +1,43 @@
 import React from "react";
 import "../../styles/pages/loginPage.scss";
 import Grid from "@mui/material/Grid";
-import SimpleReactValidator from "simple-react-validator";
-import { toast } from "react-toastify";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { Col, Form, Input, Row, message } from "antd";
+import { Button, Col, Form, Input, Row, message } from "antd";
 import { FORM_RULES, PAGE_ROUTES } from "../../utils/constant";
 import { useMutation } from "@tanstack/react-query";
 import AuthenticateAPI from "../../api/authen";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
   const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const [messageApi, contextHolder] = message.useMessage();
   const { isPending, mutate: mutateRegisterAccount } = useMutation({
     mutationFn: AuthenticateAPI.RegisterAccount,
     mutationKey: "Register-account",
     onError: (error) => {
-      message.error(error);
+      messageApi.open({
+        type: "error",
+        content: error.response.data.message,
+      });
     },
     onSuccess: () => {
-      message.success("Register new account is successful");
+      messageApi.open({
+        type: "success",
+        content: "Create new account is successful",
+      });
+      form.resetFields();
     },
   });
 
   const submitForm = (values) => {
-    mutateRegisterAccount(values);
+    mutateRegisterAccount({
+      ...values,
+      roleId: 2,
+    });
   };
   return (
     <Grid className="loginWrapper">
+      {contextHolder}
       <Grid className="loginForm">
         <h2>Signup</h2>
         <p>Signup your account</p>

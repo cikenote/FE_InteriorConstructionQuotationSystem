@@ -85,7 +85,7 @@ const ItemDetail = () => {
                             ></img>
                             <div className="product-detail">
                                 <h3 className="title">{productDetail.name}</h3>
-                                <div className="rating">
+                                {/* <div className="rating">
                                     <div className="stars">
                                         <CiStar className="icon" />
                                         <CiStar className="icon" />
@@ -94,7 +94,7 @@ const ItemDetail = () => {
                                         <CiStar className="icon" />
                                     </div>
                                     <div>(25 customer reviews)</div>
-                                </div>
+                                </div> */}
 
                                 <div className="price-data">
                                     <div className="price">
@@ -128,12 +128,12 @@ const ItemDetail = () => {
                   </div>
                 </div> */}
 
-                                <button
+                                {/* <button
                                     className="btn-cart"
                                     onClick={() => onAddProductIntoQuotation()}
                                 >
                                     Xem báo giá
-                                </button>
+                                </button> */}
                                 <div className="item">
                                     Categories:{" "}
                                     <span className="value">
@@ -144,7 +144,7 @@ const ItemDetail = () => {
                                 <div className="item">
                                     Tags{" "}
                                     <span className="value">
-                                        Kithen, Basement, Bathroom
+                                        Kitchen, Basement, Bathroom
                                     </span>
                                 </div>
                             </div>

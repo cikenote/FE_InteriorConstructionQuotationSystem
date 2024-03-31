@@ -1,5 +1,5 @@
 import { Modal, Form, Row, Col, Input, DatePicker, message, Select } from "antd";
-import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import { FORM_RULES } from "../../../utils/constant";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import ProductAPI from "../../../api/products";

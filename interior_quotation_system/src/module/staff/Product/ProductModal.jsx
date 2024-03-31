@@ -10,18 +10,18 @@ const ProductModal = ({ productUpdate }, ref) => {
   const [categorySelect, setCategorySelect] = useState([]);
 
   const [form] = Form.useForm();
-  const { isPending: isLoadingCreateNewProduct, mutate: mutateCreateNewProduct } = useMutation({
-    mutationFn: ProductAPI.CreateNewProduct,
-    mutationKey: "product-key",
-    onError: (error) => {
-      message.error(error);
-    },
-    onSuccess: () => {
-      message.success("Create new product is successfully");
-      onCloseModal();
-      form.resetFields();
-    },
-  });
+  // const { isPending: isLoadingCreateNewProduct, mutate: mutateCreateNewProduct } = useMutation({
+  //   mutationFn: ProductAPI.CreateNewProduct,
+  //   mutationKey: "product-key",
+  //   onError: (error) => {
+  //     message.error(error);
+  //   },
+  //   onSuccess: () => {
+  //     message.success("Create new product is successfully");
+  //     onCloseModal();
+  //     form.resetFields();
+  //   },
+  // });
 
   const { isPending, isError, data, error, isSuccess } = useQuery({
     queryFn: CategoryAPI.getcategorylist,

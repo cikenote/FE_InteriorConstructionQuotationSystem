@@ -1,17 +1,16 @@
-import { Modal, Form, Row, Col, Input, DatePicker, message } from "antd";
-import { forwardRef, useImperativeHandle, useState } from "react";
+import { Modal, Form, Row, Col, Input, DatePicker, message, Select } from "antd";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import { FORM_RULES } from "../../../utils/constant";
-import { useMutation } from "@tanstack/react-query";
-import QuotationAPI from "../../../api/quotation";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import ProductAPI from "../../../api/products";
+import CategoryAPI from "../../../api/catagories";
 
 const ProductModal = ({ productUpdate }, ref) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [categorySelect, setCategorySelect] = useState([]);
+
   const [form] = Form.useForm();
-  const {
-    isPending: isLoadingCreateNewProduct,
-    mutate: mutateCreateNewProduct,
-  } = useMutation({
+  const { isPending: isLoadingCreateNewProduct, mutate: mutateCreateNewProduct } = useMutation({
     mutationFn: ProductAPI.CreateNewProduct,
     mutationKey: "product-key",
     onError: (error) => {
@@ -23,6 +22,31 @@ const ProductModal = ({ productUpdate }, ref) => {
       form.resetFields();
     },
   });
+
+  const { isPending, isError, data, error, isSuccess } = useQuery({
+    queryFn: CategoryAPI.getcategorylist,
+    queryKey: ["qweqwe"],
+    enabled: false,
+  });
+
+  if (isPending) {
+    return <span>Loading...</span>;
+  }
+
+  if (isError) {
+    return <span>Error: {error.message}</span>;
+  }
+
+  if (isSuccess && data) {
+    const result = data.$values.map((item) => {
+      return {
+        value: item.id,
+        label: item.name,
+      };
+    });
+
+    setCategorySelect(result);
+  }
 
   useImperativeHandle(ref, () => {
     return {
@@ -39,13 +63,15 @@ const ProductModal = ({ productUpdate }, ref) => {
   };
 
   return (
-    <Modal
-      title={productUpdate ? "Update Product" : "New Product"}
-      open={isOpenModal}
-      onCancel={onCloseModal}
-    >
+    <Modal title={productUpdate ? "Update Product" : "New Product"} open={isOpenModal} onCancel={onCloseModal}>
       <Form form={form} onFinish={onFinishForm} layout="vertical">
         <Row gutter={[10, 10]}>
+          <Col span={24}>
+            <Form.Item name="categoryId" label="Category" rules={[FORM_RULES.required]}>
+              <Select options={categorySelect} />
+            </Form.Item>
+          </Col>
+
           <Col span={24}>
             <Form.Item name="name" label="Name" rules={[FORM_RULES.required]}>
               <Input />
@@ -59,21 +85,13 @@ const ProductModal = ({ productUpdate }, ref) => {
           </Col>
 
           <Col span={12}>
-            <Form.Item
-              name="createAt"
-              label="Create at"
-              rules={[FORM_RULES.required]}
-            >
+            <Form.Item name="createAt" label="Create at" rules={[FORM_RULES.required]}>
               <DatePicker style={{ width: "100%" }} />
             </Form.Item>
           </Col>
 
           <Col span={12}>
-            <Form.Item
-              name="updateAt"
-              label="Update at"
-              rules={[FORM_RULES.required]}
-            >
+            <Form.Item name="updateAt" label="Update at" rules={[FORM_RULES.required]}>
               <DatePicker style={{ width: "100%" }} />
             </Form.Item>
           </Col>

@@ -1,10 +1,8 @@
-import { useMutation } from "@tanstack/react-query";
-import { Button, Col, Flex, Form, Input, Modal, Row, message } from "antd";
-import { forwardRef, useImperativeHandle, useState } from "react";
-import QuotationAPI from "../../api/quotation";
+import { Button, Col, Flex, Form, Modal, Row, message } from "antd";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
 import { FORM_RULES } from "../../utils/constant";
 
-const QuotationModal = ({ AfterCloseModal }, ref) => {
+const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
   const [messageApi, contextHolder] = message.useMessage();
   const [productId, setProductId] = useState(15);
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -42,8 +40,8 @@ const QuotationModal = ({ AfterCloseModal }, ref) => {
 
   const onSubmitForm = (response) => {
     mutate({
-      productId,
-      quantity: response.quantity,
+      quotationId: QuotationId,
+      quotationStatus: response.quotationStatus,
     });
   };
 
@@ -60,16 +58,17 @@ const QuotationModal = ({ AfterCloseModal }, ref) => {
         <Row gutter={[10, 10]}>
           <Col span={24}>
             <Form.Item
-              label="Quantity"
-              name="quantity"
+              label="Status"
+              name="quotationStatus"
               rules={[FORM_RULES.required]}
             >
-              <Input
-                type="number"
-                min={0}
-                required
-                placeholder="Typing your quantity "
-              />
+              <Select
+                options={[
+                  { label: "Pending", value: "Pending" },
+                  { label: "Done", value: "Done" },
+                  { label: "Cancel", value: "Cancel" },
+                ]}
+              ></Select>
             </Form.Item>
           </Col>
 

@@ -1,12 +1,27 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import "../../styles/components/projectSingle.scss"
 import RelatedProject from "../../components/RelatedProject/RelatedProject";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Navbar from "../../components/Navbar/Navbar";
 // import Discuss from "../Discuss/Discuss";
 import Footer from "../Footer/Footer"
+import { useParams } from 'react-router-dom';
+import axios from "axios"
+import { dayjs } from 'dayjs';
 const ProjectSingle = () => {
 
+    const { projectId } = useParams();
+    const [project, setProject] = useState();
+
+    useEffect(() => {
+        const fetchGetProjectById = async () => {
+            const response = await axios.get(`https://swp391api.developvn.click/api/Projects/${projectId}`);
+            const data = response.data;
+            setProject(data);
+            console.log("Project", project);
+        }
+        fetchGetProjectById();
+    }, [project])
     return (
         <Fragment>
             <Navbar />
@@ -17,49 +32,44 @@ const ProjectSingle = () => {
                         <div className="col-lg-10 col-12">
                             <div className="wpo-project-single-wrap">
                                 <div className="wpo-project-single-item">
-                                    <div className="row align-items-center">
-                                        <div className="col-lg-7">
-                                            <div className="wpo-project-single-title">
-                                                <h3>{"Design"} Project</h3>
+                                    {project ? (
+                                        <div className="row align-items-center">
+                                            <div className="col-lg-7">
+                                                <div className="wpo-project-single-title">
+                                                    <h3>{project.projectTitle}</h3>
+                                                </div>
+                                                <p>{project.projectDescription}</p>
+                                                <p>Hac nibh fermentum nisi, platea condimentum cursus velit dui. Massa volutpat
+                                                    odio
+                                                    facilisis purus sit elementum. Non, sed velit dictum quam. Id risus pharetra
+                                                    est, at
+                                                    rhoncus, nec ullamcorper tincidunt. Id aliquet duis sollicitudin diam, elit
+                                                    sit Et nisi in libero facilisis sed est. Elit curabitur amet risus bibendum.
+                                                    Posuere et eget orci. sed velit dictum quam. Id risus pharetra est</p>
                                             </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Metus dis posuere
-                                                amet
-                                                tincidunt commodo, velit. Ipsum, hac nibh fermentum nisi, platea condimentum
-                                                cursus
-                                                velit dui. Massa volutpat odio facilisis purus sit elementum. Non, sed velit
-                                                dictum
-                                                quam. Id risus pharetra est, at rhoncus, nec ullamcorper tincidunt. Id
-                                                aliquet duis
-                                                sollicitudin diam, elit sit. Et nisi in libero facilisis sed est. Elit
-                                                curabitur
-                                                amet risus bibendum. Posuere et eget orci, tempor enim.</p>
-                                            <p>Hac nibh fermentum nisi, platea condimentum cursus velit dui. Massa volutpat
-                                                odio
-                                                facilisis purus sit elementum. Non, sed velit dictum quam. Id risus pharetra
-                                                est, at
-                                                rhoncus, nec ullamcorper tincidunt. Id aliquet duis sollicitudin diam, elit
-                                                sit Et nisi in libero facilisis sed est. Elit curabitur amet risus bibendum.
-                                                Posuere et eget orci. sed velit dictum quam. Id risus pharetra est</p>
-                                        </div>
-                                        <div className="col-lg-5">
-                                            <div className="wpo-project-single-content-des-right">
-                                                <ul>
-                                                    <li>Location :<span>7 Lake Street,London</span></li>
-                                                    <li>Client :<span>wpOceans</span></li>
-                                                    <li>Architect :<span>Harry Johnson</span></li>
-                                                    {/* <li>Project Type :<span>Interior</span></li>
-                                                    <li>Duration :<span>6 Month</span></li>
-                                                    <li>Completion :<span>15 Apr 2022</span></li>
-                                                    <li>Share :<span>Architectural, Business</span></li> */}
-                                                </ul>
+                                            <div className="col-lg-5">
+                                                <div className="wpo-project-single-content-des-right">
+                                                    <ul>
+                                                        <li>Location :<span>Hồ Chí Minh</span></li>
+                                                        <li>Client :<span>FPT</span></li>
+                                                        <li>Start day :<span>{project.startDate}</span></li>
+                                                        <li>Start day :<span>{project.endDate}</span></li>
+                                                        {/* <li>Project Type :<span>Interior</span></li>
+                                                <li>Duration :<span>6 Month</span></li>
+                                                <li>Completion :<span>15 Apr 2022</span></li>
+                                                <li>Share :<span>Architectural, Business</span></li> */}
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    ) : (
+                                        // <Error />
+                                        <></>
+                                    )}
                                     <div className="wpo-project-single-main-img">
                                         <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
                                         <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
                                         <img src="https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
-
                                     </div>
                                     <div className="wpo-project-single-item list-widget">
                                         {/* <div className="row">

@@ -218,10 +218,11 @@
         }
 
         ul {
+            padding: 0;
             li {
                 padding-bottom: 15px;
                 position: relative;
-                padding-left: 35px;
+                // padding-left: 35px;
                 color: $white;
                 font-size: 16px;
 

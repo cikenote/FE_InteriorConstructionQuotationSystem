@@ -1,130 +1,115 @@
-import React from "react";
 import "../../styles/pages/loginPage.scss";
 import Grid from "@mui/material/Grid";
-import SimpleReactValidator from "simple-react-validator";
-import { toast } from "react-toastify";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
+import { Col, Form, Input, Row, message, Button, DatePicker, Select } from "antd";
+import { FORM_RULES, PAGE_ROUTES } from "../../utils/constant";
+import { useMutation } from "@tanstack/react-query";
+import AuthenticateAPI from "../../api/authen";
+import { useNavigate } from "react-router-dom";
 
 const RegisterPage = () => {
-    const changeHandler = (e) => {
-        setValue({ ...value, [e.target.name]: e.target.value });
-        validator.showMessages();
-    };
+  const [form] = Form.useForm();
+  const navigate = useNavigate();
+  const { isPending, mutate: mutateRegisterAccount } = useMutation({
+    mutationFn: AuthenticateAPI.RegisterAccount,
+    mutationKey: "Register-account",
+    onError: (error) => {
+      message.error(error);
+    },
+    onSuccess: () => {
+      message.success("Register new account is successful");
+      navigate("/login");
+    },
+  });
 
-    const [validator] = React.useState(
-        new SimpleReactValidator({
-            className: "errorMessage",
-        })
-    );
+  const submitForm = (values) => {
+    mutateRegisterAccount(values);
+  };
 
-    const submitForm = (e) => {
-        e.preventDefault();
-        if (validator.allValid()) {
-            setValue({
-                email: "",
-                full_name: "",
-                password: "",
-                confirm_password: "",
-            });
-            validator.hideMessages();
-            toast.success("Registration Complete successfully!");
-            router.push("/login");
-        } else {
-            validator.showMessages();
-            toast.error("Empty field is not allowed!");
-        }
-    };
-    return (
-        <Grid className="loginWrapper">
-            <Grid className="loginForm">
-                <h2>Signup</h2>
-                <p>Signup your account</p>
-                <form onSubmit={submitForm}>
-                    <Grid container spacing={3}>
-                        <Grid item xs={12}>
-                            <TextField
-                                className="inputOutline"
-                                fullWidth
-                                placeholder="Full Name"
-                                variant="outlined"
-                                name="full_name"
-                                label="Name"
-                                // InputLabelProps={{
-                                //     shrink: true,
-                                // }}
-                                onBlur={(e) => changeHandler(e)}
-                                onChange={(e) => changeHandler(e)}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                className="inputOutline"
-                                fullWidth
-                                placeholder="E-mail"
-                                variant="outlined"
-                                name="email"
-                                label="E-mail"
-                                // InputLabelProps={{
-                                //     shrink: true,
-                                // }}
-                                onBlur={(e) => changeHandler(e)}
-                                onChange={(e) => changeHandler(e)}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                className="inputOutline"
-                                fullWidth
-                                placeholder="Password"
-                                variant="outlined"
-                                name="password"
-                                label="Password"
-                                // InputLabelProps={{
-                                //     shrink: true,
-                                // }}
-                                onBlur={(e) => changeHandler(e)}
-                                onChange={(e) => changeHandler(e)}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                className="inputOutline"
-                                fullWidth
-                                placeholder="Confirm Password"
-                                variant="outlined"
-                                name="confirm_password"
-                                label="Confirm Password"
-                                onBlur={(e) => changeHandler(e)}
-                                onChange={(e) => changeHandler(e)}
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <Grid className="formFooter">
-                                <Button
-                                    fullWidth
-                                    className="cBtnTheme"
-                                    type="submit"
-                                >
-                                    Sign Up
-                                </Button>
-                            </Grid>
-                            <Grid className="loginWithSocial">
-                                <Button className="google">
-                                    <img src="../../public/images/google_icon.png"></img>
-                                    <p>Continue with Google</p>
-                                </Button>
-                            </Grid>
-                            <p className="noteHelp">
-                                Already have an account?{" "}
-                                <a href="/login">Return to Sign In</a>
-                            </p>
-                        </Grid>
-                    </Grid>
-                </form>
-            </Grid>
-        </Grid>
-    );
+  return (
+    <Grid className="loginWrapper">
+      <Grid className="loginForm">
+        <h2>Signup</h2>
+        <p>Signup your account</p>
+        <Form layout="vertical" form={form} requiredMark={false} onFinish={submitForm}>
+          <Row>
+            <Col span={24}>
+              <Form.Item name="username" label="User Name" rules={[FORM_RULES.required]}>
+                <Input />
+              </Form.Item>{" "}
+            </Col>
+            <Col span={24}>
+              <Form.Item name="password" label="Password" rules={[FORM_RULES.required]}>
+                <Input.Password />
+              </Form.Item>
+            </Col>
+
+            <Col span={24}>
+              <Form.Item name="fullname" label="Full Name" rules={[FORM_RULES.required]}>
+                <Input />
+              </Form.Item>
+            </Col>
+
+            <Col span={24}>
+              <Form.Item name="birthdate" label="Birth Date" rules={[FORM_RULES.required]}>
+                <DatePicker style={{ width: "100%" }} />
+              </Form.Item>
+            </Col>
+
+            <Col span={24}>
+              <Form.Item name="email" label="Email" rules={[FORM_RULES.required]}>
+                <Input type="email" />
+              </Form.Item>
+            </Col>
+
+            <Col span={24}>
+              <Form.Item name="phoneNumber" label="Phone Number" rules={[FORM_RULES.required]}>
+                <Input />
+              </Form.Item>
+            </Col>
+
+            <Col span={24}>
+              <Form.Item name="roleId" label="Role" rules={[FORM_RULES.required]}>
+                <Select
+                  options={[
+                    { value: 2, label: "Customer" },
+                    { value: 1, label: "Staff" },
+                  ]}
+                  style={{ width: "100%" }}
+                />
+              </Form.Item>
+            </Col>
+
+            <Col span={24}>
+              <Row gutter={[14, 14]}>
+                <Col span={24}>
+                  <Button
+                    loading={isPending}
+                    htmlType="submit"
+                    className="cBtnTheme"
+                    style={{
+                      width: "100%",
+                      fontSize: "18px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    Register Account
+                  </Button>
+                </Col>
+
+                <Col span={24}>
+                  <p className="noteHelp">
+                    You have already account ? <a href={PAGE_ROUTES.LOGIN}>Login Account</a>
+                  </p>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Form>
+      </Grid>
+    </Grid>
+  );
 };
 
 export default RegisterPage;

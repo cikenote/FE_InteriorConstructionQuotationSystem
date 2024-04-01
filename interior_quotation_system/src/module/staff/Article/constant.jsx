@@ -1,7 +1,7 @@
 import { DeleteOutline, EditOutlined } from "@mui/icons-material";
 import { Button, Flex } from "antd";
 
-export const PROJECT_COLUMNS = () => [
+export const ARTICLE_COLUMNS = () => [
   {
     title: "Title",
     dataIndex: "title",
@@ -58,7 +58,7 @@ export const PROJECT_COLUMNS = () => [
   },
 ];
 
-export const PROJECT_DATA_SOURCE = () => [
+export const ARTICLE_DATA_SOURCE = () => [
   {
     title: "Project 1",
     style: "New style",

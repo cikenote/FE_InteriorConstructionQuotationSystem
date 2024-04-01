@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "../../styles/components/header.scss";
 import MobileMenu from "../MobileMenu/MobileMenu";
 import "../../styles/components/header.scss";
@@ -9,16 +9,30 @@ import { Button, Dropdown } from "antd";
 import { FiUser } from "react-icons/fi";
 import { useNavigate } from "react-router";
 import { PAGE_ROUTES } from "../../utils/constant";
+import QuotationStatus from "./QuotationStatus";
 
 const Header = () => {
+    const quotationStatusRef = useRef();
+    const accessToken = localStorage.getItem("accessToken");
     const [menuActive, setMenuState] = useState(false);
     const navigate = useNavigate();
-    // const [cartActive, setcartState] = useState(false);
+    const logoutAccount = () => {
+        localStorage.clear();
+        navigate(PAGE_ROUTES.LOGIN);
+    };
     const getUser = localStorage.getItem("accessToken");
     const items = [
         {
+            key: "quotation-status",
+            label: (
+                <div onClick={() => quotationStatusRef.current.openModal()}>
+                    Quotation status
+                </div>
+            ),
+        },
+        {
             key: "1",
-            label: <a onClick={() => navigate(PAGE_ROUTES.LOGIN)}>Log out</a>,
+            label: <div onClick={logoutAccount}>Log out</div>,
         },
     ];
     const ClickHandler = () => {
@@ -31,6 +45,7 @@ const Header = () => {
 
     return (
         <header id="header">
+            <QuotationStatus ref={quotationStatusRef} />
             <div className="site-header header-style-1">
                 <nav className="navigation navbar navbar-expand-lg navbar-light">
                     <div className="container-fluid">
@@ -45,7 +60,7 @@ const Header = () => {
                                     <a
                                         onClick={ClickHandler}
                                         className="navbar-brand"
-                                        href="/home"
+                                        href="/"
                                     >
                                         <img
                                             src="/images/logo.png"
@@ -66,7 +81,7 @@ const Header = () => {
                                         <li className="menu-item-has-children">
                                             <a
                                                 onClick={ClickHandler}
-                                                href="/home"
+                                                href={PAGE_ROUTES.HOME}
                                             >
                                                 Trang chủ
                                             </a>
@@ -114,59 +129,55 @@ const Header = () => {
                                             </a>
                                         </li> */}
 
-                                        <li>
-                                            <a
-                                                onClick={ClickHandler}
-                                                href={
-                                                    PAGE_ROUTES.QUOTATION_FORM
-                                                }
-                                            >
-                                                Báo giá
-                                            </a>
-                                        </li>
+                                        {accessToken && (
+                                            <li>
+                                                <a
+                                                    onClick={ClickHandler}
+                                                    href={
+                                                        PAGE_ROUTES.QUOTATION_FORM
+                                                    }
+                                                >
+                                                    Báo giá
+                                                </a>
+                                            </li>
+                                        )}
                                     </ul>
                                 </div>
                             </div>
                             <div className="col-lg-3 col-md-2 col-2">
                                 <div className="header-right">
-                                    <div className="header-search-form-wrapper">
-                                        <div className="cart-search-contact">
-                                            <button
-                                                onClick={() =>
-                                                    setMenuState(!menuActive)
-                                                }
-                                                className="search-toggle-btn"
-                                            >
-                                                <SearchIcon
-                                                    className={`fi ti-search ${
-                                                        menuActive
-                                                            ? "ti-close"
-                                                            : "fi"
-                                                    }`}
-                                                ></SearchIcon>
-                                            </button>
-                                            <div
-                                                className={`header-search-form ${
-                                                    menuActive
-                                                        ? "header-search-content-toggle"
-                                                        : ""
-                                                }`}
-                                            >
-                                                <form onSubmit={SubmitHandler}>
-                                                    <div>
-                                                        <input
-                                                            type="text"
-                                                            className="form-control"
-                                                            placeholder="Search here..."
-                                                        />
-                                                        <button type="submit">
-                                                            <SearchIcon className="fi-ti-search"></SearchIcon>
-                                                        </button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    {/* <div className="header-search-form-wrapper">
+                    <div className="cart-search-contact">
+                      <button
+                        onClick={() => setMenuState(!menuActive)}
+                        className="search-toggle-btn"
+                      >
+                        <SearchIcon
+                          className={`fi ti-search ${
+                            menuActive ? "ti-close" : "fi"
+                          }`}
+                        ></SearchIcon>
+                      </button>
+                      <div
+                        className={`header-search-form ${
+                          menuActive ? "header-search-content-toggle" : ""
+                        }`}
+                      >
+                        <form onSubmit={SubmitHandler}>
+                          <div>
+                            <input
+                              type="text"
+                              className="form-control"
+                              placeholder="Search here..."
+                            />
+                            <button type="submit">
+                              <SearchIcon className="fi-ti-search"></SearchIcon>
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div> */}
                                     {getUser ? (
                                         <Dropdown
                                             menu={{

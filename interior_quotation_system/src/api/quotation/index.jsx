@@ -9,6 +9,10 @@ const QuotationAPI = {
   DeleteQuotation: (userId, productId) =>
     axiosClient.delete(`${END_POINT_API.QUOTATION}/${userId}/${productId}`),
   GetAllQuotation: () => axiosClient.get(END_POINT_API.ALL_QUOTATION),
+  GetCurrentQuotation: () =>
+    axiosClient.get(END_POINT_API.GET_CURRENT_QUOTATION),
+  SubmitQuotation: (params) =>
+    axiosClient.post(END_POINT_API.SUBMIT_QUOTATION, params),
 };
 
 export default QuotationAPI;

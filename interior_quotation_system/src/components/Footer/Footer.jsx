@@ -1,16 +1,10 @@
 import MarkEmailUnreadOutlinedIcon from "@mui/icons-material/MarkEmailUnreadOutlined";
 import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import TtyOutlinedIcon from "@mui/icons-material/TtyOutlined";
-import PropTypes from "prop-types";
-import Projects from "../../api/projects";
-import Services from "../../api/services";
-import "../../styles/components/footer.scss";
-
 const Footer = (props) => {
   const ClickHandler = () => {
     window.scrollTo(10, 0);
   };
-
   return (
     <footer className={`wpo-site-footer ${props.ftClass}`}>
       <div className="wpo-upper-footer">
@@ -23,6 +17,28 @@ const Footer = (props) => {
                     <img src="/images/logo-2.png" alt="logo" />
                   </a>
                 </div>
+                {/* <ul>
+                  <li>
+                    <a onClick={ClickHandler} href="/">
+                      <i className="ti-facebook"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={ClickHandler} href="/">
+                      <i className="ti-twitter-alt"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={ClickHandler} href="/">
+                      <i className="ti-instagram"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a onClick={ClickHandler} href="/">
+                      <i className="ti-google"></i>
+                    </a>
+                  </li>
+                </ul> */}
               </div>
             </div>
             <div className="col col-xl-3  col-lg-4 col-md-6 col-sm-12 col-12">
@@ -63,6 +79,7 @@ const Footer = (props) => {
                 </div>
               </div>
             </div>
+
             <div className="col col-xl-3  col-lg-4 col-md-6 col-sm-12 col-12">
               <div className="widget instagram">
                 <div className="widget-title">

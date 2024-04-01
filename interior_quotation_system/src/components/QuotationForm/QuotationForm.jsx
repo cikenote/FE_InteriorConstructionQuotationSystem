@@ -7,7 +7,7 @@ import QuotationModal from "./QuotationModal";
 import { QuotationColumns } from "./constant";
 const QuotationForm = () => {
   const [messageApi, contextHolder] = message.useMessage();
-  const [setQuotation] = useState();
+  const [quotations, setQuotation] = useState();
   const quotationRef = useRef();
 
   const {

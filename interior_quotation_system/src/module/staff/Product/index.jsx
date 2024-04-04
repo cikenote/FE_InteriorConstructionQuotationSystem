@@ -1,7 +1,4 @@
-import { useMutation } from "@tanstack/react-query";
-import { Skeleton, message } from "antd";
-import { useEffect, useRef, useState } from "react";
-import ProductAPI from "../../../api/products";
+import React, { useEffect, useRef, useState } from "react";
 import TableLayout from "../../../layouts/TableLayout";
 import ProductModal from "./ProductModal";
 import { PRODUCT_COLUMNS } from "./constant";

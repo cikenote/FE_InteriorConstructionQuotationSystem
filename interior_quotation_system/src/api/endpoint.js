@@ -11,7 +11,7 @@ export const END_POINT_API = {
   PRODUCTS_CONSTRUCTOR_STYLE: "/api/Products/GetListConstructionStyles",
   GET_CURRENT_QUOTATION: "/api/Quotation/GetSubmitedQuotationsOfUser",
   SUBMIT_QUOTATION: "/api/Quotation/SubmitQuotation",
-  ADMIN_DASHBOARD: "/admin/dashboard",
-  USER: "/api/AccountManager",
+
   CATEGORY: "/api/Category",
+  USER_INFO: "/api/User/info",
 };

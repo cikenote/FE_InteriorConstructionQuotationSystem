@@ -97,7 +97,6 @@ const QuotationFormPage = () => {
         message.error("Error occur when get all products");
       },
       onSuccess: (res) => {
-        console.log(res);
         const result = res.$values.map((product) => {
           return {
             name: product.name,
@@ -491,6 +490,7 @@ const QuotationFormPage = () => {
                   <Table
                     columns={PRODUCTS_LIST_MOCK({
                       onSelectedProduct: onCallBackSelectedProduct,
+                      formik,
                     })}
                     dataSource={products}
                   />

@@ -98,7 +98,7 @@ const QuotationFormPage = () => {
       },
       onSuccess: (res) => {
         console.log(res);
-        const result = res.responses.$values.map((product) => {
+        const result = res.$values.map((product) => {
           return {
             name: product.name,
             image: product.imageUrl,

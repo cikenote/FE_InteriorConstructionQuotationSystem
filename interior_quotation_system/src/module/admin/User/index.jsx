@@ -5,7 +5,7 @@ import MainLayout from "../../layouts/MainLayout";
 import { PAGE_ROUTES } from "../../utils/constant";
 import Dashboard from "./Dashboard";
 
-const StaffRole = () => {
+const AdminRole = () => {
   return (
     <MainLayout
       menuItems={[
@@ -15,33 +15,33 @@ const StaffRole = () => {
           label: (
             <Link
               style={{ textDecoration: "none" }}
-              to={PAGE_ROUTES.STAFF.DASHBOARD}
+              to={PAGE_ROUTES.ADMIN.DASHBOARD}
             >
               Dashboard
             </Link>
           ),
         },
         {
-          key: "product",
+          key: "users",
           icon: <GoProject />,
           label: (
             <Link
               style={{ textDecoration: "none" }}
-              to={PAGE_ROUTES.STAFF.PRODUCT}
+              to={PAGE_ROUTES.ADMIN.USERS}
             >
-              Product
+              Users
             </Link>
           ),
         },
         {
-          key: "quotation",
+          key: "projects",
           icon: <LuTextQuote />,
           label: (
             <Link
               style={{ textDecoration: "none" }}
-              to={PAGE_ROUTES.STAFF.QUOTATIONS}
+              to={PAGE_ROUTES.ADMIN.PROJECTS}
             >
-              Quotations
+              Projects
             </Link>
           ),
         },
@@ -50,4 +50,4 @@ const StaffRole = () => {
   );
 };
 
-export default StaffRole;
+export default AdminRole;

@@ -11,7 +11,12 @@ export const PAGE_ROUTES = {
     QUOTATIONS: "/staff/quotation",
     PRODUCTS: "/staff/products",
   },
-  ADMIN: {},
+  ADMIN: {
+    MAIN: "/admin",
+    USERS: "/admin/users",
+    REPORTS: "/admin/reports",
+    SETTINGS: "/admin/settings",
+  },
 };
 
 export const FORM_RULES = {

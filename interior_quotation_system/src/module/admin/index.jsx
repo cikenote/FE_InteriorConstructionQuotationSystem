@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import MainLayout from "../../layouts/MainLayout";
 import { PAGE_ROUTES } from "../../utils/constant";
 import Dashboard from "./Dashboard";
-
 const StaffRole = () => {
   return (
     <MainLayout

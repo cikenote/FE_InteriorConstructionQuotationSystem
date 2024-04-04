@@ -76,6 +76,6 @@ const ProjectModal = ({ projectUpdate }, ref) => {
   );
 };
 ProjectModal.propTypes = {
-  projectUpdate: PropTypes.bool, // assuming projectUpdate is a boolean, adjust type accordingly
+  projectUpdate: PropTypes.bool, // adjust the type accordingly
 };
 export default forwardRef(ProjectModal);

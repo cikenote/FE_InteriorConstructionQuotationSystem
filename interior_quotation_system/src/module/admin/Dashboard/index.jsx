@@ -1,7 +1,9 @@
-import axios from "axios";
 import { useEffect, useRef, useState } from "react";
+// import TableLayout from "../../../layouts/TableLayout";
 import ProjectModal from "./ProjectModal";
 import "./style.scss";
+// import RegisterPage from './../../../pages/register/RegisterPage';
+import axios from "axios";
 const StaffProjects = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
@@ -9,6 +11,8 @@ const StaffProjects = () => {
   const [contracts, setContracts] = useState([]);
 
   const projectActionModal = useRef();
+
+  // const searchStaffProject = (event) => { };
 
   const fetchGetNumberProducts = async () => {
     const response = await axios.get(

@@ -65,10 +65,6 @@ const StaffProduct = () => {
     mutateProductsList();
   }, []);
 
-  const deleteProduct = (id) => {
-    mutateDeleteProduct(id);
-  };
-
   if (isLoadingProducts || isLoadingDeleteProduct) {
     return <Skeleton paragraph={{ rows: 5 }} />;
   }

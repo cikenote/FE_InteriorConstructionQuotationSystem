@@ -57,7 +57,7 @@ const LoginPage = () => {
   };
 
   const onAuthenticateUser = () => {
-    const userDecode = jwtDecode(accessToken.token);
+    const userDecode = jwtDecode(accessToken?.token || "");
     navigate("/shop");
     if (userDecode.Role == "staff") {
       navigate("/staff/quotation");

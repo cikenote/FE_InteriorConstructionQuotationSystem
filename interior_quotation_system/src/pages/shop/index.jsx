@@ -59,8 +59,6 @@ const ShopItem = () => {
     });
   };
 
-  console.log(products);
-
   return (
     <Spin tip="Loading..." spinning={productListLoading || isPending}>
       {contextHolder}

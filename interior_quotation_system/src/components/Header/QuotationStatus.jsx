@@ -55,7 +55,7 @@ const QuotationStatus = ({}, ref) => {
       onCancel={onCloseModal}
       footer={null}
       closeIcon
-      width={800}
+      width={1000}
     >
       <QuotationDetail
         ref={quotationDetailRef}

@@ -40,8 +40,6 @@ const QuotationDetail = ({ quotationDetailProp }, ref) => {
     setIsOpenModal(false);
   };
 
-  console.log(quotationDetailProp);
-
   return (
     <Modal
       title="Quotations Detail"

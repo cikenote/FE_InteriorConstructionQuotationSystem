@@ -490,6 +490,7 @@ const QuotationFormPage = () => {
                   <Table
                     columns={PRODUCTS_LIST_MOCK({
                       onSelectedProduct: onCallBackSelectedProduct,
+                      formik,
                     })}
                     dataSource={products}
                   />

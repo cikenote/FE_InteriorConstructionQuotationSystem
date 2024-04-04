@@ -20,8 +20,6 @@ const QuotationModal = ({ quoUpdate }, ref) => {
     console.log(values);
   };
 
-  console.log(quoUpdate);
-
   return (
     <Modal
       title={quoUpdate ? "Update Quotation" : "Confirm Quotation"}

@@ -6,6 +6,9 @@ const QuotationAPI = {
     axiosClient.post(END_POINT_API.QUOTATION, params),
   GetQuotationsList: () => axiosClient.get(END_POINT_API.QUOTATION),
   UpdateQuotation: (params) => axiosClient.put(END_POINT_API.QUOTATION, params),
+  UpdateQuotationStatus: (params) =>
+    axiosClient.patch(END_POINT_API.QUOTATION_STATUS, params),
+
   DeleteQuotation: (userId, productId) =>
     axiosClient.delete(`${END_POINT_API.QUOTATION}/${userId}/${productId}`),
   GetAllQuotation: () => axiosClient.get(END_POINT_API.ALL_QUOTATION),

@@ -1,5 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
-import { Col, DatePicker, Form, Input, Modal, Row, Select, message } from "antd";
+import {
+  Col,
+  DatePicker,
+  Form,
+  Input,
+  Modal,
+  Row,
+  Select,
+  message,
+} from "antd";
 import { forwardRef, useImperativeHandle, useState } from "react";
 import CategoryAPI from "../../../api/catagories";
 import { FORM_RULES } from "../../../utils/constant";
@@ -25,6 +34,21 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
   //   },
   // });
 
+  const { isPending: isLoadingUpdateProduct, mutate: mutateUpdateProduct } =
+    useMutation({
+      mutationFn: ProductAPI.UpdateProduct,
+      mutationKey: "product-key",
+      onError: (error) => {
+        message.error(error.message);
+      },
+      onSuccess: () => {
+        message.success("Update product is successfully");
+        afterCloseModal();
+        onCloseModal();
+        form.resetFields();
+      },
+    });
+
   const {
     isPending: isLoadingCategoriesList,
     isSuccess: isSuccessGetCategories,
@@ -46,12 +70,21 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
   };
 
   const onFinishForm = (values) => {
-    mutateCreateNewProduct({
-      ...values,
-      userId: userProfile.userId,
-      status: true,
-      createdAt: dayjs().format(),
-    });
+    if (productUpdate) {
+      mutateUpdateProduct({
+        ...values,
+        status: true,
+        createdAt: dayjs().format(),
+        id: productUpdate.productId,
+      });
+    } else {
+      mutateCreateNewProduct({
+        ...values,
+        userId: userProfile.userId,
+        status: true,
+        createdAt: dayjs().format(),
+      });
+    }
   };
 
   if (categoriesError) {
@@ -70,15 +103,31 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
     }
   }, [categories]);
 
+  useEffect(() => {
+    if (productUpdate) {
+      form.setFieldsValue(productUpdate);
+    }
+  }, [productUpdate]);
+
   return (
-    <Modal title={productUpdate ? "Update Product" : "New Product"} open={isOpenModal} onCancel={onCloseModal}>
-      <Form form={form} onFinish={onFinishForm} layout="vertical">
-        <Row gutter={[10, 10]}>
-          <Col span={24}>
-            <Form.Item name="categoryId" label="Category" rules={[FORM_RULES.required]}>
-              <Select options={categorySelect} />
-            </Form.Item>
-          </Col>
+    <Modal
+      title={productUpdate ? "Update Product" : "New Product"}
+      open={isOpenModal}
+      onCancel={onCloseModal}
+      footer
+    >
+      <Skeleton loading={isLoadingCategoriesList || isLoadingCreateNewProduct}>
+        <Form form={form} onFinish={onFinishForm} layout="vertical">
+          <Row gutter={[10, 10]}>
+            <Col span={24}>
+              <Form.Item
+                name="categoryId"
+                label="Category"
+                rules={[FORM_RULES.required]}
+              >
+                <Select options={categoriesSelect} />
+              </Form.Item>
+            </Col>
 
             <Col span={24}>
               <Form.Item name="name" label="Name" rules={[FORM_RULES.required]}>
@@ -96,17 +145,25 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
               </Form.Item>
             </Col>
 
-          <Col span={12}>
-            <Form.Item name="createAt" label="Create at" rules={[FORM_RULES.required]}>
-              <DatePicker style={{ width: "100%" }} />
-            </Form.Item>
-          </Col>
+            <Col span={12}>
+              <Form.Item
+                name="createAt"
+                label="Create at"
+                rules={[FORM_RULES.required]}
+              >
+                <DatePicker style={{ width: "100%" }} />
+              </Form.Item>
+            </Col>
 
-          <Col span={12}>
-            <Form.Item name="updateAt" label="Update at" rules={[FORM_RULES.required]}>
-              <DatePicker style={{ width: "100%" }} />
-            </Form.Item>
-          </Col>
+            <Col span={12}>
+              <Form.Item
+                name="updateAt"
+                label="Update at"
+                rules={[FORM_RULES.required]}
+              >
+                <DatePicker style={{ width: "100%" }} />
+              </Form.Item>
+            </Col>
 
             <Col span={24}>
               <Form.Item
@@ -119,7 +176,7 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
             </Col>
 
             <Col span={24}>
-              <Form.Item name="image" label="Image" required={false}>
+              <Form.Item name="imageUrl" label="Image" required={false}>
                 <Input />
               </Form.Item>
             </Col>

@@ -6,6 +6,7 @@ import "./style.scss";
 
 const StaffProduct = () => {
   const [products, setProducts] = useState([]);
+  const [productUpdate, setProductUpdate] = useState();
 
   const {
     isPending: isLoadingProducts,
@@ -15,7 +16,7 @@ const StaffProduct = () => {
     mutationFn: ProductAPI.getAllProductList,
     mutationKey: "products-list",
     onSuccess: (response) => {
-      setProducts(response.responses.$values);
+      setProducts(response.$values);
     },
     onError: (errors) => {
       console.log(errors);
@@ -30,8 +31,8 @@ const StaffProduct = () => {
         message.success("Delete product is successful");
         mutateProductsList();
       },
-      onError: () => {
-        message.error("Error occur when delete product");
+      onError: (errorResponse) => {
+        message.error(errorResponse.response.data.message);
       },
     });
 
@@ -58,9 +59,20 @@ const StaffProduct = () => {
     return <Skeleton paragraph={{ rows: 5 }} />;
   }
 
+  useEffect(() => {
+    mutateProductsList();
+  }, []);
+
+  if (isLoadingProducts || isLoadingDeleteProduct) {
+    return <Skeleton paragraph={{ rows: 5 }} />;
+  }
+
   return (
     <div className="product-container">
-      <ProductModal ref={productActionModal} />
+      <ProductModal
+        ref={productActionModal}
+        afterCloseModal={() => mutateProductsList()}
+      />
       <TableLayout
         tableColumns={PRODUCT_COLUMNS}
         tableDataSource={() => products}
@@ -68,6 +80,7 @@ const StaffProduct = () => {
         onchangeSearch={searchStaffProduct}
         addNewAction={() => productActionModal.current.openModal()}
         onDeleteQuotation={deleteProduct}
+        onEditQuotation={onUpdateProduct}
       />
     </div>
   );

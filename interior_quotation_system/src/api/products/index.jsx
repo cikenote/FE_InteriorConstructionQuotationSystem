@@ -24,6 +24,10 @@ const ProductAPI = {
     axiosClient.post(END_POINT_API.PRODUCTS, params),
   DeleteProduct: (productId) =>
     axiosClient.delete(`${END_POINT_API.PRODUCTS}/${productId}`),
+  UpdateProduct: (values) => {
+    const { id, ...params } = values;
+    return axiosClient.put(`${END_POINT_API.PRODUCTS}/${id}`, params);
+  },
 };
 
 export default ProductAPI;

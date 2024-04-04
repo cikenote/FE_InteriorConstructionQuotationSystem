@@ -11,10 +11,10 @@ const Project = () => {
         const fetchAPI = async () => {
             try {
                 const response = await axios.get(
-                    "https://swp391api.developvn.click/api/Projects?page=1&pageSize=10&sortByDateDescending=true"
+                    "https://swp391api.developvn.click/api/Projects"
                 );
-                console.log("Response: ", response.data.products.$values);
-                setProjects(response.data.products.$values);
+                console.log("Response: ", response.data.$values);
+                setProjects(response.data.$values);
             } catch (err) {
                 console.log("Error fetching: ", err);
             }

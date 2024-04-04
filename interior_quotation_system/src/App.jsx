@@ -19,6 +19,8 @@ import RegisterPage from "./pages/register/RegisterPage";
 import ItemDetail from "./pages/shop/ItemDetail";
 import ShopItem from "./pages/shop/index";
 import PrivateRoutes from "./routes/PrivateRoutes";
+import YourAccount from "./pages/yourAccount/YourAccount.jsx";
+import {PAGE_ROUTES} from "./utils/constant.tsx";
 function App() {
   return (
     <Routes>

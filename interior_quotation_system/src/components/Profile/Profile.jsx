@@ -1,6 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import axios from "axios";
+import React, { useEffect, useState } from 'react';
+
 import "./style.scss"
+
+import UserInfo from "../../api/UserInfo/UnserInfo.tsx";
+
 const Profile = () => {
     const [user, setUser] = useState("");
 
@@ -11,16 +14,17 @@ const Profile = () => {
 
     const fetchAPI = async () => {
         try {
-            const response = await axios.get("https://swp391api.developvn.click/api/User/info");
+            const response = await UserInfo.getUsersList();
             if (response.data && response.data) {
                 setUser(response.data);
             } else {
-                console.log("Error fetching articles: Response data or responses are undefined");
+                console.log("Error fetching user info: Response data or responses are undefined");
             }
         } catch (error) {
-            console.log("Error fetching articles: ", error);
+            console.log("Error fetching user info: ", error);
         }
     };
+
     return (
         <div className="container-xl px-4 mt-4 profile-container">
             <div className="row">
@@ -54,7 +58,7 @@ const Profile = () => {
                                         id="inputUsername"
                                         type="text"
                                         placeholder="Enter your username"
-                                        defaultValue= {`${user.username}`}
+                                        value={user.username || ""}
                                         readOnly={true}
                                     />
                                 </div>
@@ -70,7 +74,7 @@ const Profile = () => {
                                             id="inputFirstName"
                                             type="text"
                                             placeholder="Enter your first name"
-                                            defaultValue={`${user.fullname}`}
+                                            value={user.fullname || ""}
                                             readOnly={true}
                                         />
                                     </div>
@@ -85,7 +89,7 @@ const Profile = () => {
                                         id="inputEmailAddress"
                                         type="email"
                                         placeholder="Enter your email address"
-                                        defaultValue={`${user.email}`}
+                                        value={user.email || ""}
                                         readOnly={true}
                                     />
                                 </div>
@@ -101,7 +105,7 @@ const Profile = () => {
                                             id="inputPhone"
                                             type="tel"
                                             placeholder="Enter your phone number"
-                                            defaultValue={`${user.phoneNumber}`}
+                                            value={user.phoneNumber || ""}
                                             readOnly={true}
                                         />
                                     </div>
@@ -116,15 +120,11 @@ const Profile = () => {
                                             type="text"
                                             name="birthday"
                                             placeholder="Enter your birthday"
-                                            defaultValue={`${user.birthdate}`}
+                                            value={user.birthdate || ""}
                                             readOnly={true}
                                         />
                                     </div>
                                 </div>
-                                {/* Save changes button*/}
-                                {/*<button className="btn btn-primary" type="button">*/}
-                                {/*    Save changes*/}
-                                {/*</button>*/}
                             </form>
                         </div>
                     </div>

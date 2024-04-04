@@ -5,8 +5,8 @@ import { QUOTATION_COLUMNS } from "./constant";
 import TableLayout from "../../../layouts/TableLayout";
 import QuotationDetailModal from "./QuotationDetailModal";
 import QuotationAPI from "../../../api/quotation";
-import { useQuery } from "@tanstack/react-query";
-import { message } from "antd";
+import { useQuery, useMutation } from "@tanstack/react-query";
+import { message, Spin } from "antd";
 
 const StaffQuotation = () => {
   const quotationModal = useRef();
@@ -32,8 +32,19 @@ const StaffQuotation = () => {
     },
   });
 
+  const { isPending: isLoadingSendContract, mutate: mutateSendContract } =
+    useMutation({
+      mutationFn: QuotationAPI.SendContract,
+      mutationKey: "quotation-api",
+      onError: (errorResponse) => {
+        message.error(errorResponse.response.data.message);
+      },
+      onSuccess: () => {
+        message.success("Send contract to customer is successful");
+      },
+    });
+
   const searchStaffQuotation = (event) => {};
-  // console.log(quotationsList.$values);
   const quotation = () => {
     return quotationsList?.$values;
   };
@@ -47,6 +58,10 @@ const StaffQuotation = () => {
   };
   const onDeleteQuotation = (id) => {
     quotationDelete.current.openModal(id);
+  };
+
+  const onSendContract = (id) => {
+    mutateSendContract(id);
   };
 
   return (
@@ -66,16 +81,19 @@ const StaffQuotation = () => {
         QuotationUpdate={quotationId}
       />
       {contextHolder}
-      <TableLayout
-        tableColumns={QUOTATION_COLUMNS}
-        tableDataSource={quotation}
-        actionName={"Confirm Quotation"}
-        onchangeSearch={searchStaffQuotation}
-        addNewAction={() => quotationModal.current.openModal()}
-        onEditQuotation={onEditQuotation}
-        viewProductDetail={onDetailQuotation}
-        onDeleteQuotation={onDeleteQuotation}
-      />
+      <Spin spinning={isLoadingSendContract}>
+        <TableLayout
+          tableColumns={QUOTATION_COLUMNS}
+          tableDataSource={quotation}
+          actionName={"Confirm Quotation"}
+          onchangeSearch={searchStaffQuotation}
+          addNewAction={() => quotationModal.current.openModal()}
+          onEditQuotation={onEditQuotation}
+          viewProductDetail={onDetailQuotation}
+          onDeleteQuotation={onDeleteQuotation}
+          sendContract={onSendContract}
+        />
+      </Spin>
     </>
   );
 };

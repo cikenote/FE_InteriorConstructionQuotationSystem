@@ -16,6 +16,7 @@ const QuotationAPI = {
     axiosClient.get(END_POINT_API.GET_CURRENT_QUOTATION),
   SubmitQuotation: (params) =>
     axiosClient.post(END_POINT_API.SUBMIT_QUOTATION, params),
+  SendContract: (id) => axiosClient.post(`/api/Quotation/${id}/send`),
 };
 
 export default QuotationAPI;

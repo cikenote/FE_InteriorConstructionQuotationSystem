@@ -1,3 +1,6 @@
+import PropTypes from "prop-types"; // Import PropTypes
+
+import { useMutation } from "@tanstack/react-query";
 import {
   Button,
   Col,
@@ -16,16 +19,16 @@ import React, {
   useState,
 } from "react";
 import { FORM_RULES } from "../../utils/constant";
-import { useMutation } from "@tanstack/react-query";
 import QuotationAPI from "../../api/quotation";
 
 const QuotationModal = ({ AfterCloseModal, QuotationUpdate }, ref) => {
   const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
   const [isOpenModal, setIsOpenModal] = useState(false);
+
   useImperativeHandle(ref, () => {
     return {
-      openModal: (id) => {
+      openModal: () => {
         setIsOpenModal(true);
       },
     };
@@ -53,7 +56,7 @@ const QuotationModal = ({ AfterCloseModal, QuotationUpdate }, ref) => {
 
   const onSubmitForm = (response) => {
     mutate({
-      quotationId: QuotationUpdate.QuotationId,
+      quotationId: QuotationUpdate.quotationId,
       quotationStatus: response.quotationStatus,
       message: response.message,
     });
@@ -67,11 +70,11 @@ const QuotationModal = ({ AfterCloseModal, QuotationUpdate }, ref) => {
 
   return (
     <Modal
-      open={isOpenModal}
+      visible={isOpenModal}
       onCancel={onCloseModal}
       title="Update Quotation"
       closeIcon={false}
-      footer
+      footer={null}
     >
       {contextHolder}
       <Form layout="vertical" onFinish={onSubmitForm} form={form}>
@@ -116,6 +119,12 @@ const QuotationModal = ({ AfterCloseModal, QuotationUpdate }, ref) => {
       </Form>
     </Modal>
   );
+};
+
+// Add propTypes validation
+QuotationModal.propTypes = {
+  AfterCloseModal: PropTypes.func.isRequired,
+  QuotationId: PropTypes.number.isRequired,
 };
 
 export default forwardRef(QuotationModal);

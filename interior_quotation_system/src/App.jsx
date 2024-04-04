@@ -6,6 +6,10 @@ import "./index.css";
 import AdminRole from "./module/admin";
 import AdminDashboard from "./module/admin/Dashboard"; // New Admin Dashboard Component
 import AdminUser from "./module/admin/User";
+import StaffRole from "./module/staff";
+import StaffArticle from "./module/staff/Article";
+import StaffProduct from "./module/staff/Product";
+import StaffQuotation from "./module/staff/Quotation";
 import BlogDetailPage from "./pages/blog-detail/BlogDetailPage";
 import BlogPage from "./pages/blog/BlogPage";
 import ContactPage from "./pages/contact/ContactPage";
@@ -19,8 +23,13 @@ import RegisterPage from "./pages/register/RegisterPage";
 import ItemDetail from "./pages/shop/ItemDetail";
 import ShopItem from "./pages/shop/index";
 import PrivateRoutes from "./routes/PrivateRoutes";
+<<<<<<< HEAD
 import YourAccount from "./pages/yourAccount/YourAccount.jsx";
 import {PAGE_ROUTES} from "./utils/constant.tsx";
+=======
+import { PAGE_ROUTES } from "./utils/constant";
+
+>>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
 function App() {
   return (
     <Routes>
@@ -61,8 +70,20 @@ function App() {
       <Route path="/quotation" element={<QuotationPage />} />
       <Route path="/quotation/form" element={<QuotationFormPage />} />
       <Route path="/shop" element={<ShopItem />} />
-      <Route path="/your-account" element={<YourAccount />} />
+      {/* <Route path="/your-account" element={<YourAccount />} /> */}
       <Route path="/shop/item/:productId" element={<ItemDetail />} />
+      <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
+        <Route
+          path={PAGE_ROUTES.STAFF.QUOTATIONS}
+          element={<StaffQuotation />}
+        />
+        <Route path={PAGE_ROUTES.STAFF.PRODUCT} element={<StaffProduct />} />
+        {/* <Route
+          path={PAGE_ROUTES.STAFF.DASHBOARD}
+          element={<StaffDashboard />}
+        /> */}
+        <Route path={PAGE_ROUTES.STAFF.ARTICLE} element={<StaffArticle />} />
+      </Route>
     </Routes>
   );
 }

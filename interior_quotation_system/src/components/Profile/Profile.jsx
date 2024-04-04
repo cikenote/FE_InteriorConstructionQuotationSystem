@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 
 import "./style.scss"
 
 import UserInfo from "../../api/UserInfo/UnserInfo.tsx";
 
 const Profile = () => {
-    const [user, setUser] = useState("");
+  const [user, setUser] = useState("");
 
-    useEffect(() => {
-        console.log("Making API call...");
-        fetchAPI();
-    }, []);
+  useEffect(() => {
+    console.log("Making API call...");
+    fetchAPI();
+  }, []);
 
     const fetchAPI = async () => {
         try {
@@ -131,7 +131,7 @@ const Profile = () => {
                 </div>
             </div>
         </div>
-    );
+  );
 };
 
 export default Profile;

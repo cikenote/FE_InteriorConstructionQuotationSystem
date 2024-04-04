@@ -1,7 +1,7 @@
 import { Checkbox, Image, Tag } from "antd";
 import { FormatCurrency } from "../../../utils/helper";
 
-export const PRODUCTS_LIST_MOCK = ({ onSelectedProduct }) => [
+export const PRODUCTS_LIST_MOCK = ({ onSelectedProduct, formik }) => [
   {
     title: "Tên sản phẩm",
     dataIndex: "name",
@@ -21,9 +21,18 @@ export const PRODUCTS_LIST_MOCK = ({ onSelectedProduct }) => [
   {
     title: "Chọn",
     dataIndex: "action",
-    render: (id, product) => (
-      <Checkbox onChange={() => onSelectedProduct(product)} />
-    ),
+    render: (action, product) => {
+      const productIds = formik.values.quotationDetailDTOs.map(
+        (product) => product.productId
+      );
+
+      return (
+        <Checkbox
+          onChange={() => onSelectedProduct(product)}
+          checked={productIds.includes(action)}
+        />
+      );
+    },
   },
 ];
 
@@ -47,10 +56,6 @@ export const PRODUCTS_LIST_MOCK_2 = [
     render: (price) => <Tag color="green">{price}</Tag>,
   },
 ];
-
-
-
-
 
 export const DATA_SELECT_FAKE = [
   {

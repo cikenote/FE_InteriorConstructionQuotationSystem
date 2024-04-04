@@ -2,7 +2,7 @@ import { Badge, Descriptions, Image, Modal, Table, Tabs } from "antd";
 import { forwardRef, useImperativeHandle, useState } from "react";
 import { FormatCurrency } from "../../utils/helper";
 
-const ProductColumn = [
+export const ProductColumn = [
   {
     title: "Name",
     dataIndex: "name",
@@ -39,8 +39,6 @@ const QuotationDetail = ({ quotationDetailProp }, ref) => {
   const onCloseModal = () => {
     setIsOpenModal(false);
   };
-
-  console.log(quotationDetailProp);
 
   return (
     <Modal

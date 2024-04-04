@@ -1,15 +1,15 @@
-import { Modal, Skeleton, Spin, Table } from "antd";
-import React, {
+import { useQuery } from "@tanstack/react-query";
+import { Modal, Spin, Table } from "antd";
+import {
   forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
 } from "react";
-import { QUOTATIONS_COLUMNS } from "./constant";
-import { useQuery } from "@tanstack/react-query";
 import QuotationAPI from "../../api/quotation";
 import QuotationDetail from "./QuotationDetail";
+import { QUOTATIONS_COLUMNS } from "./constant";
 
 const QuotationStatus = ({}, ref) => {
   const quotationDetailRef = useRef();
@@ -26,10 +26,7 @@ const QuotationStatus = ({}, ref) => {
   useEffect(() => {
     if (currentQuotation) {
       const data = currentQuotation;
-      const quotationPending = data.$values.filter(
-        (item) => item.quotationStatus === "Pending"
-      );
-      setQuotations(quotationPending);
+      setQuotations(data.$values);
     }
   }, [currentQuotation]);
 
@@ -55,7 +52,7 @@ const QuotationStatus = ({}, ref) => {
       onCancel={onCloseModal}
       footer={null}
       closeIcon
-      width={800}
+      width={1000}
     >
       <QuotationDetail
         ref={quotationDetailRef}

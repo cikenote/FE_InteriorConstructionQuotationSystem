@@ -1,5 +1,5 @@
 import { Avatar, Dropdown, Layout, Menu } from "antd";
-import React from "react";
+import PropTypes from "prop-types";
 import { CiSearch } from "react-icons/ci";
 import { IoSettingsOutline } from "react-icons/io5";
 import { Outlet } from "react-router-dom";
@@ -13,7 +13,6 @@ const contentStyle = {
   minHeight: 120,
   lineHeight: "120px",
   color: "#fff",
-  // backgroundColor: "#0958d9",
 };
 
 const MainLayout = ({ menuItems }) => {
@@ -63,6 +62,16 @@ const MainLayout = ({ menuItems }) => {
       </Layout>
     </Layout>
   );
+};
+
+// Add PropTypes validation for the menuItems prop
+MainLayout.propTypes = {
+  menuItems: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.string.isRequired,
+      // Add more validations as needed for other properties of menuItems
+    })
+  ).isRequired,
 };
 
 export default MainLayout;

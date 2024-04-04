@@ -1,7 +1,5 @@
-import blogs from "../../api/blogs";
-import { useEffect, useState } from "react";
-import Error from "../Error/Error";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/components/blog.scss";
 

@@ -1,5 +1,6 @@
 import { Button, Tag, Typography } from "antd";
 import { FormatCurrency } from "../../utils/helper";
+import dayjs from "dayjs";
 
 export const HeaderMenus = [
   {
@@ -27,7 +28,20 @@ export const QUOTATIONS_COLUMNS = ({ viewQuotationDetail }) => [
   {
     dataIndex: "quotationStatus",
     title: "Status",
-    render: (status) => <Tag color={"geekblue"}>{status}</Tag>,
+    render: (status) => (
+      <Tag
+        color={`${
+          status === "Pending" ? "blue" : status === "Cancel" ? "red" : "green"
+        }`}
+      >
+        {status}
+      </Tag>
+    ),
+  },
+  {
+    dataIndex: "createdAt",
+    title: "Created At",
+    render: (date) => <p>{dayjs(date).format("MM/DD/YYYY HH:mm A")}</p>,
   },
   {
     dataIndex: "totalBill",

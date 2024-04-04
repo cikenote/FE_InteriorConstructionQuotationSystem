@@ -18,7 +18,7 @@ const StaffProduct = () => {
     mutationFn: ProductAPI.getAllProductList,
     mutationKey: "products-list",
     onSuccess: (response) => {
-      setProducts(response.responses.$values);
+      setProducts(response.$values);
     },
     onError: (errors) => {
       console.log(errors);

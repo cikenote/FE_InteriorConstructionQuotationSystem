@@ -1,17 +1,21 @@
-import { Modal, Skeleton, Table } from "antd";
+import { Modal, Skeleton, Spin, Table } from "antd";
 import React, {
   forwardRef,
   useEffect,
   useImperativeHandle,
+  useRef,
   useState,
 } from "react";
 import { QUOTATIONS_COLUMNS } from "./constant";
 import { useQuery } from "@tanstack/react-query";
 import QuotationAPI from "../../api/quotation";
+import QuotationDetail from "./QuotationDetail";
 
-const QuotationStatus = ({}, ref: any) => {
+const QuotationStatus = ({}, ref) => {
+  const quotationDetailRef = useRef();
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [quotations, setQuotations] = useState([]);
+  const [quotationDetail, setQuotationDetail] = useState();
 
   const { isLoading: isLoadingCurrentQuotation, data: currentQuotation } =
     useQuery({
@@ -21,7 +25,7 @@ const QuotationStatus = ({}, ref: any) => {
 
   useEffect(() => {
     if (currentQuotation) {
-      const data = currentQuotation as any;
+      const data = currentQuotation;
       const quotationPending = data.$values.filter(
         (item) => item.quotationStatus === "Pending"
       );
@@ -39,9 +43,10 @@ const QuotationStatus = ({}, ref: any) => {
     setIsOpenModal(false);
   };
 
-  // if (isLoadingCurrentQuotation) {
-  //   return <Skeleton />;
-  // }
+  const onViewQuotationDetail = (data) => {
+    setQuotationDetail(data);
+    quotationDetailRef.current.openModal();
+  };
 
   return (
     <Modal
@@ -50,9 +55,20 @@ const QuotationStatus = ({}, ref: any) => {
       onCancel={onCloseModal}
       footer={null}
       closeIcon
-      width={700}
+      width={800}
     >
-      <Table columns={QUOTATIONS_COLUMNS} dataSource={quotations} />
+      <QuotationDetail
+        ref={quotationDetailRef}
+        quotationDetailProp={quotationDetail}
+      />
+      <Spin spinning={isLoadingCurrentQuotation}>
+        <Table
+          columns={QUOTATIONS_COLUMNS({
+            viewQuotationDetail: onViewQuotationDetail,
+          })}
+          dataSource={quotations}
+        />
+      </Spin>
     </Modal>
   );
 };

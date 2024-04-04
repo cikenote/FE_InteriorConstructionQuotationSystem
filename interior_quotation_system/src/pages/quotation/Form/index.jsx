@@ -97,12 +97,7 @@ const QuotationFormPage = () => {
         message.error("Error occur when get all products");
       },
       onSuccess: (res) => {
-        console.log(res);
-<<<<<<< HEAD
         const result = res.$values.map((product) => {
-=======
-        const result = res.responses.$values.map((product) => {
->>>>>>> f559240fef748ab91e0949d25f21027a28734bc2
           return {
             name: product.name,
             image: product.imageUrl,

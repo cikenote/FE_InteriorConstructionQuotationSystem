@@ -12,7 +12,7 @@ import {
 } from "antd";
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import { FORM_RULES } from "../../../utils/constant";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import QuotationAPI from "../../../api/quotation";
 import ProductAPI from "../../../api/products";
 import CategoryAPI from "../../../api/categories";

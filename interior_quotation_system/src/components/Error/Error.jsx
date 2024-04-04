@@ -1,4 +1,3 @@
-import React from "react";
 import "../../styles/components/error.scss";
 import { PAGE_ROUTES } from "../../utils/constant";
 

@@ -1,15 +1,15 @@
-import { Modal, Skeleton, Spin, Table } from "antd";
-import React, {
+import { useQuery } from "@tanstack/react-query";
+import { Modal, Spin, Table } from "antd";
+import {
   forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
 } from "react";
-import { QUOTATIONS_COLUMNS } from "./constant";
-import { useQuery } from "@tanstack/react-query";
 import QuotationAPI from "../../api/quotation";
 import QuotationDetail from "./QuotationDetail";
+import { QUOTATIONS_COLUMNS } from "./constant";
 
 const QuotationStatus = ({}, ref) => {
   const quotationDetailRef = useRef();

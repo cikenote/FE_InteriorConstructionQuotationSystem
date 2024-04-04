@@ -35,6 +35,7 @@ const StaffProduct = () => {
         mutateProductsList();
       },
       onError: (errorResponse) => {
+        console.log(errorResponse);
         message.error(errorResponse.response.data.message);
       },
     });

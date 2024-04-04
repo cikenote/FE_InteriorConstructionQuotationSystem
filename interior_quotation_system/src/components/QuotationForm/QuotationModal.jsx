@@ -12,8 +12,14 @@ import {
   Select,
   message,
 } from "antd";
-import React, { forwardRef, useImperativeHandle, useState } from "react";
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from "react";
 import { FORM_RULES } from "../../utils/constant";
+import QuotationAPI from "../../api/quotation";
 
 const QuotationModal = ({ AfterCloseModal, QuotationUpdate }, ref) => {
   const [form] = Form.useForm();

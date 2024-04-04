@@ -17,6 +17,7 @@ import { FORM_RULES } from "../../../utils/constant";
 import CategoryAPI from "../../../api/categories";
 import { useSelector } from "react-redux";
 import ProductAPI from "../../../api/products";
+import dayjs from "dayjs";
 
 const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -153,26 +154,6 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
               </Form.Item>
             </Col>
 
-            <Col span={12}>
-              <Form.Item
-                name="createAt"
-                label="Create at"
-                rules={[FORM_RULES.required]}
-              >
-                <DatePicker style={{ width: "100%" }} />
-              </Form.Item>
-            </Col>
-
-            <Col span={12}>
-              <Form.Item
-                name="updateAt"
-                label="Update at"
-                rules={[FORM_RULES.required]}
-              >
-                <DatePicker style={{ width: "100%" }} />
-              </Form.Item>
-            </Col>
-
             <Col span={24}>
               <Form.Item
                 name="description"
@@ -180,6 +161,12 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
                 required={false}
               >
                 <Input.TextArea rows={3} />
+              </Form.Item>
+            </Col>
+
+            <Col span={24}>
+              <Form.Item name="size" label="Size" required={false}>
+                <Input />
               </Form.Item>
             </Col>
 

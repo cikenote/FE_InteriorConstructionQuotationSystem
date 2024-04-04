@@ -9,6 +9,7 @@ import "./style.scss";
 
 const StaffProduct = () => {
   const [products, setProducts] = useState([]);
+  const [productUpdate, setProductUpdate] = useState();
 
   const {
     isPending: isLoadingProducts,
@@ -33,8 +34,8 @@ const StaffProduct = () => {
         message.success("Delete product is successful");
         mutateProductsList();
       },
-      onError: () => {
-        message.error("Error occur when delete product");
+      onError: (errorResponse) => {
+        message.error(errorResponse.response.data.message);
       },
     });
 
@@ -57,6 +58,11 @@ const StaffProduct = () => {
     mutateDeleteProduct(id);
   };
 
+  const onUpdateProduct = (product) => {
+    setProductUpdate(product);
+    productActionModal.current.openModal();
+  };
+
   if (isLoadingProducts || isLoadingDeleteProduct) {
     return <Skeleton paragraph={{ rows: 5 }} />;
   }
@@ -66,6 +72,7 @@ const StaffProduct = () => {
       <ProductModal
         ref={productActionModal}
         afterCloseModal={() => mutateProductsList()}
+        productUpdate={productUpdate}
       />
       <TableLayout
         tableColumns={PRODUCT_COLUMNS}
@@ -74,6 +81,7 @@ const StaffProduct = () => {
         onchangeSearch={searchStaffProduct}
         addNewAction={() => productActionModal.current.openModal()}
         onDeleteQuotation={deleteProduct}
+        onEditQuotation={onUpdateProduct}
       />
     </div>
   );

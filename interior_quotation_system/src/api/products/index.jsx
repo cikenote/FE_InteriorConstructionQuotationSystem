@@ -26,7 +26,7 @@ const ProductAPI = {
     axiosClient.delete(`${END_POINT_API.PRODUCTS}/${productId}`),
   UpdateProduct: (values) => {
     const { id, ...params } = values;
-    return axiosClient.patchForm(`${END_POINT_API.PRODUCTS}/${id}`, params);
+    return axiosClient.put(`${END_POINT_API.PRODUCTS}/${id}`, params);
   },
 };
 

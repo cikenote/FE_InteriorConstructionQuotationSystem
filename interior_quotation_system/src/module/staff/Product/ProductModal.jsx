@@ -43,6 +43,21 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
     },
   });
 
+  const { isPending: isLoadingUpdateProduct, mutate: mutateUpdateProduct } =
+    useMutation({
+      mutationFn: ProductAPI.UpdateProduct,
+      mutationKey: "product-key",
+      onError: (error) => {
+        message.error(error.message);
+      },
+      onSuccess: () => {
+        message.success("Update product is successfully");
+        afterCloseModal();
+        onCloseModal();
+        form.resetFields();
+      },
+    });
+
   const {
     isPending: isLoadingCategoriesList,
     isSuccess: isSuccessGetCategories,
@@ -64,12 +79,21 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
   };
 
   const onFinishForm = (values) => {
-    mutateCreateNewProduct({
-      ...values,
-      userId: userProfile.userId,
-      status: true,
-      createdAt: dayjs().format(),
-    });
+    if (productUpdate) {
+      mutateUpdateProduct({
+        ...values,
+        status: true,
+        createdAt: dayjs().format(),
+        id: productUpdate.productId,
+      });
+    } else {
+      mutateCreateNewProduct({
+        ...values,
+        userId: userProfile.userId,
+        status: true,
+        createdAt: dayjs().format(),
+      });
+    }
   };
 
   if (categoriesError) {
@@ -88,6 +112,12 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
     }
   }, [categories]);
 
+  useEffect(() => {
+    if (productUpdate) {
+      form.setFieldsValue(productUpdate);
+    }
+  }, [productUpdate]);
+
   return (
     <Modal
       title={productUpdate ? "Update Product" : "New Product"}
@@ -95,7 +125,13 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
       onCancel={onCloseModal}
       footer
     >
-      <Skeleton loading={isLoadingCategoriesList || isLoadingCreateNewProduct}>
+      <Skeleton
+        loading={
+          isLoadingCategoriesList ||
+          isLoadingCreateNewProduct ||
+          isLoadingUpdateProduct
+        }
+      >
         <Form form={form} onFinish={onFinishForm} layout="vertical">
           <Row gutter={[10, 10]}>
             <Col span={24}>

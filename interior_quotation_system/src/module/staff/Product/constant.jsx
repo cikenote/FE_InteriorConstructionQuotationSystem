@@ -1,7 +1,7 @@
 import { DeleteOutline, EditOutlined } from "@mui/icons-material";
 import { Button, Flex } from "antd";
 
-export const PRODUCT_COLUMNS = ({ onDeleteQuotation }) => [
+export const PRODUCT_COLUMNS = ({ onDeleteQuotation, onEditQuotation }) => [
   {
     title: "Name",
     dataIndex: "name",
@@ -39,9 +39,13 @@ export const PRODUCT_COLUMNS = ({ onDeleteQuotation }) => [
     title: "Actions",
     dataIndex: "productId",
     key: "productId",
-    render: (id) => (
+    render: (id, data) => (
       <Flex gap="middle">
-        <Button icon={<EditOutlined />} type="primary" />
+        <Button
+          icon={<EditOutlined />}
+          type="primary"
+          onClick={() => onEditQuotation(data)}
+        />
         <Button
           icon={<DeleteOutline />}
           danger

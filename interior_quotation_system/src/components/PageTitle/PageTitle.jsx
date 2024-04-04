@@ -1,6 +1,10 @@
-import "../../styles/components/pagetitle.scss";
+import PropTypes from "prop-types"; // Import PropTypes
+import React from "react";
+
 import { Link } from "react-router-dom";
+import "../../styles/components/pagetitle.scss";
 import { PAGE_ROUTES } from "../../utils/constant";
+
 const PageTitle = (props) => {
   return (
     <section className="wpo-page-title">
@@ -11,7 +15,7 @@ const PageTitle = (props) => {
               <h2>{props.pageTitle}</h2>
               <ol className="wpo-breadcumb-wrap">
                 <li>
-                  <Link href={PAGE_ROUTES.HOME}>Trang chủ</Link>
+                  <Link to={PAGE_ROUTES.HOME}>Trang chủ</Link>{" "}
                 </li>
                 <li>
                   <span>{props.pagesub}</span>
@@ -23,6 +27,11 @@ const PageTitle = (props) => {
       </div>
     </section>
   );
+};
+
+PageTitle.propTypes = {
+  pageTitle: PropTypes.string.isRequired,
+  pagesub: PropTypes.string.isRequired,
 };
 
 export default PageTitle;

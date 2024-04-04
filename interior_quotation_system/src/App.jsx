@@ -1,9 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import PrivateRoutes from "./PrivateRoutes";
 import ProjectSingle from "./components/ProjectSingle/ProjectSingle";
 import "./index.css";
 import StaffRole from "./module/staff";
+import StaffArticle from "./module/staff/Article/ArticleModal";
+import StaffDashboard from "./module/staff/Dashboard/Dashboard";
+
 import StaffProjects from "./module/staff/Projects";
 import StaffQuotation from "./module/staff/Quotation";
 import BlogDetailPage from "./pages/blog-detail/BlogDetailPage";
@@ -19,7 +23,6 @@ import RegisterPage from "./pages/register/RegisterPage";
 import ItemDetail from "./pages/shop/ItemDetail";
 import ShopItem from "./pages/shop/index";
 import { PAGE_ROUTES } from "./utils/constant";
-
 function App() {
   return (
     <Routes>
@@ -67,7 +70,7 @@ function App() {
           path={PAGE_ROUTES.STAFF.QUOTATIONS}
           element={<StaffQuotation />}
         />
-        <Route path={PAGE_ROUTES.STAFF.PRODUCT} element={<StaffProduct />} />
+        <Route path={PAGE_ROUTES.STAFF.PRODUCT} element={<StaffQuotation />} />
         <Route
           path={PAGE_ROUTES.STAFF.DASHBOARD}
           element={<StaffDashboard />}

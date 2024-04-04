@@ -1,9 +1,10 @@
-import { Modal, Form, Row, Col, Input, Button } from "antd";
-import { forwardRef, useImperativeHandle, useState, useEffect } from "react";
+import { Button, Col, Form, Input, Modal, Row } from "antd";
 import axios from "axios";
+import PropTypes from "prop-types"; // Import PropTypes
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { FORM_RULES } from "../../../utils/constant";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const ArticleModal = forwardRef(({ selectedBlog }, ref) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -20,7 +21,7 @@ const ArticleModal = forwardRef(({ selectedBlog }, ref) => {
       form.setFieldsValue({
         title: selectedBlog.title,
         content: selectedBlog.content,
-        img: selectedBlog.image
+        img: selectedBlog.image,
       });
     }
   }, [isOpenModal, selectedBlog, form]);
@@ -32,13 +33,16 @@ const ArticleModal = forwardRef(({ selectedBlog }, ref) => {
   const onFinishForm = async (values) => {
     try {
       // Gửi dữ liệu lên server bằng phương thức PUT
-      await axios.put(`https://swp391api.developvn.click/api/Articles/${selectedBlog.id}`, values);
+      await axios.put(
+        `https://swp391api.developvn.click/api/Articles/${selectedBlog.id}`,
+        values
+      );
       console.log("Updated blog:", values);
-      toast.success('Cập nhật thành công!');
+      toast.success("Cập nhật thành công!");
       onCloseModal();
     } catch (error) {
       console.error("Error updating blog:", error);
-      toast.error('Cập nhật thất bại. Vui lòng thử lại sau!');
+      toast.error("Cập nhật thất bại. Vui lòng thử lại sau!");
     }
   };
 
@@ -58,7 +62,11 @@ const ArticleModal = forwardRef(({ selectedBlog }, ref) => {
           </Col>
 
           <Col span={24}>
-            <Form.Item name="content" label="Content" rules={[FORM_RULES.required]}>
+            <Form.Item
+              name="content"
+              label="Content"
+              rules={[FORM_RULES.required]}
+            >
               <Input.TextArea rows={3} />
             </Form.Item>
           </Col>
@@ -80,5 +88,18 @@ const ArticleModal = forwardRef(({ selectedBlog }, ref) => {
     </Modal>
   );
 });
+
+// Add prop types validation
+ArticleModal.propTypes = {
+  selectedBlog: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+  }),
+};
+
+// Add display name to the component
+ArticleModal.displayName = "ArticleModal";
 
 export default ArticleModal;

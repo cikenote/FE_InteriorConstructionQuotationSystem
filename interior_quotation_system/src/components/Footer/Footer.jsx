@@ -1,6 +1,10 @@
 import MarkEmailUnreadOutlinedIcon from "@mui/icons-material/MarkEmailUnreadOutlined";
 import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import TtyOutlinedIcon from "@mui/icons-material/TtyOutlined";
+import PropTypes from "prop-types";
+import Projects from "../../api/projects";
+import Services from "../../api/services";
+
 const Footer = (props) => {
   const ClickHandler = () => {
     window.scrollTo(10, 0);

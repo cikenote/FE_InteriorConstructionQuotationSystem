@@ -1,5 +1,8 @@
-import { Button, Col, Flex, Form, Modal, Row, message } from "antd";
-import React, { forwardRef, useImperativeHandle, useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { Button, Col, Flex, Form, Modal, Row, Select, message } from "antd";
+import PropTypes from "prop-types"; // Import PropTypes
+import { forwardRef, useImperativeHandle, useState } from "react";
+import QuotationAPI from "../../api/quotation"; // Adjust the path as per your project structure
 import { FORM_RULES } from "../../utils/constant";
 
 const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
@@ -16,7 +19,7 @@ const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
   });
 
   const { mutate, isPending: updateQuotationLoading } = useMutation({
-    mutationFn: (newValue) => QuotationAPI.UpdateQuotation(newValue),
+    mutationFn: (newValue) => QuotationAPI.UpdateQuotation(productId, newValue),
     onError: () => {
       messageApi.open({
         type: "error",
@@ -88,6 +91,12 @@ const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
       </Form>
     </Modal>
   );
+};
+
+// Add prop type validation for QuotationId
+QuotationModal.propTypes = {
+  QuotationId: PropTypes.number.isRequired,
+  AfterCloseModal: PropTypes.func.isRequired,
 };
 
 export default forwardRef(QuotationModal);

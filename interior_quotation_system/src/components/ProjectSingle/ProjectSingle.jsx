@@ -7,7 +7,6 @@ import Navbar from "../../components/Navbar/Navbar";
 import Footer from "../Footer/Footer"
 import { useParams } from 'react-router-dom';
 import axios from "axios"
-import { dayjs } from 'dayjs';
 const ProjectSingle = () => {
 
     const { projectId } = useParams();

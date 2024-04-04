@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@mui/icons-material": "^5.15.14",
+    "prop-types": "^15.8.1"
+  }
+}

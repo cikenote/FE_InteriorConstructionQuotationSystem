@@ -19,6 +19,12 @@ import RegisterPage from "./pages/register/RegisterPage";
 import ItemDetail from "./pages/shop/ItemDetail";
 import ShopItem from "./pages/shop/index";
 import PrivateRoutes from "./routes/PrivateRoutes";
+import { PAGE_ROUTES } from "./utils/constant";
+import YourAccount from "./pages/yourAccount/YourAccount";
+import StaffRole from "./module/staff";
+import StaffProduct from "./module/staff/Product";
+import StaffArticle from "./module/staff/Article";
+import StaffQuotation from "./module/staff/Quotation";
 function App() {
   return (
     <Routes>
@@ -61,6 +67,18 @@ function App() {
       <Route path="/shop" element={<ShopItem />} />
       <Route path="/your-account" element={<YourAccount />} />
       <Route path="/shop/item/:productId" element={<ItemDetail />} />
+      <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
+        <Route
+          path={PAGE_ROUTES.STAFF.QUOTATIONS}
+          element={<StaffQuotation />}
+        />
+        <Route path={PAGE_ROUTES.STAFF.PRODUCT} element={<StaffProduct />} />
+        {/* <Route
+          path={PAGE_ROUTES.STAFF.DASHBOARD}
+          element={<StaffDashboard />}
+        /> */}
+        <Route path={PAGE_ROUTES.STAFF.ARTICLE} element={<StaffArticle />} />
+      </Route>
     </Routes>
   );
 }

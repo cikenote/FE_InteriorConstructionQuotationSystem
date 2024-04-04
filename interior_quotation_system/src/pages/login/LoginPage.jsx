@@ -1,11 +1,14 @@
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Button, Col, Form, Input, Row, message } from "antd";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router";
 import AuthenticateAPI from "../../api/authen";
 import { FORM_RULES, PAGE_ROUTES } from "../../utils/constant";
+import { useDispatch } from "react-redux";
+import { Grid } from "@mui/material";
+import { updateUserProfile } from "../../services/redux/UserProfileSlice";
 
 const LoginPage = () => {
   const [form] = Form.useForm();
@@ -33,16 +36,7 @@ const LoginPage = () => {
     mutationFn: AuthenticateAPI.LoginAccount,
     onSuccess: (response) => {
       localStorage.setItem("accessToken", response.token);
-      const userDecode = jwtDecode(response.token);
-      console.log(userDecode);
-      navigate("/shop");
-      if (userDecode.Role == "staff") {
-        navigate("/staff/quotation");
-      } else if (userDecode.Role == "admin") {
-        navigate("/staff/quotation");
-      } else {
-        navigate("/shop");
-      }
+      getUserProfile();
     },
     onError: () => {
       messageApi.open({
@@ -61,15 +55,24 @@ const LoginPage = () => {
   };
 
   const onAuthenticateUser = () => {
-    const userDecode = jwtDecode(accessToken?.token || "");
-    navigate("/shop");
-    if (userDecode.Role == "staff") {
-      navigate("/staff/quotation");
-    } else if (userDecode.Role == "admin") {
-      navigate("/staff/quotation");
-    } else {
-      navigate("/shop");
+    // const userDecode = jwtDecode(accessToken?.token);
+    // if (userDecode.Role == "staff") {
+    //   navigate("/staff/quotation");
+    // } else if (userDecode.Role == "admin") {
+    //   navigate("/staff/quotation");
+    // } else {
+    //   navigate("/shop");
+    // }
+
+    if (userProfileResponse) {
+      if (userProfileResponse.roleId === 2) {
+        navigate("/shop");
+      } else {
+        navigate("/staff/quotation");
+      }
     }
+
+    // navigate("/shop");/
   };
 
   if (isErrorGetUserProfile) {

@@ -53,7 +53,7 @@ const QuotationModal = ({ AfterCloseModal, QuotationUpdate }, ref) => {
 
   const onSubmitForm = (response) => {
     mutate({
-      quotationId: QuotationUpdate.QuotationId,
+      quotationId: QuotationUpdate.quotationId,
       quotationStatus: response.quotationStatus,
       message: response.message,
     });

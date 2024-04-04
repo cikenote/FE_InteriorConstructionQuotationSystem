@@ -10,6 +10,7 @@ import { FiUser } from "react-icons/fi";
 import { useNavigate } from "react-router";
 import { PAGE_ROUTES } from "../../utils/constant";
 import QuotationStatus from "./QuotationStatus";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     const quotationStatusRef = useRef();
@@ -34,6 +35,14 @@ const Header = () => {
             key: "1",
             label: <div onClick={logoutAccount}>Log out</div>,
         },
+        {
+            key: "user-account",
+            label: (
+                <Link to={"/your-account"}>
+                    Your Account
+                </Link>
+            ),
+        }
     ];
     const ClickHandler = () => {
         window.scrollTo(10, 0);
@@ -120,15 +129,6 @@ const Header = () => {
                                             </a>
                                         </li>
 
-                                        {/* <li>
-                                            <a
-                                                onClick={ClickHandler}
-                                                href="/quotation"
-                                            >
-                                                Quotation
-                                            </a>
-                                        </li> */}
-
                                         {accessToken && (
                                             <li>
                                                 <a
@@ -146,38 +146,6 @@ const Header = () => {
                             </div>
                             <div className="col-lg-3 col-md-2 col-2">
                                 <div className="header-right">
-                                    {/* <div className="header-search-form-wrapper">
-                    <div className="cart-search-contact">
-                      <button
-                        onClick={() => setMenuState(!menuActive)}
-                        className="search-toggle-btn"
-                      >
-                        <SearchIcon
-                          className={`fi ti-search ${
-                            menuActive ? "ti-close" : "fi"
-                          }`}
-                        ></SearchIcon>
-                      </button>
-                      <div
-                        className={`header-search-form ${
-                          menuActive ? "header-search-content-toggle" : ""
-                        }`}
-                      >
-                        <form onSubmit={SubmitHandler}>
-                          <div>
-                            <input
-                              type="text"
-                              className="form-control"
-                              placeholder="Search here..."
-                            />
-                            <button type="submit">
-                              <SearchIcon className="fi-ti-search"></SearchIcon>
-                            </button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div> */}
                                     {getUser ? (
                                         <Dropdown
                                             menu={{

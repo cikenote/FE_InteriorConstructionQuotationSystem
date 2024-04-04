@@ -23,6 +23,7 @@ import QuotationFormPage from "./pages/quotation/Form";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import StaffDashboard from "./module/staff/Dashboard";
 import StaffArticle from "./module/staff/Article";
+import YourAccount from "./pages/yourAccount/YourAccount.jsx";
 function App() {
   return (
     <Routes>
@@ -49,6 +50,7 @@ function App() {
       <Route path="/quotation" element={<QuotationPage />} />
       <Route path="/quotation/form" element={<QuotationFormPage />} />
       <Route path="/shop" element={<ShopItem />} />
+        <Route path="/your-account" element={<YourAccount />} />
       <Route path="/shop/item/:productId" element={<ItemDetail />} />
       <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
       

@@ -37,6 +37,8 @@ export const QUOTATIONS_COLUMNS = ({ viewQuotationDetail }) => [
         {status}
       </Tag>
     ),
+    sorter: (a, b) => a.quotationStatus.length - b.quotationStatus.length,
+    sortDirections: ["descend"],
   },
   {
     dataIndex: "createdAt",

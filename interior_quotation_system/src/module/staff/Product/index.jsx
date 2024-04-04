@@ -1,10 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import TableLayout from "../../../layouts/TableLayout";
-import { PRODUCT_COLUMNS } from "./constant";
 import ProductModal from "./ProductModal";
-import { useMutation } from "@tanstack/react-query";
-import ProductAPI from "../../../api/products";
-import { Skeleton, message } from "antd";
+import { PRODUCT_COLUMNS } from "./constant";
 import "./style.scss";
 
 const StaffProduct = () => {
@@ -58,10 +55,13 @@ const StaffProduct = () => {
     mutateDeleteProduct(id);
   };
 
-  const onUpdateProduct = (product) => {
-    setProductUpdate(product);
-    productActionModal.current.openModal();
-  };
+  if (isLoadingProducts || isLoadingDeleteProduct) {
+    return <Skeleton paragraph={{ rows: 5 }} />;
+  }
+
+  useEffect(() => {
+    mutateProductsList();
+  }, []);
 
   if (isLoadingProducts || isLoadingDeleteProduct) {
     return <Skeleton paragraph={{ rows: 5 }} />;
@@ -72,7 +72,6 @@ const StaffProduct = () => {
       <ProductModal
         ref={productActionModal}
         afterCloseModal={() => mutateProductsList()}
-        productUpdate={productUpdate}
       />
       <TableLayout
         tableColumns={PRODUCT_COLUMNS}

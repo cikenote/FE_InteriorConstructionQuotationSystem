@@ -17,8 +17,10 @@ const QuotationModal = ({ quoUpdate }, ref) => {
   };
 
   const onFinishForm = (values) => {
-    console.log(values)
+    console.log(values);
   };
+
+  console.log(quoUpdate);
 
   return (
     <Modal

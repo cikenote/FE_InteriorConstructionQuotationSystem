@@ -1,4 +1,4 @@
-import { Tag, Typography } from "antd";
+import { Button, Tag, Typography } from "antd";
 import { FormatCurrency } from "../../utils/helper";
 
 export const HeaderMenus = [
@@ -8,7 +8,7 @@ export const HeaderMenus = [
   },
 ];
 
-export const QUOTATIONS_COLUMNS = [
+export const QUOTATIONS_COLUMNS = ({ viewQuotationDetail }) => [
   {
     dataIndex: "totalProductCost",
     title: "Total Product Cost",
@@ -28,5 +28,14 @@ export const QUOTATIONS_COLUMNS = [
     dataIndex: "quotationStatus",
     title: "Status",
     render: (status) => <Tag color={"geekblue"}>{status}</Tag>,
+  },
+  {
+    dataIndex: "totalBill",
+    title: "Action",
+    render: (totalBill, data) => (
+      <Button type="primary" onClick={() => viewQuotationDetail(data)}>
+        View Detail
+      </Button>
+    ),
   },
 ];

@@ -3,7 +3,7 @@ import queryString from "query-string";
 
 const axiosClient = axios.create({
   baseURL: "https://swp391api.developvn.click",
-  timeout: 3000,
+  timeout: 20000,
   headers: {
     "content-type": "application/json",
   },

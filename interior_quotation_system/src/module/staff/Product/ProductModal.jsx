@@ -1,22 +1,17 @@
+import { useQuery } from "@tanstack/react-query";
 import {
-  Modal,
-  Form,
-  Row,
   Col,
+  DatePicker,
+  Form,
   Input,
-  message,
-  Skeleton,
+  Modal,
+  Row,
   Select,
-  Flex,
-  Button,
+  message,
 } from "antd";
-import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
+import CategoryAPI from "../../../api/catagories";
 import { FORM_RULES } from "../../../utils/constant";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import ProductAPI from "../../../api/products";
-import CategoryAPI from "../../../api/categories";
-import { useSelector } from "react-redux";
-import dayjs from "dayjs";
 
 const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -26,22 +21,18 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
   );
 
   const [form] = Form.useForm();
-  const {
-    isPending: isLoadingCreateNewProduct,
-    mutate: mutateCreateNewProduct,
-  } = useMutation({
-    mutationFn: ProductAPI.CreateNewProduct,
-    mutationKey: "product-key",
-    onError: (error) => {
-      message.error(error.message);
-    },
-    onSuccess: () => {
-      message.success("Create new product is successfully");
-      afterCloseModal();
-      onCloseModal();
-      form.resetFields();
-    },
-  });
+  // const { isPending: isLoadingCreateNewProduct, mutate: mutateCreateNewProduct } = useMutation({
+  //   mutationFn: ProductAPI.CreateNewProduct,
+  //   mutationKey: "product-key",
+  //   onError: (error) => {
+  //     message.error(error);
+  //   },
+  //   onSuccess: () => {
+  //     message.success("Create new product is successfully");
+  //     onCloseModal();
+  //     form.resetFields();
+  //   },
+  // });
 
   const { isPending: isLoadingUpdateProduct, mutate: mutateUpdateProduct } =
     useMutation({
@@ -125,13 +116,7 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
       onCancel={onCloseModal}
       footer
     >
-      <Skeleton
-        loading={
-          isLoadingCategoriesList ||
-          isLoadingCreateNewProduct ||
-          isLoadingUpdateProduct
-        }
-      >
+      <Skeleton loading={isLoadingCategoriesList || isLoadingCreateNewProduct}>
         <Form form={form} onFinish={onFinishForm} layout="vertical">
           <Row gutter={[10, 10]}>
             <Col span={24}>
@@ -160,9 +145,23 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
               </Form.Item>
             </Col>
 
-            <Col span={24}>
-              <Form.Item name="size" label="Size" rules={[FORM_RULES.required]}>
-                <Input />
+            <Col span={12}>
+              <Form.Item
+                name="createAt"
+                label="Create at"
+                rules={[FORM_RULES.required]}
+              >
+                <DatePicker style={{ width: "100%" }} />
+              </Form.Item>
+            </Col>
+
+            <Col span={12}>
+              <Form.Item
+                name="updateAt"
+                label="Update at"
+                rules={[FORM_RULES.required]}
+              >
+                <DatePicker style={{ width: "100%" }} />
               </Form.Item>
             </Col>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import TableLayout from "../../../layouts/TableLayout";
 import { PRODUCT_COLUMNS } from "./constant";
 import ProductModal from "./ProductModal";
@@ -63,7 +63,10 @@ const StaffProduct = () => {
 
   return (
     <div className="product-container">
-      <ProductModal ref={productActionModal} />
+      <ProductModal
+        ref={productActionModal}
+        afterCloseModal={() => mutateProductsList()}
+      />
       <TableLayout
         tableColumns={PRODUCT_COLUMNS}
         tableDataSource={() => products}

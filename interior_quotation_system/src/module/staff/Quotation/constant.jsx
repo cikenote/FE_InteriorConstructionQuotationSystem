@@ -30,13 +30,9 @@ export const QUOTATION_COLUMNS = ({
         {status}
       </Tag>
     ),
+    sorter: (a, b) => a.quotationStatus.length - b.quotationStatus.length,
+    sortDirections: ["descend"],
   },
-  // {
-  //     title: "Style",
-  //     dataIndex: "style",
-  //     key: "style",
-  //     render: (style) => <Typography>{style?.name || "-"}</Typography>,
-  // },
   {
     title: "Total Bill",
     dataIndex: "totalBill",

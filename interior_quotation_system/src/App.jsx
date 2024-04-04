@@ -5,7 +5,7 @@ import ProjectSingle from "./components/ProjectSingle/ProjectSingle";
 import "./index.css";
 import AdminRole from "./module/admin";
 import AdminDashboard from "./module/admin/Dashboard"; // New Admin Dashboard Component
-import AdminUser from "./module/admin/User/AdminUser";
+import AdminUser from "./module/admin/User";
 import BlogDetailPage from "./pages/blog-detail/BlogDetailPage";
 import BlogPage from "./pages/blog/BlogPage";
 import ContactPage from "./pages/contact/ContactPage";

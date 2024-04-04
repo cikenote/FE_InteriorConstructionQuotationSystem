@@ -12,6 +12,6 @@ export const END_POINT_API = {
   GET_CURRENT_QUOTATION: "/api/Quotation/GetSubmitedQuotationsOfUser",
   SUBMIT_QUOTATION: "/api/Quotation/SubmitQuotation",
   ADMIN_DASHBOARD: "/admin/dashboard",
-  USER_MANAGEMENT: "/admin/users",
+  USER: "/api/AccountManager",
   CATEGORY: "/api/Category",
 };

@@ -26,10 +26,7 @@ const QuotationStatus = ({}, ref) => {
   useEffect(() => {
     if (currentQuotation) {
       const data = currentQuotation;
-      const quotationPending = data.$values.filter(
-        (item) => item.quotationStatus === "Pending"
-      );
-      setQuotations(quotationPending);
+      setQuotations(data.$values);
     }
   }, [currentQuotation]);
 

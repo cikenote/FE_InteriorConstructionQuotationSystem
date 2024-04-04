@@ -1,6 +1,5 @@
-import { DeleteOutline, EditOutlined } from "@mui/icons-material";
-import { Button, Flex, Tag, Typography } from "antd";
-import dayjs from "dayjs";
+import { EditOutlined } from "@mui/icons-material";
+import { Button, Flex, Tag, Tooltip } from "antd";
 import { LuEye } from "react-icons/lu";
 
 export const QUOTATION_COLUMNS = ({
@@ -52,10 +51,17 @@ export const QUOTATION_COLUMNS = ({
         {quotation.quotationStatus === "Pending" && (
           <Button
             icon={<EditOutlined />}
-            type="primary"
-            onClick={() => onEditQuotation(id)}
+            onClick={() => onEditQuotation(quotation)}
           />
         )}
+
+        <Tooltip title="View detail quotation">
+          <Button
+            icon={<LuEye />}
+            type="primary"
+            onClick={() => viewProductDetail(quotation)}
+          />
+        </Tooltip>
       </Flex>
     ),
   },

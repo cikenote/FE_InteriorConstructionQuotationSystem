@@ -28,7 +28,15 @@ export const QUOTATIONS_COLUMNS = ({ viewQuotationDetail }) => [
   {
     dataIndex: "quotationStatus",
     title: "Status",
-    render: (status) => <Tag color={"geekblue"}>{status}</Tag>,
+    render: (status) => (
+      <Tag
+        color={`${
+          status === "Pending" ? "blue" : status === "Cancel" ? "red" : "green"
+        }`}
+      >
+        {status}
+      </Tag>
+    ),
   },
   {
     dataIndex: "createdAt",

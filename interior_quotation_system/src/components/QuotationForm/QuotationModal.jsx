@@ -12,11 +12,11 @@ import {
   Select,
   message,
 } from "antd";
-import { forwardRef, useImperativeHandle, useState } from "react";
-import QuotationAPI from "../../api/quotation";
+import React, { forwardRef, useImperativeHandle, useState } from "react";
 import { FORM_RULES } from "../../utils/constant";
 
-const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
+const QuotationModal = ({ AfterCloseModal, QuotationUpdate }, ref) => {
+  const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
@@ -50,11 +50,17 @@ const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
 
   const onSubmitForm = (response) => {
     mutate({
-      quotationId: QuotationId,
+      quotationId: QuotationUpdate.QuotationId,
       quotationStatus: response.quotationStatus,
       message: response.message,
     });
   };
+
+  useEffect(() => {
+    if (QuotationUpdate) {
+      form.setFieldValue("quotationStatus", QuotationUpdate.quotationStatus);
+    }
+  }, [QuotationUpdate]);
 
   return (
     <Modal
@@ -65,7 +71,7 @@ const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
       footer={null}
     >
       {contextHolder}
-      <Form layout="vertical" onFinish={onSubmitForm}>
+      <Form layout="vertical" onFinish={onSubmitForm} form={form}>
         <Row gutter={[10, 10]}>
           <Col span={24}>
             <Form.Item
@@ -92,7 +98,7 @@ const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
           </Col>
 
           <Col span={24}>
-            <Flex justify="end" gap={4}>
+            <Flex justify="end" gap="middle">
               <Button onClick={onCloseModal}>Cancel</Button>
               <Button
                 type="primary"

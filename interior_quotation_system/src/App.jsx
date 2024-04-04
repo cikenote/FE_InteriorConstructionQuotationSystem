@@ -19,6 +19,7 @@ import RegisterPage from "./pages/register/RegisterPage";
 import ItemDetail from "./pages/shop/ItemDetail";
 import ShopItem from "./pages/shop/index";
 import PrivateRoutes from "./routes/PrivateRoutes";
+import { PAGE_ROUTES } from "./utils/constant";
 function App() {
   return (
     <Routes>
@@ -59,7 +60,7 @@ function App() {
       <Route path="/quotation" element={<QuotationPage />} />
       <Route path="/quotation/form" element={<QuotationFormPage />} />
       <Route path="/shop" element={<ShopItem />} />
-      <Route path="/your-account" element={<YourAccount />} />
+      {/* <Route path="/your-account" element={<YourAccount />} /> */}
       <Route path="/shop/item/:productId" element={<ItemDetail />} />
     </Routes>
   );

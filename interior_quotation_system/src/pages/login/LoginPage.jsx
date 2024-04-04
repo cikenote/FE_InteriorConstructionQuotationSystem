@@ -1,21 +1,27 @@
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { useMutation } from "@tanstack/react-query";
+import Grid from "@mui/material/Grid";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { Button, Col, Form, Input, Row, message } from "antd";
 import { jwtDecode } from "jwt-decode";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import AuthenticateAPI from "../../api/authen";
 import { FORM_RULES, PAGE_ROUTES } from "../../utils/constant";
+// import { updateUserProfile } from "../yourAccount";
 
 const LoginPage = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const [messageApi, contextHolder] = message.useMessage();
   const dispatch = useDispatch();
+  const [value, setValue] = useState({
+    remember: false,
+  });
 
   const {
     isLoading: isLoadingUserProfile,
-    refetch: getUserProfile,
     isError: isErrorGetUserProfile,
     data: userProfileResponse,
     isSuccess: isSuccessUserProfile,
@@ -36,10 +42,10 @@ const LoginPage = () => {
       const userDecode = jwtDecode(response.token);
       console.log(userDecode);
       navigate("/shop");
-      if (userDecode.Role == "staff") {
+      if (userDecode.Role === "staff") {
         navigate("/staff/quotation");
-      } else if (userDecode.Role == "admin") {
-        navigate("/staff/quotation");
+      } else if (userDecode.Role === "admin") {
+        navigate("/admin/users");
       } else {
         navigate("/shop");
       }
@@ -47,7 +53,7 @@ const LoginPage = () => {
     onError: () => {
       messageApi.open({
         type: "error",
-        content: "Your account is invalid. Please  try again !!",
+        content: "Your account is invalid. Please try again !!",
       });
     },
   });
@@ -63,9 +69,7 @@ const LoginPage = () => {
   const onAuthenticateUser = () => {
     const userDecode = jwtDecode(accessToken?.token || "");
     navigate("/shop");
-    if (userDecode.Role == "staff") {
-      navigate("/staff/quotation");
-    } else if (userDecode.Role == "admin") {
+    if (userDecode.Role === "staff" || userDecode.Role === "admin") {
       navigate("/staff/quotation");
     } else {
       navigate("/shop");
@@ -73,7 +77,7 @@ const LoginPage = () => {
   };
 
   if (isErrorGetUserProfile) {
-    message.error("Error when get user profile");
+    message.error("Error when getting user profile");
   }
 
   if (isSuccessUserProfile && userProfileResponse) {
@@ -111,7 +115,7 @@ const LoginPage = () => {
                 rules={[FORM_RULES.required]}
               >
                 <Input />
-              </Form.Item>{" "}
+              </Form.Item>
             </Col>
             <Col span={24}>
               <Form.Item

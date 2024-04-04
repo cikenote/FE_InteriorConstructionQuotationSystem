@@ -1,13 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
-import "../../styles/components/quotationForm.scss";
-import QuotationAPI from "../../api/quotation";
 import { Spin, Table, message } from "antd";
 import { useRef, useState } from "react";
-import { QuotationColumns } from "./constant";
+import QuotationAPI from "../../api/quotation";
+import "../../styles/components/quotationForm.scss";
 import QuotationModal from "./QuotationModal";
+import { QuotationColumns } from "./constant";
 const QuotationForm = () => {
   const [messageApi, contextHolder] = message.useMessage();
-  const [quotations, setQuotation] = useState();
+  const [setQuotation] = useState();
   const quotationRef = useRef();
 
   const {

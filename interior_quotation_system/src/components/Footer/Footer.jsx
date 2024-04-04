@@ -1,9 +1,7 @@
-import Services from "../../api/services";
-import Projects from "../../api/projects";
-import "../../styles/components/footer.scss";
+import MarkEmailUnreadOutlinedIcon from "@mui/icons-material/MarkEmailUnreadOutlined";
 import RoomOutlinedIcon from "@mui/icons-material/RoomOutlined";
 import TtyOutlinedIcon from "@mui/icons-material/TtyOutlined";
-import MarkEmailUnreadOutlinedIcon from "@mui/icons-material/MarkEmailUnreadOutlined";
+import "../../styles/components/footer.scss";
 import { PAGE_ROUTES } from "../../utils/constant";
 const Footer = (props) => {
   const ClickHandler = () => {
@@ -25,7 +23,6 @@ const Footer = (props) => {
                     <img src="/images/logo-2.png" alt="logo" />
                   </a>
                 </div>
-                
               </div>
             </div>
             <div className="col col-xl-3  col-lg-4 col-md-6 col-sm-12 col-12">

@@ -72,7 +72,7 @@ const LoginPage = () => {
     if (userDecode.Role == "staff") {
       navigate("/staff/quotation");
     } else if (userDecode.Role == "admin") {
-      navigate("/staff/quotation");
+      navigate("/admin/users");
     } else {
       navigate("/shop");
     }

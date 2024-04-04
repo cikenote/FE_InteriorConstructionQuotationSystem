@@ -62,6 +62,18 @@ function App() {
       <Route path="/shop" element={<ShopItem />} />
       {/* <Route path="/your-account" element={<YourAccount />} /> */}
       <Route path="/shop/item/:productId" element={<ItemDetail />} />
+      <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
+        <Route
+          path={PAGE_ROUTES.STAFF.QUOTATIONS}
+          element={<StaffQuotation />}
+        />
+        <Route path={PAGE_ROUTES.STAFF.PRODUCT} element={<StaffProduct />} />
+        {/* <Route
+          path={PAGE_ROUTES.STAFF.DASHBOARD}
+          element={<StaffDashboard />}
+        /> */}
+        <Route path={PAGE_ROUTES.STAFF.ARTICLE} element={<StaffArticle />} />
+      </Route>
     </Routes>
   );
 }

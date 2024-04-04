@@ -3,6 +3,9 @@ import TableLayout from "../../../layouts/TableLayout";
 import ProductModal from "./ProductModal";
 import { PRODUCT_COLUMNS } from "./constant";
 import "./style.scss";
+import { useMutation } from "@tanstack/react-query";
+import ProductAPI from "../../../api/products";
+import { Skeleton } from "antd";
 
 const StaffProduct = () => {
   const [products, setProducts] = useState([]);
@@ -59,13 +62,7 @@ const StaffProduct = () => {
     return <Skeleton paragraph={{ rows: 5 }} />;
   }
 
-  useEffect(() => {
-    mutateProductsList();
-  }, []);
-
-  if (isLoadingProducts || isLoadingDeleteProduct) {
-    return <Skeleton paragraph={{ rows: 5 }} />;
-  }
+  const onUpdateProduct = () => {};
 
   return (
     <div className="product-container">

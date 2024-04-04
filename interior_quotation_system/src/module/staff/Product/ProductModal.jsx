@@ -1,17 +1,22 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import {
+  Button,
   Col,
   DatePicker,
+  Flex,
   Form,
   Input,
   Modal,
   Row,
   Select,
+  Skeleton,
   message,
 } from "antd";
-import { forwardRef, useImperativeHandle, useState } from "react";
-import CategoryAPI from "../../../api/catagories";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import { FORM_RULES } from "../../../utils/constant";
+import CategoryAPI from "../../../api/categories";
+import { useSelector } from "react-redux";
+import ProductAPI from "../../../api/products";
 
 const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -21,18 +26,21 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
   );
 
   const [form] = Form.useForm();
-  // const { isPending: isLoadingCreateNewProduct, mutate: mutateCreateNewProduct } = useMutation({
-  //   mutationFn: ProductAPI.CreateNewProduct,
-  //   mutationKey: "product-key",
-  //   onError: (error) => {
-  //     message.error(error);
-  //   },
-  //   onSuccess: () => {
-  //     message.success("Create new product is successfully");
-  //     onCloseModal();
-  //     form.resetFields();
-  //   },
-  // });
+  const {
+    isPending: isLoadingCreateNewProduct,
+    mutate: mutateCreateNewProduct,
+  } = useMutation({
+    mutationFn: ProductAPI.CreateNewProduct,
+    mutationKey: "product-key",
+    onError: (error) => {
+      message.error(error);
+    },
+    onSuccess: () => {
+      message.success("Create new product is successfully");
+      onCloseModal();
+      form.resetFields();
+    },
+  });
 
   const { isPending: isLoadingUpdateProduct, mutate: mutateUpdateProduct } =
     useMutation({

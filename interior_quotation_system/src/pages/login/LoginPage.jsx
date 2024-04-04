@@ -8,8 +8,8 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import AuthenticateAPI from "../../api/authen";
+
 import { FORM_RULES, PAGE_ROUTES } from "../../utils/constant";
-// import { updateUserProfile } from "../yourAccount";
 
 const LoginPage = () => {
   const [form] = Form.useForm();
@@ -42,10 +42,10 @@ const LoginPage = () => {
       const userDecode = jwtDecode(response.token);
       console.log(userDecode);
       navigate("/shop");
-      if (userDecode.Role === "staff") {
+      if (userDecode.Role == "staff") {
         navigate("/staff/quotation");
-      } else if (userDecode.Role === "admin") {
-        navigate("/admin/users");
+      } else if (userDecode.Role == "admin") {
+        navigate("/staff/quotation");
       } else {
         navigate("/shop");
       }
@@ -69,11 +69,15 @@ const LoginPage = () => {
   const onAuthenticateUser = () => {
     const userDecode = jwtDecode(accessToken?.token || "");
     navigate("/shop");
-    if (userDecode.Role === "staff" || userDecode.Role === "admin") {
+    if (userDecode.Role == "staff") {
+      navigate("/staff/quotation");
+    } else if (userDecode.Role == "admin") {
       navigate("/staff/quotation");
     } else {
       navigate("/shop");
     }
+
+    // navigate("/shop");/
   };
 
   if (isErrorGetUserProfile) {

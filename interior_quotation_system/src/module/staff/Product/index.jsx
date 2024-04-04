@@ -61,6 +61,18 @@ const StaffProduct = () => {
     return <Skeleton paragraph={{ rows: 5 }} />;
   }
 
+  useEffect(() => {
+    mutateProductsList();
+  }, []);
+
+  const deleteProduct = (id) => {
+    mutateDeleteProduct(id);
+  };
+
+  if (isLoadingProducts || isLoadingDeleteProduct) {
+    return <Skeleton paragraph={{ rows: 5 }} />;
+  }
+
   return (
     <div className="product-container">
       <ProductModal

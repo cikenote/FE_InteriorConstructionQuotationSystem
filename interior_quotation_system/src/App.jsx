@@ -6,6 +6,10 @@ import "./index.css";
 import AdminRole from "./module/admin";
 import AdminDashboard from "./module/admin/Dashboard"; // New Admin Dashboard Component
 import AdminUser from "./module/admin/User";
+import StaffRole from "./module/staff";
+import StaffArticle from "./module/staff/Article";
+import StaffProduct from "./module/staff/Product";
+import StaffQuotation from "./module/staff/Quotation";
 import BlogDetailPage from "./pages/blog-detail/BlogDetailPage";
 import BlogPage from "./pages/blog/BlogPage";
 import ContactPage from "./pages/contact/ContactPage";
@@ -20,6 +24,7 @@ import ItemDetail from "./pages/shop/ItemDetail";
 import ShopItem from "./pages/shop/index";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import { PAGE_ROUTES } from "./utils/constant";
+
 function App() {
   return (
     <Routes>

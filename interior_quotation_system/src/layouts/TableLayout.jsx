@@ -12,7 +12,8 @@ const TableLayout = ({
   actionName,
   viewProductDetail,
   onEditQuotation,
-  onDeleteQuotation
+  onDeleteQuotation,
+  sendContract,
 }) => {
   return (
     <div className="table-container">
@@ -34,7 +35,8 @@ const TableLayout = ({
           columns={tableColumns({
             viewProductDetail,
             onEditQuotation,
-            onDeleteQuotation
+            onDeleteQuotation,
+            sendContract,
           })}
           dataSource={tableDataSource()}
         />

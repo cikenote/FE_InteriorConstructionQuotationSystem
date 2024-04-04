@@ -21,6 +21,7 @@
 
 "@ant-design/cssinjs@^1.18.5":
 <<<<<<< HEAD
+<<<<<<< HEAD
   version "1.19.1"
   resolved "https://registry.npmjs.org/@ant-design/cssinjs/-/cssinjs-1.19.1.tgz"
   integrity sha512-hgQ3wiys3X0sqDKWkqCJ6EYdF79i9JCvtavmIGwuuPUKmoJXV8Ff0sY+yQQSxk2dRmMyam/bYKo/Bwor45hnZw==
@@ -29,6 +30,11 @@
   resolved "https://registry.npmjs.org/@ant-design/cssinjs/-/cssinjs-1.18.5.tgz"
   integrity sha512-Ub4n3d+MAX/qtE5S9PM8iOn5ocU7GUAIC4Adc2X8UCMXnsRRfpJBHsBdtQ1qoAuaQ7lU2M1BTCuJ+fkv4fOWiw==
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+  version "1.19.1"
+  resolved "https://registry.npmjs.org/@ant-design/cssinjs/-/cssinjs-1.19.1.tgz"
+  integrity sha512-hgQ3wiys3X0sqDKWkqCJ6EYdF79i9JCvtavmIGwuuPUKmoJXV8Ff0sY+yQQSxk2dRmMyam/bYKo/Bwor45hnZw==
+>>>>>>> 4ef8ca20 (update your account)
   dependencies:
     "@babel/runtime" "^7.11.1"
     "@emotion/hash" "^0.8.0"
@@ -45,6 +51,7 @@
 
 "@ant-design/icons@^5.3.5":
 <<<<<<< HEAD
+<<<<<<< HEAD
   version "5.3.6"
   resolved "https://registry.npmjs.org/@ant-design/icons/-/icons-5.3.6.tgz"
   integrity sha512-JeWsgNjvkTTC73YDPgWOgdScRku/iHN9JU0qk39OSEmJSCiRghQMLlxGTCY5ovbRRoXjxHXnUKgQEgBDnQfKmA==
@@ -53,6 +60,11 @@
   resolved "https://registry.npmjs.org/@ant-design/icons/-/icons-5.3.5.tgz"
   integrity sha512-Vyv/OsKz56BsKBtcRlLP6G8RGaRW43f7G5dK3XNPCaeV4YyehLVaITuNKi2YJG9hMVURkBdzdGhveNQlnKTFqw==
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+  version "5.3.6"
+  resolved "https://registry.npmjs.org/@ant-design/icons/-/icons-5.3.6.tgz"
+  integrity sha512-JeWsgNjvkTTC73YDPgWOgdScRku/iHN9JU0qk39OSEmJSCiRghQMLlxGTCY5ovbRRoXjxHXnUKgQEgBDnQfKmA==
+>>>>>>> 4ef8ca20 (update your account)
   dependencies:
     "@ant-design/colors" "^7.0.0"
     "@ant-design/icons-svg" "^4.4.0"
@@ -410,10 +422,14 @@
     prop-types "^15.8.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4ef8ca20 (update your account)
 "@mui/core-downloads-tracker@^5.15.15":
   version "5.15.15"
   resolved "https://registry.npmjs.org/@mui/core-downloads-tracker/-/core-downloads-tracker-5.15.15.tgz"
   integrity sha512-aXnw29OWQ6I5A47iuWEI6qSSUfH6G/aCsW9KmW3LiFqr7uXZBK4Ks+z8G+qeIub8k0T5CMqlT2q0L+ZJTMrqpg==
+<<<<<<< HEAD
 
 "@mui/icons-material@^5.15.5":
   version "5.15.15"
@@ -430,6 +446,13 @@
   resolved "https://registry.npmjs.org/@mui/icons-material/-/icons-material-5.15.14.tgz"
   integrity sha512-vj/51k7MdFmt+XVw94sl30SCvGx6+wJLsNYjZRgxhS6y3UtnWnypMOsm3Kmg8TN+P0dqwsjy4/fX7B1HufJIhw==
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+
+"@mui/icons-material@^5.15.5":
+  version "5.15.15"
+  resolved "https://registry.npmjs.org/@mui/icons-material/-/icons-material-5.15.15.tgz"
+  integrity sha512-kkeU/pe+hABcYDH6Uqy8RmIsr2S/y5bP2rp+Gat4CcRjCcVne6KudS1NrZQhUCRysrTDCAhcbcf9gt+/+pGO2g==
+>>>>>>> 4ef8ca20 (update your account)
   dependencies:
     "@babel/runtime" "^7.23.9"
 
@@ -471,16 +494,22 @@
     prop-types "^15.8.1"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4ef8ca20 (update your account)
 "@mui/system@^5.15.15":
   version "5.15.15"
   resolved "https://registry.npmjs.org/@mui/system/-/system-5.15.15.tgz"
   integrity sha512-aulox6N1dnu5PABsfxVGOZffDVmlxPOVgj56HrUnJE8MCSh8lOvvkd47cebIVQQYAjpwieXQXiDPj5pwM40jTQ==
+<<<<<<< HEAD
 =======
 "@mui/system@^5.15.14":
   version "5.15.14"
   resolved "https://registry.npmjs.org/@mui/system/-/system-5.15.14.tgz"
   integrity sha512-auXLXzUaCSSOLqJXmsAaq7P96VPRXg2Rrz6OHNV7lr+kB8lobUF+/N84Vd9C4G/wvCXYPs5TYuuGBRhcGbiBGg==
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+>>>>>>> 4ef8ca20 (update your account)
   dependencies:
     "@babel/runtime" "^7.23.9"
     "@mui/private-theming" "^5.15.14"
@@ -648,6 +677,9 @@
     warning "^4.0.3"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4ef8ca20 (update your account)
 "@rollup/rollup-win32-x64-msvc@4.14.0":
   version "4.14.0"
   resolved "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.14.0.tgz"
@@ -657,6 +689,7 @@
   version "1.4.12"
   resolved "https://registry.npmjs.org/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.4.12.tgz"
   integrity sha512-3A4qMtddBDbtprV5edTB/SgJn9L+X5TL7RGgS3eWtEgn/NG8gA80X/scjf1v2MMeOsrcxiYhnemI2gXCKuQN2g==
+<<<<<<< HEAD
 =======
 "@rollup/rollup-win32-x64-msvc@4.13.2":
   version "4.13.2"
@@ -668,6 +701,8 @@
   resolved "https://registry.npmjs.org/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.4.11.tgz"
   integrity sha512-0xRFW6K9UZQH2NVC/0pVB0GJXS45lY24f+6XaPBF1YnMHd8A8GoHl7ugyM5yNUTe2AKhSgk5fJV00EJt/XBtdQ==
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+>>>>>>> 4ef8ca20 (update your account)
 
 "@swc/core@^1.3.107":
   version "1.4.12"
@@ -678,6 +713,9 @@
     "@swc/types" "^0.1.5"
   optionalDependencies:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4ef8ca20 (update your account)
     "@swc/core-darwin-arm64" "1.4.12"
     "@swc/core-darwin-x64" "1.4.12"
     "@swc/core-linux-arm-gnueabihf" "1.4.12"
@@ -688,6 +726,7 @@
     "@swc/core-win32-arm64-msvc" "1.4.12"
     "@swc/core-win32-ia32-msvc" "1.4.12"
     "@swc/core-win32-x64-msvc" "1.4.12"
+<<<<<<< HEAD
 =======
     "@swc/core-darwin-arm64" "1.4.11"
     "@swc/core-darwin-x64" "1.4.11"
@@ -700,6 +739,8 @@
     "@swc/core-win32-ia32-msvc" "1.4.11"
     "@swc/core-win32-x64-msvc" "1.4.11"
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+>>>>>>> 4ef8ca20 (update your account)
 
 "@swc/counter@^0.1.2", "@swc/counter@^0.1.3":
   version "0.1.3"
@@ -727,6 +768,7 @@
 
 "@tanstack/react-query@^5.24.1":
 <<<<<<< HEAD
+<<<<<<< HEAD
   version "5.28.14"
   resolved "https://registry.npmjs.org/@tanstack/react-query/-/react-query-5.28.14.tgz"
   integrity sha512-cZqt03Igb3I9tM72qNX5TAAmeYl75Z+k4Mv92VkXIXc2hCrv0fIywd7GN3JV1BBJl4mr7Cc+OOKKOPy8sNVOkA==
@@ -739,6 +781,13 @@
   dependencies:
     "@tanstack/query-core" "5.28.9"
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+  version "5.28.14"
+  resolved "https://registry.npmjs.org/@tanstack/react-query/-/react-query-5.28.14.tgz"
+  integrity sha512-cZqt03Igb3I9tM72qNX5TAAmeYl75Z+k4Mv92VkXIXc2hCrv0fIywd7GN3JV1BBJl4mr7Cc+OOKKOPy8sNVOkA==
+  dependencies:
+    "@tanstack/query-core" "5.28.13"
+>>>>>>> 4ef8ca20 (update your account)
 
 "@types/estree@1.0.5":
   version "1.0.5"
@@ -770,6 +819,7 @@
 
 "@types/react-dom@^18.2.17":
 <<<<<<< HEAD
+<<<<<<< HEAD
   version "18.2.24"
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.2.24.tgz"
   integrity sha512-cN6upcKd8zkGy4HU9F1+/s98Hrp6D4MOcippK4PoE8OZRngohHZpbJn1GsaDLz87MqvHNoT13nHvNqM9ocRHZg==
@@ -778,6 +828,11 @@
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.2.23.tgz"
   integrity sha512-ZQ71wgGOTmDYpnav2knkjr3qXdAFu0vsk8Ci5w3pGAIdj7/kKAyn+VsQDhXsmzzzepAiI9leWMmubXz690AI/A==
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+  version "18.2.24"
+  resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-18.2.24.tgz"
+  integrity sha512-cN6upcKd8zkGy4HU9F1+/s98Hrp6D4MOcippK4PoE8OZRngohHZpbJn1GsaDLz87MqvHNoT13nHvNqM9ocRHZg==
+>>>>>>> 4ef8ca20 (update your account)
   dependencies:
     "@types/react" "*"
 
@@ -790,6 +845,7 @@
 
 "@types/react@*", "@types/react@^17.0.0 || ^18.0.0", "@types/react@^18.2.25", "@types/react@^18.2.43", "@types/react@>=0.0.0 <=99", "@types/react@>=16.14.8", "@types/react@>=16.9.11":
 <<<<<<< HEAD
+<<<<<<< HEAD
   version "18.2.74"
   resolved "https://registry.npmjs.org/@types/react/-/react-18.2.74.tgz"
   integrity sha512-9AEqNZZyBx8OdZpxzQlaFEVCSFUM2YXJH46yPOiOpm078k6ZLOCcuAzGum/zK8YBwY+dbahVNbHrbgrAwIRlqw==
@@ -798,6 +854,11 @@
   resolved "https://registry.npmjs.org/@types/react/-/react-18.2.73.tgz"
   integrity sha512-XcGdod0Jjv84HOC7N5ziY3x+qL0AfmubvKOZ9hJjJ2yd5EE+KYjWhdOjt387e9HPheHkdggF9atTifMRtyAaRA==
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+  version "18.2.74"
+  resolved "https://registry.npmjs.org/@types/react/-/react-18.2.74.tgz"
+  integrity sha512-9AEqNZZyBx8OdZpxzQlaFEVCSFUM2YXJH46yPOiOpm078k6ZLOCcuAzGum/zK8YBwY+dbahVNbHrbgrAwIRlqw==
+>>>>>>> 4ef8ca20 (update your account)
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
@@ -875,6 +936,7 @@ ansi-styles@^6.1.0:
 
 antd@^5.14.2:
 <<<<<<< HEAD
+<<<<<<< HEAD
   version "5.16.0"
   resolved "https://registry.npmjs.org/antd/-/antd-5.16.0.tgz"
   integrity sha512-2JcZSxTcX5J2Faro5PB85ETAP64cuU91pBqQ2NVHWelmhLXvN3q70R5Qht+E9k3WVsVO8ZbqBJciYqj8K/RbZw==
@@ -883,15 +945,24 @@ antd@^5.14.2:
   resolved "https://registry.npmjs.org/antd/-/antd-5.15.4.tgz"
   integrity sha512-79eLOQW1DG92yzulx+ValfHFjvPnaaI41BffGquAnzx42Ws3eEcKofsa2jNRyJN5NWr9I5wqvABDq9rRRfGGsg==
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+  version "5.16.0"
+  resolved "https://registry.npmjs.org/antd/-/antd-5.16.0.tgz"
+  integrity sha512-2JcZSxTcX5J2Faro5PB85ETAP64cuU91pBqQ2NVHWelmhLXvN3q70R5Qht+E9k3WVsVO8ZbqBJciYqj8K/RbZw==
+>>>>>>> 4ef8ca20 (update your account)
   dependencies:
     "@ant-design/colors" "^7.0.2"
     "@ant-design/cssinjs" "^1.18.5"
     "@ant-design/icons" "^5.3.5"
 <<<<<<< HEAD
+<<<<<<< HEAD
     "@ant-design/react-slick" "~1.1.1"
 =======
     "@ant-design/react-slick" "~1.0.2"
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+    "@ant-design/react-slick" "~1.1.1"
+>>>>>>> 4ef8ca20 (update your account)
     "@babel/runtime" "^7.24.1"
     "@ctrl/tinycolor" "^3.6.1"
     "@rc-component/color-picker" "~1.5.3"
@@ -909,10 +980,14 @@ antd@^5.14.2:
     rc-drawer "~7.1.0"
     rc-dropdown "~4.2.0"
 <<<<<<< HEAD
+<<<<<<< HEAD
     rc-field-form "~1.44.0"
 =======
     rc-field-form "~1.42.1"
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+    rc-field-form "~1.44.0"
+>>>>>>> 4ef8ca20 (update your account)
     rc-image "~7.6.0"
     rc-input "~1.4.5"
     rc-input-number "~9.0.0"
@@ -923,10 +998,14 @@ antd@^5.14.2:
     rc-pagination "~4.0.4"
     rc-picker "~4.3.0"
 <<<<<<< HEAD
+<<<<<<< HEAD
     rc-progress "~4.0.0"
 =======
     rc-progress "~3.5.1"
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+    rc-progress "~4.0.0"
+>>>>>>> 4ef8ca20 (update your account)
     rc-rate "~2.12.0"
     rc-resize-observer "^1.4.0"
     rc-segmented "~2.3.0"
@@ -935,10 +1014,14 @@ antd@^5.14.2:
     rc-steps "~6.0.1"
     rc-switch "~4.1.0"
 <<<<<<< HEAD
+<<<<<<< HEAD
     rc-table "~7.45.0"
 =======
     rc-table "~7.42.0"
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+    rc-table "~7.45.0"
+>>>>>>> 4ef8ca20 (update your account)
     rc-tabs "~14.1.1"
     rc-textarea "~1.6.3"
     rc-tooltip "~6.2.0"
@@ -2948,16 +3031,22 @@ rc-dropdown@~4.2.0:
     rc-util "^5.17.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4ef8ca20 (update your account)
 rc-field-form@~1.44.0:
   version "1.44.0"
   resolved "https://registry.npmjs.org/rc-field-form/-/rc-field-form-1.44.0.tgz"
   integrity sha512-el7w87fyDUsca63Y/s8qJcq9kNkf/J5h+iTdqG5WsSHLH0e6Usl7QuYSmSVzJMgtp40mOVZIY/W/QP9zwrp1FA==
+<<<<<<< HEAD
 =======
 rc-field-form@~1.42.1:
   version "1.42.1"
   resolved "https://registry.npmjs.org/rc-field-form/-/rc-field-form-1.42.1.tgz"
   integrity sha512-SqiEmWNP+I61Lt80+ofPvT+3l8Ij6vb35IS+x14gheVnCJN0SRnOwEgsqCEB5FslT7xqjUqDnU845hRZ1jzlAA==
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+>>>>>>> 4ef8ca20 (update your account)
   dependencies:
     "@babel/runtime" "^7.18.0"
     async-validator "^4.1.0"
@@ -3149,16 +3238,22 @@ rc-switch@~4.1.0:
     rc-util "^5.30.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4ef8ca20 (update your account)
 rc-table@~7.45.0:
   version "7.45.4"
   resolved "https://registry.npmjs.org/rc-table/-/rc-table-7.45.4.tgz"
   integrity sha512-6aSbGrnkN2GLSt3s1x+wa4f3j/VEgg1uKPpaLY5qHH1/nFyreS2V7DFJ0TfUb18allf2FQl7oVYEjTixlBXEyQ==
+<<<<<<< HEAD
 =======
 rc-table@~7.42.0:
   version "7.42.0"
   resolved "https://registry.npmjs.org/rc-table/-/rc-table-7.42.0.tgz"
   integrity sha512-GwHV9Zs3HvWxBkoXatO/IeKoElzy3Ojf3dcyw1Rj3cyQVb+ZHtexslKdyzsrKRPJ0mUa62BoX+ZAg3zgTEql8w==
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+>>>>>>> 4ef8ca20 (update your account)
   dependencies:
     "@babel/runtime" "^7.10.1"
     "@rc-component/context" "^1.4.0"
@@ -3543,6 +3638,9 @@ rimraf@^3.0.2:
 
 rollup@^4.13.0:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4ef8ca20 (update your account)
   version "4.14.0"
   resolved "https://registry.npmjs.org/rollup/-/rollup-4.14.0.tgz"
   integrity sha512-Qe7w62TyawbDzB4yt32R0+AbIo6m1/sqO7UPzFS8Z/ksL5mrfhA0v4CavfdmFav3D+ub4QeAgsGEe84DoWe/nQ==
@@ -3564,6 +3662,7 @@ rollup@^4.13.0:
     "@rollup/rollup-win32-arm64-msvc" "4.14.0"
     "@rollup/rollup-win32-ia32-msvc" "4.14.0"
     "@rollup/rollup-win32-x64-msvc" "4.14.0"
+<<<<<<< HEAD
 =======
   version "4.13.2"
   resolved "https://registry.npmjs.org/rollup/-/rollup-4.13.2.tgz"
@@ -3587,6 +3686,8 @@ rollup@^4.13.0:
     "@rollup/rollup-win32-ia32-msvc" "4.13.2"
     "@rollup/rollup-win32-x64-msvc" "4.13.2"
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+>>>>>>> 4ef8ca20 (update your account)
     fsevents "~2.3.2"
 
 run-parallel@^1.1.9:
@@ -3617,6 +3718,7 @@ safe-regex-test@^1.0.3:
 
 sass@*, sass@^1.69.7:
 <<<<<<< HEAD
+<<<<<<< HEAD
   version "1.74.1"
   resolved "https://registry.npmjs.org/sass/-/sass-1.74.1.tgz"
   integrity sha512-w0Z9p/rWZWelb88ISOLyvqTWGmtmu2QJICqDBGyNnfG4OUnPX9BBjjYIXUpXCMOOg5MQWNpqzt876la1fsTvUA==
@@ -3625,6 +3727,11 @@ sass@*, sass@^1.69.7:
   resolved "https://registry.npmjs.org/sass/-/sass-1.72.0.tgz"
   integrity sha512-Gpczt3WA56Ly0Mn8Sl21Vj94s1axi9hDIzDFn9Ph9x3C3p4nNyvsqJoQyVXKou6cBlfFWEgRW4rT8Tb4i3XnVA==
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+  version "1.74.1"
+  resolved "https://registry.npmjs.org/sass/-/sass-1.74.1.tgz"
+  integrity sha512-w0Z9p/rWZWelb88ISOLyvqTWGmtmu2QJICqDBGyNnfG4OUnPX9BBjjYIXUpXCMOOg5MQWNpqzt876la1fsTvUA==
+>>>>>>> 4ef8ca20 (update your account)
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
     immutable "^4.0.0"
@@ -4020,6 +4127,7 @@ type-fest@^2.19.0:
 
 type-fest@^4.1.0:
 <<<<<<< HEAD
+<<<<<<< HEAD
   version "4.15.0"
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-4.15.0.tgz"
   integrity sha512-tB9lu0pQpX5KJq54g+oHOLumOx+pMep4RaM6liXh2PKmVRFF+/vAtUP0ZaJ0kOySfVNjF6doBWPHhBhISKdlIA==
@@ -4028,6 +4136,11 @@ type-fest@^4.1.0:
   resolved "https://registry.npmjs.org/type-fest/-/type-fest-4.14.0.tgz"
   integrity sha512-on5/Cw89wwqGZQu+yWO0gGMGu8VNxsaW9SB2HE8yJjllEk7IDTwnSN1dUVldYILhYPN5HzD7WAaw2cc/jBfn0Q==
 >>>>>>> f0e2c07b48ec6a2ccdf5e17f8cadebfe209e2a09
+=======
+  version "4.15.0"
+  resolved "https://registry.npmjs.org/type-fest/-/type-fest-4.15.0.tgz"
+  integrity sha512-tB9lu0pQpX5KJq54g+oHOLumOx+pMep4RaM6liXh2PKmVRFF+/vAtUP0ZaJ0kOySfVNjF6doBWPHhBhISKdlIA==
+>>>>>>> 4ef8ca20 (update your account)
 
 type-fest@^4.12.0:
   version "4.15.0"

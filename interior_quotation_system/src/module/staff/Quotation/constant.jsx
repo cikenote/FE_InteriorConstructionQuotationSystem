@@ -1,11 +1,13 @@
 import { EditOutlined } from "@mui/icons-material";
 import { Button, Flex, Tag, Tooltip } from "antd";
+import { GrContract } from "react-icons/gr";
+import { IoContract } from "react-icons/io5";
 import { LuEye } from "react-icons/lu";
 
 export const QUOTATION_COLUMNS = ({
   viewProductDetail,
   onEditQuotation,
-  onDeleteQuotation,
+  sendContract,
 }) => [
   {
     title: "Id",
@@ -58,6 +60,16 @@ export const QUOTATION_COLUMNS = ({
             onClick={() => viewProductDetail(quotation)}
           />
         </Tooltip>
+
+        {quotation.quotationStatus === "Pending" && (
+          <Tooltip title="Send contract">
+            <Button
+              icon={<IoContract />}
+              type="primary"
+              onClick={() => sendContract(id)}
+            />
+          </Tooltip>
+        )}
       </Flex>
     ),
   },

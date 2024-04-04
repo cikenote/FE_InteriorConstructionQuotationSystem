@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
 import QuotationModal from "../../../components/QuotationForm/QuotationModal";
 import QuotationDeleteModal from "../../../components/QuotationForm/QuotationDeleteModal";
-import { QUOTATION_COLUMNS, QUOTATION_DATA_SOURCE } from "./constant";
+import { QUOTATION_COLUMNS } from "./constant";
 import TableLayout from "../../../layouts/TableLayout";
 import QuotationDetailModal from "./QuotationDetailModal";
 import QuotationAPI from "../../../api/quotation";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { message } from "antd";
 
 const StaffQuotation = () => {
@@ -16,7 +16,7 @@ const StaffQuotation = () => {
   const quotationRef = useRef();
   const [messageApi, contextHolder] = message.useMessage();
   const [quotations, setQuotations] = useState();
-  const [quotationId, setQuotationId] = useState("");
+  const [quotationId, setQuotationId] = useState();
 
   const { data: quotationsList, refetch: getQuotationList } = useQuery({
     queryKey: ["all-quotation"],
@@ -37,8 +37,9 @@ const StaffQuotation = () => {
   const quotation = () => {
     return quotationsList?.$values;
   };
-  const onDetailQuotation = (id) => {
-    quotationDetailModal.current.openModal(id);
+  const onDetailQuotation = (quotation) => {
+    setQuotationId(quotation);
+    quotationDetailModal.current.openModal(quotation);
   };
   const onEditQuotation = (id) => {
     setQuotationId(id);
@@ -51,7 +52,10 @@ const StaffQuotation = () => {
   return (
     <>
       {/* <QuotationModal ref={quotationModal} /> */}
-      <QuotationDetailModal ref={quotationDetailModal} />
+      <QuotationDetailModal
+        ref={quotationDetailModal}
+        quotationDetailProp={quotationId}
+      />
       <QuotationDeleteModal
         ref={quotationDelete}
         AfterCloseModal={() => getQuotationList()}
@@ -59,7 +63,7 @@ const StaffQuotation = () => {
       <QuotationModal
         ref={quotationRef}
         AfterCloseModal={() => getQuotationList()}
-        QuotationId={quotationId}
+        QuotationUpdate={quotationId}
       />
       {contextHolder}
       <TableLayout

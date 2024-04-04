@@ -9,12 +9,18 @@ import {
   Select,
   message,
 } from "antd";
-import React, { forwardRef, useImperativeHandle, useState } from "react";
+import React, {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useState,
+} from "react";
 import { FORM_RULES } from "../../utils/constant";
 import { useMutation } from "@tanstack/react-query";
 import QuotationAPI from "../../api/quotation";
 
-const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
+const QuotationModal = ({ AfterCloseModal, QuotationUpdate }, ref) => {
+  const [form] = Form.useForm();
   const [messageApi, contextHolder] = message.useMessage();
   const [isOpenModal, setIsOpenModal] = useState(false);
   useImperativeHandle(ref, () => {
@@ -47,11 +53,17 @@ const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
 
   const onSubmitForm = (response) => {
     mutate({
-      quotationId: QuotationId,
+      quotationId: QuotationUpdate.QuotationId,
       quotationStatus: response.quotationStatus,
       message: response.message,
     });
   };
+
+  useEffect(() => {
+    if (QuotationUpdate) {
+      form.setFieldValue("quotationStatus", QuotationUpdate.quotationStatus);
+    }
+  }, [QuotationUpdate]);
 
   return (
     <Modal
@@ -62,7 +74,7 @@ const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
       footer
     >
       {contextHolder}
-      <Form layout="vertical" onFinish={onSubmitForm}>
+      <Form layout="vertical" onFinish={onSubmitForm} form={form}>
         <Row gutter={[10, 10]}>
           <Col span={24}>
             <Form.Item
@@ -89,7 +101,7 @@ const QuotationModal = ({ AfterCloseModal, QuotationId }, ref) => {
           </Col>
 
           <Col span={24}>
-            <Flex justify="end" gap={4}>
+            <Flex justify="end" gap="middle">
               <Button onClick={onCloseModal}>Cancel</Button>
               <Button
                 type="primary"

@@ -5,7 +5,7 @@ import { PRODUCT_COLUMNS } from "./constant";
 import "./style.scss";
 import { useMutation } from "@tanstack/react-query";
 import ProductAPI from "../../../api/products";
-import { Skeleton } from "antd";
+import { Skeleton, message } from "antd";
 
 const StaffProduct = () => {
   const [products, setProducts] = useState([]);
@@ -35,7 +35,6 @@ const StaffProduct = () => {
         mutateProductsList();
       },
       onError: (errorResponse) => {
-        console.log(errorResponse);
         message.error(errorResponse.response.data.message);
       },
     });
@@ -63,13 +62,20 @@ const StaffProduct = () => {
     return <Skeleton paragraph={{ rows: 5 }} />;
   }
 
-  const onUpdateProduct = () => {};
+  const onUpdateProduct = (product) => {
+    setProductUpdate(product);
+    productActionModal.current.openModal();
+  };
 
   return (
     <div className="product-container">
       <ProductModal
         ref={productActionModal}
-        afterCloseModal={() => mutateProductsList()}
+        afterCloseModal={() => {
+          setProductUpdate(undefined);
+          mutateProductsList();
+        }}
+        productUpdate={productUpdate}
       />
       <TableLayout
         tableColumns={PRODUCT_COLUMNS}

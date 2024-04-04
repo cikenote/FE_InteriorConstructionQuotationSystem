@@ -38,8 +38,8 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
     },
     onSuccess: () => {
       message.success("Create new product is successfully");
-      onCloseModal();
       form.resetFields();
+      onCloseModal();
     },
   });
 
@@ -52,9 +52,9 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
       },
       onSuccess: () => {
         message.success("Update product is successfully");
-        afterCloseModal();
-        onCloseModal();
         form.resetFields();
+        onCloseModal();
+        afterCloseModal();
       },
     });
 
@@ -125,7 +125,13 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
       onCancel={onCloseModal}
       footer
     >
-      <Skeleton loading={isLoadingCategoriesList || isLoadingCreateNewProduct}>
+      <Skeleton
+        loading={
+          isLoadingCategoriesList ||
+          isLoadingCreateNewProduct ||
+          isLoadingUpdateProduct
+        }
+      >
         <Form form={form} onFinish={onFinishForm} layout="vertical">
           <Row gutter={[10, 10]}>
             <Col span={24}>

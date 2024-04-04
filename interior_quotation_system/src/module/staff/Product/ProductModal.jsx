@@ -13,7 +13,6 @@ import {
 import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
 import { FORM_RULES } from "../../../utils/constant";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import QuotationAPI from "../../../api/quotation";
 import ProductAPI from "../../../api/products";
 import CategoryAPI from "../../../api/categories";
 import { useSelector } from "react-redux";
@@ -142,7 +141,7 @@ const ProductModal = ({ productUpdate, afterCloseModal }, ref) => {
             </Col>
 
             <Col span={24}>
-              <Form.Item name="image" label="Image" required={false}>
+              <Form.Item name="imageUrl" label="Image" required={false}>
                 <Input />
               </Form.Item>
             </Col>

@@ -4,11 +4,8 @@ import "./App.css";
 import ProjectSingle from "./components/ProjectSingle/ProjectSingle";
 import "./index.css";
 import AdminRole from "./module/admin";
-import StaffRole from "./module/staff";
-import StaffArticle from "./module/staff/Article";
-import StaffDashboard from "./module/staff/Dashboard";
-import StaffProduct from "./module/staff/Product";
-import StaffQuotation from "./module/staff/Quotation";
+import AdminDashboard from "./module/admin/Dashboard"; // New Admin Dashboard Component
+import AdminUser from "./module/admin/User/AdminUser";
 import BlogDetailPage from "./pages/blog-detail/BlogDetailPage";
 import BlogPage from "./pages/blog/BlogPage";
 import ContactPage from "./pages/contact/ContactPage";
@@ -39,6 +36,15 @@ function App() {
           path={PAGE_ROUTES.QUOTATION_FORM}
           element={<QuotationFormPage />}
         />
+        {/* Add Admin Dashboard Route */}
+        <Route path={PAGE_ROUTES.ADMIN.MAIN} element={<AdminRole />}>
+          <Route
+            path={PAGE_ROUTES.ADMIN.DASHBOARD}
+            element={<AdminDashboard />}
+          />
+          <Route path={PAGE_ROUTES.ADMIN.USERS} element={<AdminUser />} />
+        </Route>
+        {/* End of Admin Routes */}
       </Route>
       <Route path="/project" element={<ProjectPage />} />
       <Route path="/project/project-single" element={<ProjectSingle />} />
@@ -56,20 +62,8 @@ function App() {
       <Route path="/quotation/form" element={<QuotationFormPage />} />
       <Route path="/shop" element={<ShopItem />} />
       <Route path="/shop/item/:productId" element={<ItemDetail />} />
-      <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
-        <Route
-          path={PAGE_ROUTES.STAFF.QUOTATIONS}
-          element={<StaffQuotation />}
-        />
-        <Route path={PAGE_ROUTES.STAFF.PRODUCT} element={<StaffProduct />} />
-        <Route
-          path={PAGE_ROUTES.STAFF.DASHBOARD}
-          element={<StaffDashboard />}
-        />
-        <Route path={PAGE_ROUTES.STAFF.ARTICLE} element={<StaffArticle />} />
-      </Route>
-      <Route path={PAGE_ROUTES.ADMIN.MAIN} element={<AdminRole />} />
     </Routes>
   );
 }
+
 export default App;

@@ -1,14 +1,13 @@
-import React from "react";
-import "../../styles/pages/loginPage.scss";
-import Grid from "@mui/material/Grid";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { FORM_RULES, PAGE_ROUTES } from "../../utils/constant";
-import { useNavigate } from "react-router";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Grid from "@mui/material/Grid";
 import { useMutation } from "@tanstack/react-query";
-import AuthenticateAPI from "../../api/authen";
 import { Button, Col, Form, Input, Row, message } from "antd";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router";
+import AuthenticateAPI from "../../api/authen";
+import "../../styles/pages/loginPage.scss";
+import { FORM_RULES, PAGE_ROUTES } from "../../utils/constant";
 
 const LoginPage = () => {
   const [form] = Form.useForm();
@@ -21,12 +20,12 @@ const LoginPage = () => {
       const userDecode = jwtDecode(response.token);
       console.log(userDecode);
       navigate("/shop");
-      if(userDecode.Role == 'staff'){
-        navigate('/staff/quotation');
-      }else if(userDecode.Role == 'admin'){
-        navigate('/staff/quotation');
-      }else{
-        navigate('/shop')
+      if (userDecode.Role == "staff") {
+        navigate("/staff/quotation");
+      } else if (userDecode.Role == "admin") {
+        navigate("/admin/users");
+      } else {
+        navigate("/shop");
       }
     },
     onError: () => {
@@ -108,7 +107,7 @@ const LoginPage = () => {
 
                 <Col span={24}>
                   <p className="noteHelp">
-                    Don't have an account?{" "}
+                    Do not have an account?{" "}
                     <a href={PAGE_ROUTES.REGISTER}>Create free account</a>
                   </p>
                 </Col>

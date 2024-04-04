@@ -4,23 +4,20 @@ import { END_POINT_API } from "../endpoint";
 const AccountManagerAPI = {
   getUsersList: (page, pageSize, searchTerm) => {
     return axiosClient.get(
-      `${END_POINT_API.ACCOUNT_MANAGER}?page=${page}&pageSize=${pageSize}&searchTerm=${searchTerm}`
+      `${END_POINT_API.USERS}?page=${page}&pageSize=${pageSize}&searchTerm=${searchTerm}`
     );
   },
   createUser: (userData) => {
-    return axiosClient.post(END_POINT_API.ACCOUNT_MANAGER, userData);
+    return axiosClient.post(END_POINT_API.USERS, userData);
   },
   getUserById: (userId) => {
-    return axiosClient.get(`${END_POINT_API.ACCOUNT_MANAGER}/${userId}`);
+    return axiosClient.get(`${END_POINT_API.USERS}/${userId}`);
   },
   updateUser: (userId, userData) => {
-    return axiosClient.put(
-      `${END_POINT_API.ACCOUNT_MANAGER}/${userId}`,
-      userData
-    );
+    return axiosClient.put(`${END_POINT_API.USERS}/${userId}`, userData);
   },
   deleteUser: (userId) => {
-    return axiosClient.delete(`${END_POINT_API.ACCOUNT_MANAGER}/${userId}`);
+    return axiosClient.delete(`${END_POINT_API.USERS}/${userId}`);
   },
 };
 

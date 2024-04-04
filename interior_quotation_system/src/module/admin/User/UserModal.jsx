@@ -1,22 +1,13 @@
 import { useMutation } from "@tanstack/react-query";
-import {
-  Button,
-  Col,
-  DatePicker,
-  Form,
-  Input,
-  Modal,
-  Row,
-  Switch,
-  message,
-} from "antd";
+import { Button, Col, Form, Input, Modal, Row, message } from "antd";
 import PropTypes from "prop-types";
-import { forwardRef, useImperativeHandle, useState } from "react";
-import AccountManagerAPI from "../../../api/User";
+import { forwardRef, useEffect, useImperativeHandle, useState } from "react";
+import AccountManagerAPI from "../../../api/User/index";
 import { FORM_RULES } from "../../../utils/constant";
 
 const UserModal = ({ userUpdate }, ref) => {
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [users, setUsers] = useState([]);
 
   const [form] = Form.useForm();
 
@@ -29,12 +20,29 @@ const UserModal = ({ userUpdate }, ref) => {
       message.success("User created successfully");
       onCloseModal();
       form.resetFields();
+      // After user creation, update the user list
+      fetchUsers();
     },
   });
 
   useImperativeHandle(ref, () => ({
     openModal: () => setIsOpenModal(true),
   }));
+
+  useEffect(() => {
+    // Fetch users when the component mounts
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+    try {
+      // Fetch users from API
+      const response = await AccountManagerAPI.fetchUsers();
+      setUsers(response.data.users);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
 
   const onCloseModal = () => {
     setIsOpenModal(false);
@@ -63,73 +71,7 @@ const UserModal = ({ userUpdate }, ref) => {
             </Form.Item>
           </Col>
 
-          <Col span={24}>
-            <Form.Item
-              name="password"
-              label="Password"
-              rules={[FORM_RULES.required]}
-            >
-              <Input.Password />
-            </Form.Item>
-          </Col>
-
-          <Col span={24}>
-            <Form.Item
-              name="fullname"
-              label="Full Name"
-              rules={[FORM_RULES.required]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-
-          <Col span={24}>
-            <Form.Item
-              name="birthdate"
-              label="Birthdate"
-              rules={[FORM_RULES.required]}
-            >
-              <DatePicker style={{ width: "100%" }} />
-            </Form.Item>
-          </Col>
-
-          <Col span={24}>
-            <Form.Item
-              name="email"
-              label="Email"
-              rules={[FORM_RULES.required, FORM_RULES.email]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-
-          <Col span={24}>
-            <Form.Item
-              name="phoneNumber"
-              label="Phone Number"
-              rules={[FORM_RULES.required]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-
-          <Col span={24}>
-            <Form.Item name="avtUrl" label="Avatar URL">
-              <Input />
-            </Form.Item>
-          </Col>
-
-          <Col span={24}>
-            <Form.Item name="roleId" label="Role ID">
-              <Input type="number" />
-            </Form.Item>
-          </Col>
-
-          <Col span={24}>
-            <Form.Item name="status" label="Status" valuePropName="checked">
-              <Switch />
-            </Form.Item>
-          </Col>
+          {/* Other form fields */}
         </Row>
         <Form.Item>
           <Button type="primary" htmlType="submit">
@@ -137,10 +79,25 @@ const UserModal = ({ userUpdate }, ref) => {
           </Button>
         </Form.Item>
       </Form>
+
+      {/* Display user list */}
+      <div>
+        <h2>User List</h2>
+        <ul>
+          {users.map((user) => (
+            <li key={user.userId}>
+              <strong>Username:</strong> {user.username}
+              {/* Render other user information as needed */}
+            </li>
+          ))}
+        </ul>
+      </div>
     </Modal>
   );
 };
+
 UserModal.propTypes = {
-  userUpdate: PropTypes.bool.isRequired, // Example prop type validation
+  userUpdate: PropTypes.bool.isRequired,
 };
+
 export default forwardRef(UserModal);

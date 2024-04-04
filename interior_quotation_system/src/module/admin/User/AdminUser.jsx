@@ -6,7 +6,6 @@ import TableLayout from "../../../layouts/TableLayout";
 import UserModal from "./UserModal"; // Import the UserModal component
 import { USER_COLUMNS } from "./constant"; // Assuming you have defined user columns
 import "./style.scss";
-
 const AdminUser = () => {
   const [users, setUsers] = useState([]);
 

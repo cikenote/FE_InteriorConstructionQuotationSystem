@@ -97,6 +97,7 @@ const QuotationFormPage = () => {
         message.error("Error occur when get all products");
       },
       onSuccess: (res) => {
+        console.log(res);
         const result = res.responses.$values.map((product) => {
           return {
             name: product.name,
@@ -281,477 +282,479 @@ const QuotationFormPage = () => {
   return (
     <>
       <div>
-      <HomeParameterModal
-        ref={homeParameterRef}
-        CallBackParameter={(values) => {
-          formik.setValues({
-            ...formik.values,
-            ...values,
-          });
-        }}
-      />
-      <Navbar></Navbar>
-      <form onSubmit={formik.handleSubmit} className="form-container">
-        <div className="content">
-          <h3>Bảng Báo Giá</h3>
-          <Row gutter={[14, 14]} className="content-detail">
-            <Col span={8}>
-              <Flex className="layout-item" vertical>
-                <p className="title">Bảng giá niêm yết</p>
-                <Flex vertical gap="middle">
-                  <Typography.Title level={4}>
-                    Loại nhà thi công:{" "}
-                  </Typography.Title>
+        <HomeParameterModal
+          ref={homeParameterRef}
+          CallBackParameter={(values) => {
+            formik.setValues({
+              ...formik.values,
+              ...values,
+            });
+          }}
+        />
+        <Navbar></Navbar>
+        <form onSubmit={formik.handleSubmit} className="form-container">
+          <div className="content">
+            <h3>Bảng Báo Giá</h3>
+            <Row gutter={[14, 14]} className="content-detail">
+              <Col span={8}>
+                <Flex className="layout-item" vertical>
+                  <p className="title">Bảng giá niêm yết</p>
                   <Flex vertical gap="middle">
-                    <Typography.Text
-                      style={{
-                        marginLeft: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Biệt thự: Giá mặc định là 350.000VND/m
-                      <sup>2</sup>{" "}
-                    </Typography.Text>
-                    <Typography.Text
-                      style={{
-                        marginLeft: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Chung cư: Giá mặc định là 220.000VND/m
-                      <sup>2</sup>{" "}
-                    </Typography.Text>
-                    <Typography.Text
-                      style={{
-                        marginLeft: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Nhà phố: Giá mặc định là 220.000VND/m
-                      <sup>2</sup>{" "}
-                    </Typography.Text>
-                    <Typography.Text
-                      style={{
-                        marginLeft: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Văn phòng - Cafe: Giá mặc định là 200.000VND/m
-                      <sup>2</sup>{" "}
-                    </Typography.Text>
+                    <Typography.Title level={4}>
+                      Loại nhà thi công:{" "}
+                    </Typography.Title>
+                    <Flex vertical gap="middle">
+                      <Typography.Text
+                        style={{
+                          marginLeft: "1rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Biệt thự: Giá mặc định là 350.000VND/m
+                        <sup>2</sup>{" "}
+                      </Typography.Text>
+                      <Typography.Text
+                        style={{
+                          marginLeft: "1rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Chung cư: Giá mặc định là 220.000VND/m
+                        <sup>2</sup>{" "}
+                      </Typography.Text>
+                      <Typography.Text
+                        style={{
+                          marginLeft: "1rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Nhà phố: Giá mặc định là 220.000VND/m
+                        <sup>2</sup>{" "}
+                      </Typography.Text>
+                      <Typography.Text
+                        style={{
+                          marginLeft: "1rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Văn phòng - Cafe: Giá mặc định là 200.000VND/m
+                        <sup>2</sup>{" "}
+                      </Typography.Text>
+                    </Flex>
+                  </Flex>
+                  <Flex vertical gap="middle">
+                    <Typography.Title level={4}>
+                      Loại hình thi công:{" "}
+                    </Typography.Title>
+                    <Flex vertical gap="middle">
+                      <Typography.Text
+                        style={{
+                          marginLeft: "1rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Ốp nền: (Chiều dài x Chiều rộng){" "}
+                      </Typography.Text>
+
+                      <Typography.Text
+                        style={{
+                          marginLeft: "2rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Bằng gạch: Giá măc định là 200.000VND/m
+                        <sup>2</sup>
+                      </Typography.Text>
+
+                      <Typography.Text
+                        style={{
+                          marginLeft: "2rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Bằng gỗ: Giá măc định là 350.000VND/m
+                        <sup>2</sup>
+                      </Typography.Text>
+                    </Flex>
+                    <Flex vertical gap="middle">
+                      <Typography.Text
+                        style={{
+                          marginLeft: "1rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Tường:{" "}
+                      </Typography.Text>
+
+                      <Typography.Text
+                        style={{
+                          marginLeft: "2rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Sơn tường: Giá măc định là 150.000VND/m
+                        <sup>2</sup>
+                      </Typography.Text>
+
+                      <Typography.Text
+                        style={{
+                          marginLeft: "2rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Dán tường: Giá măc định là 250.000VND/m
+                        <sup>2</sup>
+                      </Typography.Text>
+                    </Flex>
+
+                    <Flex vertical gap="middle">
+                      <Typography.Text
+                        style={{
+                          marginLeft: "1rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Trần nhà:{" "}
+                      </Typography.Text>
+
+                      <Typography.Text
+                        style={{
+                          marginLeft: "2rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Thạch cao chống cháy: Giá măc định là 100.000VND/m
+                        <sup>2</sup>
+                      </Typography.Text>
+
+                      <Typography.Text
+                        style={{
+                          marginLeft: "2rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Thạch cao tiêu âm: Giá măc định là 200.000VND/m
+                        <sup>2</sup>
+                      </Typography.Text>
+                    </Flex>
+                  </Flex>
+
+                  {/* Loại nhà thi công */}
+                  <Flex vertical gap="middle">
+                    <Typography.Title level={4}>
+                      Phong cách thiết kế:{" "}
+                    </Typography.Title>
+                    <Flex vertical gap="middle">
+                      <Typography.Text
+                        style={{
+                          marginLeft: "1rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Cố điển: Giá mặc định là 350.000VND/m
+                        <sup>2</sup>{" "}
+                      </Typography.Text>
+                      <Typography.Text
+                        style={{
+                          marginLeft: "1rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Tân cổ điển: Giá mặc định là 220.000VND/m
+                        <sup>2</sup>{" "}
+                      </Typography.Text>
+                      <Typography.Text
+                        style={{
+                          marginLeft: "1rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Nhật Bản: Giá mặc định là 220.000VND/m
+                        <sup>2</sup>{" "}
+                      </Typography.Text>
+                      <Typography.Text
+                        style={{
+                          marginLeft: "1rem",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        + Ý: Giá mặc định là 200.000VND/m
+                        <sup>2</sup>{" "}
+                      </Typography.Text>
+                    </Flex>
                   </Flex>
                 </Flex>
-                <Flex vertical gap="middle">
-                  <Typography.Title level={4}>
-                    Loại hình thi công:{" "}
-                  </Typography.Title>
-                  <Flex vertical gap="middle">
-                    <Typography.Text
-                      style={{
-                        marginLeft: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Ốp nền: (Chiều dài x Chiều rộng){" "}
-                    </Typography.Text>
+              </Col>
+              <Col span={8}>
+                <Flex className="layout-item" vertical>
+                  <p className="title">Danh sách sản phẩm</p>
+                  <Table
+                    columns={PRODUCTS_LIST_MOCK({
+                      onSelectedProduct: onCallBackSelectedProduct,
+                    })}
+                    dataSource={products}
+                  />
+                </Flex>
+              </Col>
+              <Col span={8}>
+                <Flex className="layout-item" vertical>
+                  <p className="title">Bảng giá dự tính</p>
 
-                    <Typography.Text
-                      style={{
-                        marginLeft: "2rem",
-                        fontWeight: "bold",
-                      }}
+                  {!formik.values.witdh && (
+                    <div
+                      className="home-content"
+                      onClick={() => homeParameterRef.current.openModal()}
                     >
-                      + Bằng gạch: Giá măc định là 200.000VND/m
-                      <sup>2</sup>
-                    </Typography.Text>
+                      <Button
+                        type="primary"
+                        size="large"
+                        style={{ width: "100%" }}
+                      >
+                        Nhập số liệu{" "}
+                      </Button>
+                    </div>
+                  )}
 
-                    <Typography.Text
-                      style={{
-                        marginLeft: "2rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Bằng gỗ: Giá măc định là 350.000VND/m
-                      <sup>2</sup>
-                    </Typography.Text>
-                  </Flex>
-                  <Flex vertical gap="middle">
-                    <Typography.Text
-                      style={{
-                        marginLeft: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Tường:{" "}
-                    </Typography.Text>
+                  {formik.values.witdh && (
+                    <>
+                      <Card>
+                        <Flex vertical gap="middle">
+                          <Descriptions
+                            layout="vertical"
+                            bordered
+                            items={[
+                              {
+                                key: "width",
+                                label: "Width",
+                                children: formik.values.witdh,
+                              },
+                              {
+                                key: "height",
+                                label: "Height",
+                                children: formik.values.height,
+                              },
+                              {
+                                key: "length",
+                                label: "Length",
+                                children: formik.values.length,
+                              },
+                            ]}
+                          />
 
-                    <Typography.Text
-                      style={{
-                        marginLeft: "2rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Sơn tường: Giá măc định là 150.000VND/m
-                      <sup>2</sup>
-                    </Typography.Text>
+                          <Button
+                            style={{ width: "100%" }}
+                            type="primary"
+                            onClick={() => homeParameterRef.current.openModal()}
+                          >
+                            Edit Parameter
+                          </Button>
+                        </Flex>
+                      </Card>
 
-                    <Typography.Text
-                      style={{
-                        marginLeft: "2rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Dán tường: Giá măc định là 250.000VND/m
-                      <sup>2</sup>
-                    </Typography.Text>
-                  </Flex>
+                      <Card>
+                        <Form layout="vertical">
+                          <Row gutter={[20, 20]}>
+                            <Col span={24}>
+                              <Form.Item
+                                className="title-label"
+                                label="1. Loại nhà thi công"
+                              >
+                                <Select
+                                  name="homeStyleId"
+                                  onChange={(value) => {
+                                    formik.setFieldValue("homeStyleId", value);
+                                  }}
+                                >
+                                  {homeStyles.$values.map((style) => (
+                                    <Select.Option
+                                      value={style.id}
+                                      key={style.id}
+                                    >
+                                      {style.name}
+                                    </Select.Option>
+                                  ))}
+                                </Select>
+                                {formik.errors && (
+                                  <div className="error-msg">
+                                    {formik.errors.homeStyleId}
+                                  </div>
+                                )}
+                              </Form.Item>
+                              <Form.Item
+                                className="title-label"
+                                label="3. Loại hình thi công"
+                              >
+                                <Flex
+                                  gap="middle"
+                                  vertical
+                                  style={{
+                                    marginTop: "1rem",
+                                  }}
+                                >
+                                  <Flex gap="middle">
+                                    <p
+                                      style={{
+                                        whiteSpace: "nowrap",
+                                        width: "40%",
+                                      }}
+                                    >
+                                      Ốp nền:{" "}
+                                    </p>
+                                    <Select
+                                      name="floorConstructionId"
+                                      options={FLOOR_DATA}
+                                      onChange={(value) =>
+                                        formik.setFieldValue(
+                                          "floorConstructionId",
+                                          value
+                                        )
+                                      }
+                                    />
 
-                  <Flex vertical gap="middle">
-                    <Typography.Text
-                      style={{
-                        marginLeft: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Trần nhà:{" "}
-                    </Typography.Text>
+                                    {formik.errors && (
+                                      <div className="error-msg">
+                                        {formik.errors.floorConstructionId}
+                                      </div>
+                                    )}
+                                  </Flex>
 
-                    <Typography.Text
-                      style={{
-                        marginLeft: "2rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Thạch cao chống cháy: Giá măc định là 100.000VND/m
-                      <sup>2</sup>
-                    </Typography.Text>
+                                  <Flex gap="middle">
+                                    <p
+                                      style={{
+                                        whiteSpace: "nowrap",
+                                        width: "40%",
+                                      }}
+                                    >
+                                      Ốp tường:{" "}
+                                    </p>
+                                    <Select
+                                      name="wallConstructId"
+                                      options={WALL_DATA}
+                                      onChange={(value) =>
+                                        formik.setFieldValue(
+                                          "wallConstructId",
+                                          value
+                                        )
+                                      }
+                                    />
 
-                    <Typography.Text
-                      style={{
-                        marginLeft: "2rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Thạch cao tiêu âm: Giá măc định là 200.000VND/m
-                      <sup>2</sup>
-                    </Typography.Text>
-                  </Flex>
+                                    {formik.errors && (
+                                      <p className="error-msg">
+                                        {formik.errors.wallConstructId}
+                                      </p>
+                                    )}
+                                  </Flex>
+
+                                  <Flex gap="middle">
+                                    <p
+                                      style={{
+                                        whiteSpace: "nowrap",
+                                        width: "40%",
+                                      }}
+                                    >
+                                      Trần nhà:{" "}
+                                    </p>
+                                    <Select
+                                      name="ceilingConstructId"
+                                      options={CEIL_DATA}
+                                      onChange={(value) =>
+                                        formik.setFieldValue(
+                                          "ceilingConstructId",
+                                          value
+                                        )
+                                      }
+                                    />
+
+                                    {formik.errors && (
+                                      <p className="error-msg">
+                                        {formik.errors.ceilingConstructId}
+                                      </p>
+                                    )}
+                                  </Flex>
+                                </Flex>
+                              </Form.Item>
+                              <Form.Item
+                                className="title-label"
+                                label="4. Phong cách thiết kế"
+                              >
+                                <Radio.Group
+                                  defaultValue={1}
+                                  onChange={(value) =>
+                                    formik.setFieldValue(
+                                      "styleId",
+                                      value.target.value
+                                    )
+                                  }
+                                >
+                                  {productStyles.$values.map((item) => {
+                                    return (
+                                      <Radio value={item.id} key={item.id}>
+                                        {item.name}
+                                      </Radio>
+                                    );
+                                  })}
+                                </Radio.Group>
+                              </Form.Item>
+                            </Col>
+                          </Row>
+                        </Form>
+                      </Card>
+                    </>
+                  )}
+                </Flex>
+              </Col>
+            </Row>
+
+            <Row>
+              <Col span={24} className="total-bill">
+                <Flex gap="middle" vertical>
+                  <p className="price-label">
+                    Tổng giá tiền thi công :{" "}
+                    <span className="price">
+                      {FormatCurrency.format(
+                        formik.values.totalConstructionCost
+                      )}{" "}
+                    </span>
+                  </p>
+
+                  <p className="price-label">
+                    Tổng giá tiền sản phẩm :{" "}
+                    <span className="price">
+                      {FormatCurrency.format(formik.values.totalProductCost)}
+                    </span>
+                  </p>
                 </Flex>
 
-                {/* Loại nhà thi công */}
-                <Flex vertical gap="middle">
-                  <Typography.Title level={4}>
-                    Phong cách thiết kế:{" "}
-                  </Typography.Title>
-                  <Flex vertical gap="middle">
-                    <Typography.Text
-                      style={{
-                        marginLeft: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Cố điển: Giá mặc định là 350.000VND/m
-                      <sup>2</sup>{" "}
-                    </Typography.Text>
-                    <Typography.Text
-                      style={{
-                        marginLeft: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Tân cổ điển: Giá mặc định là 220.000VND/m
-                      <sup>2</sup>{" "}
-                    </Typography.Text>
-                    <Typography.Text
-                      style={{
-                        marginLeft: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Nhật Bản: Giá mặc định là 220.000VND/m
-                      <sup>2</sup>{" "}
-                    </Typography.Text>
-                    <Typography.Text
-                      style={{
-                        marginLeft: "1rem",
-                        fontWeight: "bold",
-                      }}
-                    >
-                      + Ý: Giá mặc định là 200.000VND/m
-                      <sup>2</sup>{" "}
-                    </Typography.Text>
-                  </Flex>
-                </Flex>
-              </Flex>
-            </Col>
-            <Col span={8}>
-              <Flex className="layout-item" vertical>
-                <p className="title">Danh sách sản phẩm</p>
-                <Table
-                  columns={PRODUCTS_LIST_MOCK({
-                    onSelectedProduct: onCallBackSelectedProduct,
-                  })}
-                  dataSource={products}
-                />
-              </Flex>
-            </Col>
-            <Col span={8}>
-              <Flex className="layout-item" vertical>
-                <p className="title">Bảng giá dự tính</p>
+                <p className="total-price">
+                  Thành tiền:
+                  {FormatCurrency.format(
+                    formik.values.totalConstructionCost +
+                      formik.values.totalProductCost
+                  )}{" "}
+                </p>
 
-                {!formik.values.witdh && (
-                  <div
-                    className="home-content"
-                    onClick={() => homeParameterRef.current.openModal()}
+                <Flex gap="middle">
+                  <Button
+                    htmlType="submit"
+                    type="primary"
+                    size="large"
+                    loading={isLoadingSubmitQuotation}
                   >
-                    <Button
-                      type="primary"
-                      size="large"
-                      style={{ width: "100%" }}
-                    >
-                      Nhập số liệu{" "}
-                    </Button>
-                  </div>
-                )}
-
-                {formik.values.witdh && (
-                  <>
-                    <Card>
-                      <Flex vertical gap="middle">
-                        <Descriptions
-                          layout="vertical"
-                          bordered
-                          items={[
-                            {
-                              key: "width",
-                              label: "Width",
-                              children: formik.values.witdh,
-                            },
-                            {
-                              key: "height",
-                              label: "Height",
-                              children: formik.values.height,
-                            },
-                            {
-                              key: "length",
-                              label: "Length",
-                              children: formik.values.length,
-                            },
-                          ]}
-                        />
-
-                        <Button
-                          style={{ width: "100%" }}
-                          type="primary"
-                          onClick={() => homeParameterRef.current.openModal()}
-                        >
-                          Edit Parameter
-                        </Button>
-                      </Flex>
-                    </Card>
-
-                    <Card>
-                      <Form layout="vertical">
-                        <Row gutter={[20, 20]}>
-                          <Col span={24}>
-                            <Form.Item
-                              className="title-label"
-                              label="1. Loại nhà thi công"
-                            >
-                              <Select
-                                name="homeStyleId"
-                                onChange={(value) => {
-                                  formik.setFieldValue("homeStyleId", value);
-                                }}
-                              >
-                                {homeStyles.$values.map((style) => (
-                                  <Select.Option
-                                    value={style.id}
-                                    key={style.id}
-                                  >
-                                    {style.name}
-                                  </Select.Option>
-                                ))}
-                              </Select>
-                              {formik.errors && (
-                                <div className="error-msg">
-                                  {formik.errors.homeStyleId}
-                                </div>
-                              )}
-                            </Form.Item>
-                            <Form.Item
-                              className="title-label"
-                              label="3. Loại hình thi công"
-                            >
-                              <Flex
-                                gap="middle"
-                                vertical
-                                style={{
-                                  marginTop: "1rem",
-                                }}
-                              >
-                                <Flex gap="middle">
-                                  <p
-                                    style={{
-                                      whiteSpace: "nowrap",
-                                      width: "40%",
-                                    }}
-                                  >
-                                    Ốp nền:{" "}
-                                  </p>
-                                  <Select
-                                    name="floorConstructionId"
-                                    options={FLOOR_DATA}
-                                    onChange={(value) =>
-                                      formik.setFieldValue(
-                                        "floorConstructionId",
-                                        value
-                                      )
-                                    }
-                                  />
-
-                                  {formik.errors && (
-                                    <div className="error-msg">
-                                      {formik.errors.floorConstructionId}
-                                    </div>
-                                  )}
-                                </Flex>
-
-                                <Flex gap="middle">
-                                  <p
-                                    style={{
-                                      whiteSpace: "nowrap",
-                                      width: "40%",
-                                    }}
-                                  >
-                                    Ốp tường:{" "}
-                                  </p>
-                                  <Select
-                                    name="wallConstructId"
-                                    options={WALL_DATA}
-                                    onChange={(value) =>
-                                      formik.setFieldValue(
-                                        "wallConstructId",
-                                        value
-                                      )
-                                    }
-                                  />
-
-                                  {formik.errors && (
-                                    <p className="error-msg">
-                                      {formik.errors.wallConstructId}
-                                    </p>
-                                  )}
-                                </Flex>
-
-                                <Flex gap="middle">
-                                  <p
-                                    style={{
-                                      whiteSpace: "nowrap",
-                                      width: "40%",
-                                    }}
-                                  >
-                                    Trần nhà:{" "}
-                                  </p>
-                                  <Select
-                                    name="ceilingConstructId"
-                                    options={CEIL_DATA}
-                                    onChange={(value) =>
-                                      formik.setFieldValue(
-                                        "ceilingConstructId",
-                                        value
-                                      )
-                                    }
-                                  />
-
-                                  {formik.errors && (
-                                    <p className="error-msg">
-                                      {formik.errors.ceilingConstructId}
-                                    </p>
-                                  )}
-                                </Flex>
-                              </Flex>
-                            </Form.Item>
-                            <Form.Item
-                              className="title-label"
-                              label="4. Phong cách thiết kế"
-                            >
-                              <Radio.Group
-                                defaultValue={1}
-                                onChange={(value) =>
-                                  formik.setFieldValue(
-                                    "styleId",
-                                    value.target.value
-                                  )
-                                }
-                              >
-                                {productStyles.$values.map((item) => {
-                                  return (
-                                    <Radio value={item.id} key={item.id}>
-                                      {item.name}
-                                    </Radio>
-                                  );
-                                })}
-                              </Radio.Group>
-                            </Form.Item>
-                          </Col>
-                        </Row>
-                      </Form>
-                    </Card>
-                  </>
-                )}
-              </Flex>
-            </Col>
-          </Row>
-
-          <Row>
-            <Col span={24} className="total-bill">
-              <Flex gap="middle" vertical>
-                <p className="price-label">
-                  Tổng giá tiền thi công :{" "}
-                  <span className="price">
-                    {FormatCurrency.format(formik.values.totalConstructionCost)}{" "}
-                  </span>
-                </p>
-
-                <p className="price-label">
-                  Tổng giá tiền sản phẩm :{" "}
-                  <span className="price">
-                    {FormatCurrency.format(formik.values.totalProductCost)}
-                  </span>
-                </p>
-              </Flex>
-
-              <p className="total-price">
-                Thành tiền:
-                {FormatCurrency.format(
-                  formik.values.totalConstructionCost +
-                    formik.values.totalProductCost
-                )}{" "}
+                    Lưu Hóa Đơn
+                  </Button>
+                </Flex>
+              </Col>
+            </Row>
+            <footer>
+              <p>
+                Báo giá trên chỉ mang tính chất tham khảo. Vui lòng liên hệ sale
+                qua hotline: 0987654321
               </p>
-
-              <Flex gap="middle">
-                <Button
-                  htmlType="submit"
-                  type="primary"
-                  size="large"
-                  loading={isLoadingSubmitQuotation}
-                >
-                  Lưu Hóa Đơn
-                </Button>
-              </Flex>
-            </Col>
-          </Row>
-          <footer>
-            <p>
-              Báo giá trên chỉ mang tính chất tham khảo. Vui lòng liên hệ sale
-              qua hotline: 0987654321
-            </p>
-          </footer>
-        </div>
-      </form>
+            </footer>
+          </div>
+        </form>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

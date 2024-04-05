@@ -13,7 +13,8 @@ const VerifyToken = () => {
     mutationFn: AuthenticateAPI.VerifyToken,
     mutationKey: "verify-token",
     onError: (errorResponse) => {
-      message.error(errorResponse.response.data.message);
+      message.error("Token in invalid . Please try again");
+      navigate("/login");
     },
     onSuccess: () => {
       message.success("Token is valid. Welcome to our website");

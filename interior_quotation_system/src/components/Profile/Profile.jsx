@@ -17,27 +17,6 @@ const Profile = () => {
     queryKey: ["get-user-profile"],
   });
 
-  // useEffect(() => {
-  //   fetchAPI();
-  // }, []);
-
-  // const fetchAPI = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       "https://swp391api.developvn.click/api/User/info"
-  //     );
-  //     if (response.data && response.data) {
-  //       setUser(response.data);
-  //     } else {
-  //       console.log(
-  //         "Error fetching articles: Response data or responses are undefined"
-  //       );
-  //     }
-  //   } catch (error) {
-  //     console.log("Error fetching articles: ", error);
-  //   }
-  // };
-
   if (isLoadingProfile) {
     return <Skeleton paragraph={{ rows: 4 }} />;
   }
@@ -46,22 +25,14 @@ const Profile = () => {
     return message.error("Error when get user profile");
   }
 
-  // useEffect(() => {
-  //   if (isSuccess && userProfile) {
-  //     setUser(userProfile);
-  //   }
-  // }, [userProfile]);
-
   return (
     <div className="container-xl px-4 mt-4 profile-container">
       {userProfile && (
         <div className="row">
           <div className="col-xl-4">
-            {/* Profile picture card*/}
             <div className="card mb-4 mb-xl-0">
               <div className="card-header text-center">Avatar</div>
               <div className="card-body text-center pt-5 pb-5">
-                {/* Profile picture image*/}
                 <img
                   className="img-account-profile rounded-circle mb-2"
                   src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png"
@@ -71,12 +42,10 @@ const Profile = () => {
             </div>
           </div>
           <div className="col-xl-8">
-            {/* Account details card*/}
             <div className="card mb-4">
               <div className="card-header text-center">Account Details</div>
               <div className="card-body">
                 <form>
-                  {/* Form Group (username)*/}
                   <div className="mb-3">
                     <label className="small mb-1" htmlFor="inputUsername">
                       Username
@@ -90,9 +59,7 @@ const Profile = () => {
                       readOnly={true}
                     />
                   </div>
-                  {/* Form Row*/}
                   <div className="row gx-3 mb-3">
-                    {/* Form Group (first name)*/}
                     <div className="col-md-6 col-md-12 ">
                       <label className="small mb-1" htmlFor="inputFirstName">
                         Full Name
@@ -153,10 +120,6 @@ const Profile = () => {
                       />
                     </div>
                   </div>
-                  {/* Save changes button*/}
-                  {/*<button className="btn btn-primary" type="button">*/}
-                  {/*    Save changes*/}
-                  {/*</button>*/}
                 </form>
               </div>
             </div>

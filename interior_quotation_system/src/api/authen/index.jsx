@@ -6,6 +6,7 @@ const AuthenticateAPI = {
   RegisterAccount: (params) => axiosClient.post(END_POINT_API.REGISTER, params),
   GetUserInformation: () => axiosClient.get(END_POINT_API.USER_INFO),
   GetUserProfile: () => axiosClient.get("/api/User/info"),
+  VerifyToken: (params) => axiosClient.post("/api/User/verify", params),
 };
 
 export default AuthenticateAPI;

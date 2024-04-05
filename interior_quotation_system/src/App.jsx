@@ -25,6 +25,7 @@ import ShopItem from "./pages/shop/index";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import YourAccount from "./pages/yourAccount/YourAccount.jsx";
 import { PAGE_ROUTES } from "./utils/constant.tsx";
+import VerifyToken from "./pages/VerifyToken.jsx";
 function App() {
   return (
     <Routes>
@@ -67,6 +68,7 @@ function App() {
       <Route path="/shop" element={<ShopItem />} />
       <Route path="/your-account" element={<YourAccount />} />
       <Route path="/shop/item/:productId" element={<ItemDetail />} />
+      <Route path="/verify" element={<VerifyToken />} />
       <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
         <Route
           path={PAGE_ROUTES.STAFF.QUOTATIONS}

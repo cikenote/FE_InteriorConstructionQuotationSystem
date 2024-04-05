@@ -24,6 +24,7 @@ import ItemDetail from "./pages/shop/ItemDetail";
 import ShopItem from "./pages/shop/index";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import { PAGE_ROUTES } from "./utils/constant";
+import YourAccount from "./pages/yourAccount/YourAccount";
 
 function App() {
   return (
@@ -65,7 +66,7 @@ function App() {
       <Route path="/quotation" element={<QuotationPage />} />
       <Route path="/quotation/form" element={<QuotationFormPage />} />
       <Route path="/shop" element={<ShopItem />} />
-      {/* <Route path="/your-account" element={<YourAccount />} /> */}
+      <Route path="/your-account" element={<YourAccount />} />
       <Route path="/shop/item/:productId" element={<ItemDetail />} />
       <Route path={PAGE_ROUTES.STAFF.MAIN} element={<StaffRole />}>
         <Route
